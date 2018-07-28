@@ -1,0 +1,25 @@
+        SongEditor.prototype._copy = function () {
+            var pattern = this._doc.getCurrentPattern();
+            if (pattern == null)
+                return;
+            var patternCopy = {
+                notes: pattern.notes,
+                beatsPerBar: this._doc.song.beatsPerBar,
+                partsPerBeat: this._doc.song.partsPerBeat,
+                drums: this._doc.song.getChannelIsDrum(this._doc.channel),
+            };
+            window.localStorage.setItem("patternCopy", JSON.stringify(patternCopy));
+        };
+        SongEditor.prototype._paste = function () {
+            var pattern = this._doc.getCurrentPattern();
+            if (pattern == null)
+                return;
+            var patternCopy = JSON.parse(String(window.localStorage.getItem("patternCopy")));
+            if (patternCopy != null && patternCopy.drums == this._doc.song.getChannelIsDrum(this._doc.channel)) {
+                this._doc.record(new beepbox.ChangePaste(this._doc, pattern, patternCopy.notes, patternCopy.beatsPerBar, patternCopy.partsPerBeat));
+            }
+        };
+
+			if (patternCopy != null && patternCopy.drums == this._doc.song.getChannelIsDrum(this._doc.channel)) {
+                this._doc.record(new beepbox.ChangePaste(null, null, null, null, null));
+			};

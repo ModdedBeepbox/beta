@@ -1,0 +1,13 @@
+\n
+	\n.beepboxEditor .editor-right-most-side {
+	\n\tmargin-left: 6px;
+	\n\twidth: 182px;
+	\n\theight: 700px;
+	\n\tdisplay: flex;
+	\n\tflex-direction: column;
+	\n}
+	\n
+	\n.beepboxEditor .editor-right-most-side > * {
+	\n\tflex-shrink: 0;
+	\n}
+	\n
