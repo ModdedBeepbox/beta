@@ -311,7 +311,7 @@ var beepbox;
 	channelThirteenBrightColorPallet =    ["#ff1616"]
 	channelFourteenBrightColorPallet =    ["#ffffff"]
 	channelFifteenBrightColorPallet =     ["#768dfc"]
-	channelSixteenBrightColorPallet =     ["#a5ff00"]
+	channelSixteenBrightColorPallet =      ["#a5ff00"]
 
 	channelOneDimColorPallet =      ["#0099a1"]
 	channelTwoDimColorPallet =      ["#439143"]
