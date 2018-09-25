@@ -354,7 +354,7 @@ var beepbox;
 	
     Config.keyNames =      ["B", "A♯", "A", "G♯", "G", "F♯", "F", "E", "D♯", "D", "C♯", "C"];
     Config.keyTransposes = [23,  22,   21,  20,   19,  18,   17,  16,  15,   14,  13,   12 ];
-    Config.mixNames =      ["Type A (B & S)", "Type B (M)", "Type C"];
+    Config.mixNames =      ["Type A (Beepbox)", "Type B (Modbox)", "Type C"];
     Config.mixTypes = 	   [1, 2, 3];
     Config.tempoSteps = 24;
     Config.reverbRange = 5;
