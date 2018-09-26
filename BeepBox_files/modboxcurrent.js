@@ -2876,18 +2876,12 @@ var beepbox;
                         if (resetPhases)
                             synthChannel.reset();
 						var amplitudeCurve = Synth.operatorAmplitudeCurve(instrument.operators[i].amplitude);
-						if (Config.volumeValues[instrument.volume] != -1.0 && Config.volumeMValues[instrument.volume] != -1.0) {
-							if (song.mix == 2)
-								var amplitudeMult = (amplitudeCurve * Config.operatorAmplitudeSigns[instrument.operators[i].frequency]) * ((1 - (Config.volumeValues[instrument.volume] / 2.3)));
-							else
-								var amplitudeMult = (amplitudeCurve * Config.operatorAmplitudeSigns[instrument.operators[i].frequency]) * ((1 - (Config.volumeMValues[instrument.volume] / 2.3)));
-						}
-						else if (Config.volumeValues[instrument.volume] != -1.0) {
+						if (song.mix == 2 && instrument.volume != 9)
+							var amplitudeMult = (amplitudeCurve * Config.operatorAmplitudeSigns[instrument.operators[i].frequency]) * ((1 - (Config.volumeValues[instrument.volume] / 2.3)));
+						else if (song.mix != 2 && instrument.volume <= 5)
+							var amplitudeMult = (amplitudeCurve * Config.operatorAmplitudeSigns[instrument.operators[i].frequency]) * ((1 - (Config.volumeMValues[instrument.volume] / 2.3)));
+						else if (Config.volumeValues[instrument.volume] == 9 && Config.volumeMValues[instrument.volume] >= 5)
 							var amplitudeMult = 0;
-						}
-						else if (Config.volumeMValues[instrument.volume] != -1.0) {
-							var amplitudeMult = 0;
-						}
                         var volumeStart = amplitudeMult * Config.imuteValues[instrument.imute];
                         var volumeEnd = amplitudeMult * Config.imuteValues[instrument.imute];
                         if (i < carrierCount) {
