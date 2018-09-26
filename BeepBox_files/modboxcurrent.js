@@ -2880,7 +2880,7 @@ var beepbox;
 							var amplitudeMult = (amplitudeCurve * Config.operatorAmplitudeSigns[instrument.operators[i].frequency]) * ((1 - (Config.volumeValues[instrument.volume] / 2.3)));
 						else if (song.mix != 2 && instrument.volume < 5)
 							var amplitudeMult = (amplitudeCurve * Config.operatorAmplitudeSigns[instrument.operators[i].frequency]) * ((1 - (Config.volumeMValues[instrument.volume] / 2.3)));
-						else if (song.mix == 2 && instrument.volume = 9)
+						else if (song.mix == 2 && instrument.volume == 9)
 							var amplitudeMult = 0;
 						else if (song.mix != 2 && instrument.volume >= 5)
 							var amplitudeMult = 0;
