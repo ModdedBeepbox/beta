@@ -1,3 +1,0 @@
-_this._doc.channel
-
-5277 886644
