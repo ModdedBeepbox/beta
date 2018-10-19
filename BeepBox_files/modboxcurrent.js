@@ -8301,7 +8301,7 @@ var beepbox;
             this._cancelButton = button({}, [text("Close")]);
             this.container = div({ className: "prompt", style: "width: 250px;" }, [
                 div({ style: "font-size: 2em" }, [text("Song Data")]),
-				div({ style: "text-align: left;" }, [text('You are on update Modbox pre-3.1_2.')]),
+				div({ style: "text-align: left;" }, [text('You are on update Modbox pre-3.1_3.')]),
 				div({ style: "text-align: left;" }, [text('Your song is ' + _this._doc.synth.totalSeconds + ' seconds long.')]),
 				div({ style: "text-align: left;" }, [text('Your song runs at ' + _this._doc.song.getBeatsPerMinute() + ' beats per minute.')]),
 				div({ style: "text-align: left;" }, [text('There are currently ' + _this._doc.song.getChannelUnusedCount() + ' unused channels in your song out of 16.')]),
@@ -8547,7 +8547,7 @@ var beepbox;
             this.mainLayer = div({ className: "beepboxEditor", tabIndex: "0" }, [
             this._editorBox,
             div({ className: "editor-widget-column" }, [
-				div({ style: "text-align: center; color: ; align-items: center;" }, [text(_this._doc.spookybox ? "SpookyBox pre-3.1_2" : "ModBox pre-3.1_2"), this._archiveHint]),
+				div({ style: "text-align: center; color: ; align-items: center;" }, [text(_this._doc.spookybox ? "SpookyBox pre-3.1_3" : "ModBox pre-3.1_3"), this._archiveHint]),
                 div({ style: "margin: 5px 0; display: flex; flex-direction: row; align-items: center;" }, [
                     this._playButton,
                     div({ style: "width: 1px; height: 10px;" }),
