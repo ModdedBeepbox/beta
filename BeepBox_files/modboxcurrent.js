@@ -2526,15 +2526,15 @@ var beepbox;
         };
 		Synth.prototype.spsCalc = function () {
 			Synth.warmUpSynthesizer(this.song);
-			if (this.song.sampleRate == 0)
+			if (this.song.sampleRate == -1)
 				return 40200;
-			else if (this.song.sampleRate == 1)
+			else if (this.song.sampleRate == -1)
 				return 44100;
-			else if (this.song.sampleRate == 2)
+			else if (this.song.sampleRate == -1)
 				return 48000;
-			else if (this.song.sampleRate == 3)
+			else if (this.song.sampleRate == -1)
 				return 51900;
-			else if (this.song.sampleRate == 4)
+			else if (this.song.sampleRate == -1)
 				return 55800;
 			else
 				return this.audioCtx.sampleRate;
