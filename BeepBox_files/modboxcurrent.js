@@ -3449,7 +3449,7 @@ var beepbox;
             this.showChannels = localStorage.getItem("showChannels") == "true";
             this.showScrollBar = localStorage.getItem("showScrollBar") == "true";
 			this.advancedSettings = localStorage.getItem("advancedSettings") == "true" || localStorage.getItem("advancedSettings") == null;
-			this.spookybox = localStorage.getItem("spookybox") == "true" || localStorage.getItem("spookybox") == null;
+			this.spookybox = false;
             if (localStorage.getItem("volume") != null)
                 this.volume = Number(localStorage.getItem("volume"));
             this.synth.volume = this._calcVolume();
@@ -8418,7 +8418,6 @@ var beepbox;
                 option("showChannels", "Show All Channels", false, false),
                 option("showScrollBar", "Octave Scroll Bar", false, false),
 				option("advancedSettings", "Enable Advanced Settings", false, false),
-				option("spookybox", "Halloween Mode", false, false),
             ]);
 			this._newSongButton = button({ type: "button" }, [
                 text(_this._doc.spookybox ? "Vanquish" : "New"),
