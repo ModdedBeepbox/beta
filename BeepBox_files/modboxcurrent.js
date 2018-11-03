@@ -8418,6 +8418,7 @@ var beepbox;
                 option("showChannels", "Show All Channels", false, false),
                 option("showScrollBar", "Octave Scroll Bar", false, false),
 				option("advancedSettings", "Enable Advanced Settings", false, false),
+				option("spookybox", "Halloween Mode", false, true),
             ]);
 			this._newSongButton = button({ type: "button" }, [
                 text(_this._doc.spookybox ? "Vanquish" : "New"),
