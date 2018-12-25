@@ -284,13 +284,13 @@ var beepbox;
     Config.blackKeyNameParents = [-1,   1,     -1,    1,    -1,    1,   -1,    -1,    1,    -1,    1,   -1    ];
     Config.pitchNames =          ["C", null, "D", null, "E", "F", null, "G", null, "A", null, "B"];
 	
-	Config.themeNames = ["Default", "ModBox 2.0", "Artic", "Cinnamon Roll [!]", "Ocean", "Rainbow [!]", "Float [!]", "Windows", "Grassland", "Dessert", "Kahootiest", "Beam to the Bit [!]", "Pretty Egg", "Poniryoshka", "Gameboy [!]", "Woodkid", "Midnight", "Snedbox", "unnamed", "Piano [!] [↻]", "Halloween"];
+	Config.themeNames = ["Default", "ModBox 2.0", "Artic", "Cinnamon Roll [!]", "Ocean", "Rainbow [!]", "Float [!]", "Windows", "Grassland", "Dessert", "Kahootiest", "Beam to the Bit [!]", "Pretty Egg", "Poniryoshka", "Gameboy [!]", "Woodkid", "Midnight", "Snedbox", "unnamed", "Piano [!] [↻]", "Halloween", "❄️Christmas❄️"];
 	
-	volumeColorPallet =            ["#777777", "#c4ffa3", "#42dcff", "#ba8418", "#090b3a", "#ff00cb", "#878787", "#15a0db", "#74bc21", "#ff0000", "#66bf39", "#fefe00", "#f01d7a", "#ffc100", "#8bac0f", "#ef3027", "#aa5599", "#a53a3d", "#ffffff", "#ff0000", "#9e2200"]
-	sliderOneColorPallet =         ["#9900cc", "#00ff00", "#ffffff", "#ba8418", "#5982ff", "#ff0000", "#ffffff", "#2779c2", "#a0d168", "#ff6254", "#ff3355", "#fefe00", "#6b003a", "#4b4b4b", "#9bbc0f", "#e83c4e", "#445566", "#a53a3d", "#ffffff", "#ffffff", "#9e2200"]
-	sliderOctaveColorPallet =      ["#444444", "#00ff00", "#a5eeff", "#e59900", "#4449a3", "#43ff00", "#ffffff", "#295294", "#74bc21", "#ff5e3a", "#eb670f", "#0001fc", "#ffb1f4", "#5f4c99", "#9bbc0f", "#ef3027", "#444444", "#444444", "#ffffff", "#211616", "#9e2200"]
-	sliderOctaveNotchColorPallet = ["#886644", "#ffffff", "#cefffd", "#ffff25", "#3dffdb", "#0400ff", "#c9c9c9", "#fdd01d", "#20330a", "#fff570", "#ff3355", "#fa0103", "#b4001b", "#ff8291", "#8bac0f", "#ffedca", "#aa5599", "#a53a3d", "#ffffff", "#ff4c4c", "#701800"]
-	buttonColorPallet =            ["#ffffff", "#00ff00", "#42dcff", "#ffff25", "#4449a3", "#f6ff00", "#000000", "#fdd01d", "#69c400", "#fffc5b", "#66bf39", "#fefe00", "#75093e", "#818383", "#8bac0f", "#ffedca", "#000000", "#ffffff", "#ffffff", "#ffffff", "#9e2200"]
+	volumeColorPallet =            ["#777777", "#c4ffa3", "#42dcff", "#ba8418", "#090b3a", "#ff00cb", "#878787", "#15a0db", "#74bc21", "#ff0000", "#66bf39", "#fefe00", "#f01d7a", "#ffc100", "#8bac0f", "#ef3027", "#aa5599", "#a53a3d", "#ffffff", "#ff0000", "#9e2200", "#ed2d2d"]
+	sliderOneColorPallet =         ["#9900cc", "#00ff00", "#ffffff", "#ba8418", "#5982ff", "#ff0000", "#ffffff", "#2779c2", "#a0d168", "#ff6254", "#ff3355", "#fefe00", "#6b003a", "#4b4b4b", "#9bbc0f", "#e83c4e", "#445566", "#a53a3d", "#ffffff", "#ffffff", "#9e2200", "#ffffff"]
+	sliderOctaveColorPallet =      ["#444444", "#00ff00", "#a5eeff", "#e59900", "#4449a3", "#43ff00", "#ffffff", "#295294", "#74bc21", "#ff5e3a", "#eb670f", "#0001fc", "#ffb1f4", "#5f4c99", "#9bbc0f", "#ef3027", "#444444", "#444444", "#ffffff", "#211616", "#9e2200", "#38ef17"]
+	sliderOctaveNotchColorPallet = ["#886644", "#ffffff", "#cefffd", "#ffff25", "#3dffdb", "#0400ff", "#c9c9c9", "#fdd01d", "#20330a", "#fff570", "#ff3355", "#fa0103", "#b4001b", "#ff8291", "#8bac0f", "#ffedca", "#aa5599", "#a53a3d", "#ffffff", "#ff4c4c", "#701800", "#ed2d2d"]
+	buttonColorPallet =            ["#ffffff", "#00ff00", "#42dcff", "#ffff25", "#4449a3", "#f6ff00", "#000000", "#fdd01d", "#69c400", "#fffc5b", "#66bf39", "#fefe00", "#75093e", "#818383", "#8bac0f", "#ffedca", "#000000", "#ffffff", "#ffffff", "#ffffff", "#9e2200", "#38ef17"]
 	
 	noteOne =            ["#bfbfbf", "#7a7a7a", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#9e2200"]
 	noteTwo =            ["#bfbfbf", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#7a7a7a", "#9e2200"]
@@ -305,18 +305,18 @@ var beepbox;
 	noteEleven =         ["#bfbfbf", "#7a7a7a", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#bfbfbf", "#7a7a7a", "#9e2200"]
 	noteTwelve =         ["#7a7a7a", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#bfbfbf", "#9e2200"]
 	
-	baseNoteColorPallet =           ["#886644", "#c4ffa3", "#eafffe", "#f5bb00", "#090b3a", "#ffaaaa", "#ffffff", "#da4e2a", "#20330a", "#fffc5b", "#45a3e5", "#fefe00", "#fffafa", "#1a2844", "#9bbc0f", "#fff6fe", "#222222", "#886644", "#ffffa0", "#ffffff", "#681701"]
-	secondNoteColorPallet =         ["#444444", "#444444", "#444444", "#f5bb00", "#444444", "#ffceaa", "#ededed", "#444444", "#444444", "#444444", "#444444", "#111111", "#444444", "#444444", "#9bbc0f", "#41323b", "#222222", "#444444", "#ffffa0", "#ffffff", "#754a3f"]
-	thirdNoteColorPallet =          ["#444444", "#444444", "#444444", "#f5bb00", "#444444", "#ffdfaa", "#cecece", "#444444", "#444444", "#444444", "#444444", "#111111", "#444444", "#444444", "#9bbc0f", "#41323b", "#222222", "#444444", "#ffffa0", "#ffffff", "#754a3f"]
-	fourthNoteColorPallet =         ["#444444", "#444444", "#444444", "#f5bb00", "#444444", "#fff5aa", "#bababa", "#444444", "#444444", "#444444", "#444444", "#111111", "#444444", "#444444", "#8bac0f", "#41323b", "#222222", "#444444", "#ffffa0", "#ffffff", "#754a3f"]
-	sixthNoteColorPallet =          ["#444444", "#444444", "#444444", "#f5bb00", "#444444", "#e8ffaa", "#afafaf", "#444444", "#444444", "#444444", "#444444", "#fa0103", "#444444", "#faf4c3", "#8bac0f", "#41323b", "#222222", "#10997e", "#ffffa0", "#ffffff", "#754a3f"]
-	seventhNoteColorPallet =        ["#444444", "#444444", "#444444", "#f5bb00", "#444444", "#bfffb2", "#a5a5a5", "#444444", "#444444", "#444444", "#444444", "#111111", "#444444", "#444444", "#8bac0f", "#41323b", "#222222", "#444444", "#ffffa0", "#ffffff", "#754a3f"]
-	eigthNoteColorPallet =          ["#444444", "#444444", "#444444", "#f5bb00", "#444444", "#b2ffc8", "#999999", "#444444", "#444444", "#444444", "#444444", "#111111", "#444444", "#444444", "#306230", "#41323b", "#222222", "#444444", "#ffffa0", "#ffffff", "#754a3f"]
-	fifthNoteColorPallet =          ["#446688", "#96fffb", "#b7f1ff", "#f5bb00", "#3f669b", "#b2ffe4", "#8e8e8e", "#5d9511", "#74bc21", "#ff5e3a", "#864cbf", "#111111", "#ff91ce", "#dabbe6", "#306230", "#fff6fe", "#444444", "#60389b", "#ffffa0", "#ffffff", "#914300"]
-	ninthNoteColorPallet =          ["#444444", "#444444", "#444444", "#f5bb00", "#444444", "#b2f3ff", "#828282", "#444444", "#444444", "#444444", "#444444", "#0001fc", "#444444", "#444444", "#306230", "#41323b", "#222222", "#444444", "#ffffa0", "#ffffff", "#754a3f"]
-	tenNoteColorPallet =            ["#444444", "#444444", "#444444", "#f5bb00", "#444444", "#b2b3ff", "#777777", "#444444", "#444444", "#444444", "#444444", "#111111", "#444444", "#444444", "#0f380f", "#41323b", "#222222", "#444444", "#ffffa0", "#ffffff", "#754a3f"]
-	elevenNoteColorPallet =         ["#444444", "#444444", "#444444", "#f5bb00", "#444444", "#e0b2ff", "#565656", "#444444", "#444444", "#444444", "#444444", "#111111", "#444444", "#444444", "#0f380f", "#41323b", "#222222", "#444444", "#ffffa0", "#ffffff", "#754a3f"]
-	twelveNoteColorPallet =         ["#444444", "#444444", "#444444", "#f5bb00", "#444444", "#ffafe9", "#282828", "#444444", "#444444", "#444444", "#444444", "#111111", "#444444", "#444444", "#0f380f", "#41323b", "#222222", "#444444", "#ffffa0", "#ffffff", "#754a3f"]	
+	baseNoteColorPallet =           ["#886644", "#c4ffa3", "#eafffe", "#f5bb00", "#090b3a", "#ffaaaa", "#ffffff", "#da4e2a", "#20330a", "#fffc5b", "#45a3e5", "#fefe00", "#fffafa", "#1a2844", "#9bbc0f", "#fff6fe", "#222222", "#886644", "#ffffa0", "#ffffff", "#681701", "#88bce8"]
+	secondNoteColorPallet =         ["#444444", "#444444", "#444444", "#f5bb00", "#444444", "#ffceaa", "#ededed", "#444444", "#444444", "#444444", "#444444", "#111111", "#444444", "#444444", "#9bbc0f", "#41323b", "#222222", "#444444", "#ffffa0", "#ffffff", "#754a3f", "#99c8ef"]
+	thirdNoteColorPallet =          ["#444444", "#444444", "#444444", "#f5bb00", "#444444", "#ffdfaa", "#cecece", "#444444", "#444444", "#444444", "#444444", "#111111", "#444444", "#444444", "#9bbc0f", "#41323b", "#222222", "#444444", "#ffffa0", "#ffffff", "#754a3f", "#abd3f4"]
+	fourthNoteColorPallet =         ["#444444", "#444444", "#444444", "#f5bb00", "#444444", "#fff5aa", "#bababa", "#444444", "#444444", "#444444", "#444444", "#111111", "#444444", "#444444", "#8bac0f", "#41323b", "#222222", "#444444", "#ffffa0", "#ffffff", "#754a3f", "#b8d7f2"]
+	sixthNoteColorPallet =          ["#444444", "#444444", "#444444", "#f5bb00", "#444444", "#e8ffaa", "#afafaf", "#444444", "#444444", "#444444", "#444444", "#fa0103", "#444444", "#faf4c3", "#8bac0f", "#41323b", "#222222", "#10997e", "#ffffa0", "#ffffff", "#754a3f", "#cbe0f2"]
+	seventhNoteColorPallet =        ["#444444", "#444444", "#444444", "#f5bb00", "#444444", "#bfffb2", "#a5a5a5", "#444444", "#444444", "#444444", "#444444", "#111111", "#444444", "#444444", "#8bac0f", "#41323b", "#222222", "#444444", "#ffffa0", "#ffffff", "#754a3f", "#e5f0f9"]
+	eigthNoteColorPallet =          ["#444444", "#444444", "#444444", "#f5bb00", "#444444", "#b2ffc8", "#999999", "#444444", "#444444", "#444444", "#444444", "#111111", "#444444", "#444444", "#306230", "#41323b", "#222222", "#444444", "#ffffa0", "#ffffff", "#754a3f", "#ffffff"]
+	fifthNoteColorPallet =          ["#446688", "#96fffb", "#b7f1ff", "#f5bb00", "#3f669b", "#b2ffe4", "#8e8e8e", "#5d9511", "#74bc21", "#ff5e3a", "#864cbf", "#111111", "#ff91ce", "#dabbe6", "#306230", "#fff6fe", "#444444", "#60389b", "#ffffa0", "#ffffff", "#914300", "#e5f0f9"]
+	ninthNoteColorPallet =          ["#444444", "#444444", "#444444", "#f5bb00", "#444444", "#b2f3ff", "#828282", "#444444", "#444444", "#444444", "#444444", "#0001fc", "#444444", "#444444", "#306230", "#41323b", "#222222", "#444444", "#ffffa0", "#ffffff", "#754a3f", "#cbe0f2"]
+	tenNoteColorPallet =            ["#444444", "#444444", "#444444", "#f5bb00", "#444444", "#b2b3ff", "#777777", "#444444", "#444444", "#444444", "#444444", "#111111", "#444444", "#444444", "#0f380f", "#41323b", "#222222", "#444444", "#ffffa0", "#ffffff", "#754a3f", "#b8d7f2"]
+	elevenNoteColorPallet =         ["#444444", "#444444", "#444444", "#f5bb00", "#444444", "#e0b2ff", "#565656", "#444444", "#444444", "#444444", "#444444", "#111111", "#444444", "#444444", "#0f380f", "#41323b", "#222222", "#444444", "#ffffa0", "#ffffff", "#754a3f", "#abd3f4"]
+	twelveNoteColorPallet =         ["#444444", "#444444", "#444444", "#f5bb00", "#444444", "#ffafe9", "#282828", "#444444", "#444444", "#444444", "#444444", "#111111", "#444444", "#444444", "#0f380f", "#41323b", "#222222", "#444444", "#ffffa0", "#ffffff", "#754a3f", "#99c8ef"]	
 	
 	channelOneBrightColorPallet =         ["#25f3ff"]
 	channelTwoBrightColorPallet =         ["#44ff44"]
@@ -995,7 +995,7 @@ var beepbox;
         Song.prototype.initToDefault = function (andResetChannels) {
             if (andResetChannels === void 0) { andResetChannels = true; }
             this.scale = 0;
-			this.theme = 0;
+			this.theme = 21;
             this.key = Config.keyNames.length - 1;
 			this.mix = 1;
 			this.sampleRate = 2;
@@ -5398,7 +5398,7 @@ var beepbox;
             this._backgroundDrumRow.setAttribute("x", "1");
             this._backgroundDrumRow.setAttribute("y", "1");
             this._backgroundDrumRow.setAttribute("height", "" + (this._defaultDrumHeight - 2));
-            this._backgroundDrumRow.setAttribute("fill", "#444444");
+            this._backgroundDrumRow.setAttribute("fill", "#bac5c6");
             this._svgDrumBackground.appendChild(this._backgroundDrumRow);
             this._doc.notifier.watch(this._documentChanged);
             this._documentChanged();
@@ -5970,7 +5970,7 @@ var beepbox;
                 }
                 else {
 					if (true) {	
-						this._rect.setAttribute("fill", (this._renderedIndex == 0) ? "#000000" : "#444444");
+						this._rect.setAttribute("fill", (this._renderedIndex == 0) ? "#ffffff" : "#5b6466");
 						this._label.setAttribute("fill", color);
 					}
 					else {
@@ -8301,7 +8301,7 @@ var beepbox;
             this._cancelButton = button({}, [text("Close")]);
             this.container = div({ className: "prompt", style: "width: 250px;" }, [
                 div({ style: "font-size: 2em" }, [text("Song Data")]),
-				div({ style: "text-align: left;" }, [text('You are on update Modbox pre-3.1_4.')]),
+				div({ style: "text-align: left;" }, [text('You are on update Modbox 🎄')]),
 				div({ style: "text-align: left;" }, [text('Your song is ' + _this._doc.synth.totalSeconds + ' seconds long.')]),
 				div({ style: "text-align: left;" }, [text('Your song runs at ' + _this._doc.song.getBeatsPerMinute() + ' beats per minute.')]),
 				div({ style: "text-align: left;" }, [text('There are currently ' + _this._doc.song.getChannelUnusedCount() + ' unused channels in your song out of 16.')]),
@@ -8421,8 +8421,8 @@ var beepbox;
 				option("spookybox", "Halloween Mode", false, true),
             ]);
 			this._newSongButton = button({ type: "button" }, [
-                text(_this._doc.spookybox ? "Vanquish" : "New"),
-                span({ className: "fullWidthOnly" }, [text(" Song")]),
+                text(_this._doc.spookybox ? "Vanquish" : " 🎁 New"),
+                span({ className: "fullWidthOnly" }, [text(" Song 🎁")]),
                 beepbox.svgElement("svg", { style: "flex-shrink: 0; position: absolute; left: 0; top: 50%; margin-top: -1em; pointer-events: none;", width: "2em", height: "2em", viewBox: "-5 -21 26 26" }, [
                 beepbox.svgElement("path", { d: "M 2 0 L 2 -16 L 10 -16 L 14 -12 L 14 0 z M 3 -1 L 13 -1 L 13 -11 L 9 -11 L 9 -15 L 3 -15 z", fill: _this._doc.spookybox ? "#ff7200" : "currentColor"}),
                 ]),
@@ -8547,7 +8547,7 @@ var beepbox;
             this.mainLayer = div({ className: "beepboxEditor", tabIndex: "0" }, [
             this._editorBox,
             div({ className: "editor-widget-column" }, [
-				div({ style: "text-align: center; color: ; align-items: center;" }, [text(_this._doc.spookybox ? "SpookyBox pre-3.1_3" : "ModBox pre-3.1_4"), this._archiveHint]),
+				div({ style: "text-align: center; color: ; align-items: center;" }, [text(_this._doc.spookybox ? "SpookyBox pre-3.1_3" : "🎄 ModBox Cool Edition 🎄"), this._archiveHint]),
                 div({ style: "margin: 5px 0; display: flex; flex-direction: row; align-items: center;" }, [
                     this._playButton,
                     div({ style: "width: 1px; height: 10px;" }),
@@ -8757,12 +8757,12 @@ var beepbox;
 				if (instrument.imute == 0) {
                 _this._instrumentSettingsGroup.style.color = _this._doc.song.getNoteColorBright(_this._doc.channel);
 				_this._advancedInstrumentSettingsGroup.style.color = _this._doc.song.getNoteColorDim(_this._doc.channel);
-				_this._advancedSongSettings.style.color = "#aaaaaa";
+				_this._advancedSongSettings.style.color = "#61ed5e";
 				}
 				else {
-                _this._instrumentSettingsGroup.style.color = _this._doc.spookybox ? "#a81515" : "#cccccc";
-				_this._advancedInstrumentSettingsGroup.style.color = _this._doc.spookybox ? "#a81515" : "#cccccc";
-				_this._advancedSongSettings.style.color = _this._doc.spookybox ? "#661212" : "#aaaaaa";
+                _this._instrumentSettingsGroup.style.color = _this._doc.spookybox ? "#a81515" : "#ef1f10";
+				_this._advancedInstrumentSettingsGroup.style.color = _this._doc.spookybox ? "#a81515" : "#61ed5e";
+				_this._advancedSongSettings.style.color = _this._doc.spookybox ? "#661212" : "#ef1f10";
 				}
 				_this._imuteSelect.innerText = "◉";
 				_this._iMmuteSelect.innerText = "◉";
