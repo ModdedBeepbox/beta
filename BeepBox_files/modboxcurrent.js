@@ -284,7 +284,7 @@ var beepbox;
     Config.blackKeyNameParents = [-1,   1,     -1,    1,    -1,    1,   -1,    -1,    1,    -1,    1,   -1    ];
     Config.pitchNames =          ["C", null, "D", null, "E", "F", null, "G", null, "A", null, "B"];
 	
-	Config.themeNames = ["Default", "ModBox 2.0", "Artic", "Cinnamon Roll [!]", "Ocean", "Rainbow [!]", "Float [!]", "Windows", "Grassland", "Dessert", "Kahootiest", "Beam to the Bit [!]", "Pretty Egg", "Poniryoshka", "Gameboy [!]", "Woodkid", "Midnight", "Snedbox", "unnamed", "Piano [!] [↻]", "Halloween", "❄️Christmas❄️"];
+	Config.themeNames = ["Default", "ModBox 2.0", "Artic", "Cinnamon Roll [!]", "Ocean", "Rainbow [!]", "Float [!]", "Windows", "Grassland", "Dessert", "Kahootiest", "Beam to the Bit [!]", "Pretty Egg", "Poniryoshka", "Gameboy [!]", "Woodkid", "Midnight", "Snedbox", "unnamed", "Piano [!] [↻]", "Halloween", "FrozenOver❄️"];
 	
 	volumeColorPallet =            ["#777777", "#c4ffa3", "#42dcff", "#ba8418", "#090b3a", "#ff00cb", "#878787", "#15a0db", "#74bc21", "#ff0000", "#66bf39", "#fefe00", "#f01d7a", "#ffc100", "#8bac0f", "#ef3027", "#aa5599", "#a53a3d", "#ffffff", "#ff0000", "#9e2200", "#ed2d2d"]
 	sliderOneColorPallet =         ["#9900cc", "#00ff00", "#ffffff", "#ba8418", "#5982ff", "#ff0000", "#ffffff", "#2779c2", "#a0d168", "#ff6254", "#ff3355", "#fefe00", "#6b003a", "#4b4b4b", "#9bbc0f", "#e83c4e", "#445566", "#a53a3d", "#ffffff", "#ffffff", "#9e2200", "#38ef17"]
@@ -995,7 +995,7 @@ var beepbox;
         Song.prototype.initToDefault = function (andResetChannels) {
             if (andResetChannels === void 0) { andResetChannels = true; }
             this.scale = 0;
-			this.theme = 21;
+			this.theme = 0;
             this.key = Config.keyNames.length - 1;
 			this.mix = 1;
 			this.sampleRate = 2;
@@ -5398,7 +5398,7 @@ var beepbox;
             this._backgroundDrumRow.setAttribute("x", "1");
             this._backgroundDrumRow.setAttribute("y", "1");
             this._backgroundDrumRow.setAttribute("height", "" + (this._defaultDrumHeight - 2));
-            this._backgroundDrumRow.setAttribute("fill", "#bac5c6");
+            this._backgroundDrumRow.setAttribute("fill", "#444444");
             this._svgDrumBackground.appendChild(this._backgroundDrumRow);
             this._doc.notifier.watch(this._documentChanged);
             this._documentChanged();
@@ -5970,7 +5970,7 @@ var beepbox;
                 }
                 else {
 					if (true) {	
-						this._rect.setAttribute("fill", (this._renderedIndex == 0) ? "#000000" : "#3a0a0a");
+						this._rect.setAttribute("fill", (this._renderedIndex == 0) ? "#000000" : "#444444");
 						this._label.setAttribute("fill", color);
 					}
 					else {
@@ -8421,8 +8421,8 @@ var beepbox;
 				option("spookybox", "Halloween Mode", false, true),
             ]);
 			this._newSongButton = button({ type: "button" }, [
-                text(_this._doc.spookybox ? "Vanquish" : " 🎁 New"),
-                span({ className: "fullWidthOnly" }, [text(" Song 🎁")]),
+                text(_this._doc.spookybox ? "Vanquish" : " New"),
+                span({ className: "fullWidthOnly" }, [text(" Song")]),
                 beepbox.svgElement("svg", { style: "flex-shrink: 0; position: absolute; left: 0; top: 50%; margin-top: -1em; pointer-events: none;", width: "2em", height: "2em", viewBox: "-5 -21 26 26" }, [
                 beepbox.svgElement("path", { d: "M 2 0 L 2 -16 L 10 -16 L 14 -12 L 14 0 z M 3 -1 L 13 -1 L 13 -11 L 9 -11 L 9 -15 L 3 -15 z", fill: _this._doc.spookybox ? "#ff7200" : "currentColor"}),
                 ]),
@@ -8547,7 +8547,7 @@ var beepbox;
             this.mainLayer = div({ className: "beepboxEditor", tabIndex: "0" }, [
             this._editorBox,
             div({ className: "editor-widget-column" }, [
-				div({ style: "text-align: center; color: ; align-items: center;" }, [text(_this._doc.spookybox ? "SpookyBox pre-3.1_3" : "🎄 ModBox Cool Edition 🎄"), this._archiveHint]),
+				div({ style: "text-align: center; color: ; align-items: center;" }, [text(_this._doc.spookybox ? "SpookyBox pre-3.1_3" : "ModBox Beta PreSS"), this._archiveHint]),
                 div({ style: "margin: 5px 0; display: flex; flex-direction: row; align-items: center;" }, [
                     this._playButton,
                     div({ style: "width: 1px; height: 10px;" }),
@@ -8756,13 +8756,13 @@ var beepbox;
                 }
 				if (instrument.imute == 0) {
                 _this._instrumentSettingsGroup.style.color = _this._doc.song.getNoteColorBright(_this._doc.channel);
-				_this._advancedInstrumentSettingsGroup.style.color = _this._doc.song.getNoteColorDim(_this._doc.channel);
-				_this._advancedSongSettings.style.color = "#61ed5e";
+				_this._advancedInstrumentSettingsGroup.style.color = _this._doc.song.getNoteColorBright(_this._doc.channel);
+				_this._advancedSongSettings.style.color = _this._doc.song.getNoteColorDim(_this._doc.channel);
 				}
 				else {
-                _this._instrumentSettingsGroup.style.color = _this._doc.spookybox ? "#a81515" : "#ef1f10";
-				_this._advancedInstrumentSettingsGroup.style.color = _this._doc.spookybox ? "#a81515" : "#61ed5e";
-				_this._advancedSongSettings.style.color = _this._doc.spookybox ? "#661212" : "#ef1f10";
+                _this._instrumentSettingsGroup.style.color = "#cccccc";
+				_this._advancedInstrumentSettingsGroup.style.color = "#cccccc";
+				_this._advancedSongSettings.style.color = "#aaaaaa";
 				}
 				_this._imuteSelect.innerText = "◉";
 				_this._iMmuteSelect.innerText = "◉";
