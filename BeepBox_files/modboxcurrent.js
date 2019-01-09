@@ -1124,6 +1124,7 @@ var beepbox;
                         }
                     }
                     else {
+						buffer.push(84, base64IntToCharCode[2]);
                         buffer.push(119, base64IntToCharCode[instrument.wave]);
                         buffer.push(100, base64IntToCharCode[instrument.transition]);
                         buffer.push(118, base64IntToCharCode[instrument.volume]);
@@ -1835,6 +1836,7 @@ var beepbox;
                     var instrument = this.channels[channel].instruments[i];
                     if (isDrum) {
                         instrumentArray.push({
+							type: Config.instrumentTypeNames[2],
                             volume: (5 - instrument.volume) * 20,
 							imute: Config.imuteNames[instrument.imute],
                             wave: Config.drumNames[instrument.wave],
@@ -2100,9 +2102,6 @@ var beepbox;
                             else {
                                 instrument.volume = 0;
                             }
-                            instrument.type = Config.instrumentTypeNames.indexOf(instrumentObject.type);
-                            if (instrument.type != 0)
-                                instrument.type = 0;
                             instrument.wave = Config.drumNames.indexOf(instrumentObject.wave);
                             if (instrument.wave == -1)
                                 instrument.wave = 1;
@@ -3014,7 +3013,7 @@ var beepbox;
                         synthChannel.volumeDeltas[i] *= 1.0 + sineVolumeBoost * 3.0;
                     }
                 }
-                else if (instrument.type == 0) {
+                else {
                     var pitch = pitches[0];
 					if (!isDrum) {
 						if (Config.harmNames[instrument.harm] == 1) {
@@ -7776,7 +7775,7 @@ var beepbox;
                             if (pattern != null) {
                                 var nextInstrument = pattern.instrument;
                                 var instrument = song.channels[channel].instruments[nextInstrument];
-                                if (isChorus && isDrums) {
+                                if (isDrums || instrument.type == 1 || instrument.chorus == 0) {
                                     barStartTime += ticksPerBar;
                                     continue;
                                 }
@@ -7785,6 +7784,7 @@ var beepbox;
                                     var description = "";
                                     var instrumentProgram = 0x51;
                                     if (isDrums) {
+                                        description += "type: " + beepbox.Config.instrumentTypeNames[2];
                                         description += ", noise: " + beepbox.Config.drumNames[instrument.wave];
                                         description += ", volume: " + beepbox.Config.volumeNames[instrument.volume];
                                         description += ", transition: " + beepbox.Config.transitionNames[instrument.transition];
