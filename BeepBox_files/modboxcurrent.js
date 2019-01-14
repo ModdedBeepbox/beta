@@ -9222,7 +9222,6 @@ var beepbox;
             this.mainLayer.addEventListener("keydown", this._whenKeyPressed);
             if (isMobile) {
                 this._optionsMenu.children[1].disabled = true;
-				this._optionsMenu.children[9].disabled = true;
 			}
         }
         SongEditor.prototype._openPrompt = function (promptName) {
