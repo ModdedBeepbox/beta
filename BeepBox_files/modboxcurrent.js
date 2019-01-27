@@ -1,25 +1,3 @@
-/*
-Copyright (C) 2012 John Nesky
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of 
-this software and associated documentation files (the "Software"), to deal in 
-the Software without restriction, including without limitation the rights to 
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies 
-of the Software, and to permit persons to whom the Software is furnished to do 
-so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all 
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
-SOFTWARE.
-*/
-
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -263,107 +241,106 @@ var beepbox;
         };
         return Config;
     }());
+	Config.aSettingsNames = ["Basic", "Advanced"];
+	aListHidden = ["hidden", "visible"]
     Config.scaleNames = ["easy :)", "easy :(", "island :)", "island :(", "blues :)", "blues :(", "normal :)", "normal :(", "dbl harmonic :)", "dbl harmonic :(", "enigma", "expert", "monotonic", "no dabbing"];
     Config.scaleFlags = [
-        [true, false, true,  false, true,  false, false, true,  false, true,  false, false],
-        [true, false, false, true,  false, true,  false, true,  false, false, true,  false],
-        [true, false, false, false, true,  true,  false, true,  false, false, false, true ],
-        [true, true,  false, true,  false, false, false, true,  true,  false, false, false],
-        [true, false, true,  true,  true,  false, false, true,  false, true,  false, false],
-        [true, false, false, true,  false, true,  true,  true,  false, false, true,  false],
-        [true, false, true,  false, true,  true,  false, true,  false, true,  false, true ],
-        [true, false, true,  true,  false, true,  false, true,  true,  false, true,  false],
-        [true, true,  false, false, true,  true,  false, true,  true,  false, false, true ],
-        [true, false, true,  true,  false, false, true,  true,  true,  false, false, true ],
-        [true, false, true,  false, true,  false, true,  false, true,  false, true,  false],
-        [true, true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true ],
+        [true, false, true, false, true, false, false, true, false, true, false, false],
+        [true, false, false, true, false, true, false, true, false, false, true, false],
+        [true, false, false, false, true, true, false, true, false, false, false, true],
+        [true, true, false, true, false, false, false, true, true, false, false, false],
+        [true, false, true, true, true, false, false, true, false, true, false, false],
+        [true, false, false, true, false, true, true, true, false, false, true, false],
+        [true, false, true, false, true, true, false, true, false, true, false, true],
+        [true, false, true, true, false, true, false, true, true, false, true, false],
+        [true, true, false, false, true, true, false, true, true, false, false, true],
+        [true, false, true, true, false, false, true, true, true, false, false, true],
+        [true, false, true, false, true, false, true, false, true, false, true, false],
+        [true, true, true, true, true, true, true, true, true, true, true, true],
 		[true, false, false, false, false, false, false, false, false, false, false, false],
-		[true, true,  false, true,  true,  true,  true,  true,  true,  false, true,  false],
+		[true, true, false, true, true, true, true, true, true, false, true, false],
     ];
-    Config.pianoScaleFlags =     [ true, false, true, false, true, true, false, true, false, true, false, true];
-    Config.blackKeyNameParents = [-1,   1,     -1,    1,    -1,    1,   -1,    -1,    1,    -1,    1,   -1    ];
-    Config.pitchNames =          ["C", null, "D", null, "E", "F", null, "G", null, "A", null, "B"];
+    Config.pianoScaleFlags = [true, false, true, false, true, true, false, true, false, true, false, true];
+    Config.blackKeyNameParents = [-1, 1, -1, 1, -1, 1, -1, -1, 1, -1, 1, -1];
+    Config.pitchNames = ["C", null, "D", null, "E", "F", null, "G", null, "A", null, "B"];
 	
-	Config.themeNames = ["Default", "ModBox 2.0", "Artic", "Cinnamon Roll [!]", "Ocean", "Rainbow [!]", "Float [!]", "Windows", "Grassland", "Dessert", "Kahootiest", "Beam to the Bit [!]", "Pretty Egg", "Poniryoshka", "Gameboy [!]", "Woodkid", "Midnight", "Snedbox", "unnamed", "Piano [!] [↻]", "Halloween", "FrozenOver❄️"];
+	Config.themeNames = ["Default", "ModBox 2.0", "Artic", "Cinnamon Roll [!]", "Ocean", "Rainbow [!]", "Float [!]", "Windows", "Grassland", "Dessert", "Kahootiest", "Beam to the Bit [!]", "Pretty Egg", "Poniryoshka", "Gameboy [!]", "Woodkid", "Midnight", "Snedbox", "unnamed", "Piano [!] [↻]"];
 	
-	volumeColorPallet =            ["#777777", "#c4ffa3", "#42dcff", "#ba8418", "#090b3a", "#ff00cb", "#878787", "#15a0db", "#74bc21", "#ff0000", "#66bf39", "#fefe00", "#f01d7a", "#ffc100", "#8bac0f", "#ef3027", "#aa5599", "#a53a3d", "#ffffff", "#ff0000", "#9e2200", "#ed2d2d"]
-	sliderOneColorPallet =         ["#9900cc", "#00ff00", "#ffffff", "#ba8418", "#5982ff", "#ff0000", "#ffffff", "#2779c2", "#a0d168", "#ff6254", "#ff3355", "#fefe00", "#6b003a", "#4b4b4b", "#9bbc0f", "#e83c4e", "#445566", "#a53a3d", "#ffffff", "#ffffff", "#9e2200", "#38ef17"]
-	sliderOctaveColorPallet =      ["#444444", "#00ff00", "#a5eeff", "#e59900", "#4449a3", "#43ff00", "#ffffff", "#295294", "#74bc21", "#ff5e3a", "#eb670f", "#0001fc", "#ffb1f4", "#5f4c99", "#9bbc0f", "#ef3027", "#444444", "#444444", "#ffffff", "#211616", "#9e2200", "#ffffff"]
-	sliderOctaveNotchColorPallet = ["#886644", "#ffffff", "#cefffd", "#ffff25", "#3dffdb", "#0400ff", "#c9c9c9", "#fdd01d", "#20330a", "#fff570", "#ff3355", "#fa0103", "#b4001b", "#ff8291", "#8bac0f", "#ffedca", "#aa5599", "#a53a3d", "#ffffff", "#ff4c4c", "#701800", "#ed2d2d"]
-	buttonColorPallet =            ["#ffffff", "#00ff00", "#42dcff", "#ffff25", "#4449a3", "#f6ff00", "#000000", "#fdd01d", "#69c400", "#fffc5b", "#66bf39", "#fefe00", "#75093e", "#818383", "#8bac0f", "#ffedca", "#000000", "#ffffff", "#ffffff", "#ffffff", "#9e2200", "#38ef17"]
+	volumeColorPallet =            ["#777777", "#c4ffa3", "#42dcff", "#ba8418", "#090b3a", "#ff00cb", "#878787", "#15a0db", "#74bc21", "#ff0000", "#66bf39", "#fefe00", "#f01d7a", "#ffc100", "#8bac0f", "#ef3027", "#aa5599", "#a53a3d", "#ffffff", "#777777"]
+	sliderOneColorPallet =         ["#9900cc", "#00ff00", "#ffffff", "#ba8418", "#5982ff", "#ff0000", "#ffffff", "#2779c2", "#a0d168", "#ff6254", "#ff3355", "#fefe00", "#6b003a", "#4b4b4b", "#9bbc0f", "#e83c4e", "#445566", "#a53a3d", "#ffffff", "#9900cc"]
+	sliderOctaveColorPallet =      ["#444444", "#00ff00", "#a5eeff", "#e59900", "#4449a3", "#43ff00", "#ffffff", "#295294", "#74bc21", "#ff5e3a", "#eb670f", "#0001fc", "#ffb1f4", "#5f4c99", "#9bbc0f", "#ef3027", "#444444", "#444444", "#ffffff", "#444444"]
+	sliderOctaveNotchColorPallet = ["#886644", "#ffffff", "#cefffd", "#ffff25", "#3dffdb", "#0400ff", "#c9c9c9", "#fdd01d", "#20330a", "#fff570", "#ff3355", "#fa0103", "#b4001b", "#ff8291", "#8bac0f", "#ffedca", "#aa5599", "#a53a3d", "#ffffff", "#886644"]
+	buttonColorPallet =            ["#ffffff", "#00ff00", "#42dcff", "#ffff25", "#4449a3", "#f6ff00", "#000000", "#fdd01d", "#69c400", "#fffc5b", "#66bf39", "#fefe00", "#75093e", "#818383", "#8bac0f", "#ffedca", "#000000", "#ffffff", "#ffffff", "#ffffff"]
 	
-	// For Piano Theme
-	noteOne =            ["#bfbfbf", "#7a7a7a", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#9e2200"]
-	noteTwo =            ["#bfbfbf", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#7a7a7a", "#9e2200"]
-	noteThree =          ["#7a7a7a", "#bfbfbf", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#9e2200"]
-	noteFour =           ["#bfbfbf", "#7a7a7a", "#bfbfbf", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#bfbfbf", "#7a7a7a", "#9e2200"]
-	noteSix =            ["#7a7a7a", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#bfbfbf", "#9e2200"]
-	noteSeven =          ["#bfbfbf", "#7a7a7a", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#9e2200"]
-	noteEight =          ["#bfbfbf", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#7a7a7a", "#9e2200"]
-	noteFive =           ["#7a7a7a", "#bfbfbf", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#9e2200"]
-	noteNine =           ["#bfbfbf", "#7a7a7a", "#bfbfbf", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#7a7a7a", "#9e2200"]
-	noteTen =            ["#7a7a7a", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#9e2200"]
-	noteEleven =         ["#bfbfbf", "#7a7a7a", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#bfbfbf", "#7a7a7a", "#9e2200"]
-	noteTwelve =         ["#7a7a7a", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#7a7a7a", "#bfbfbf", "#bfbfbf", "#9e2200"]
+	noteOne =            ["#bfbfbf", "#2b2b2b", "#bfbfbf", "#2b2b2b", "#bfbfbf", "#2b2b2b", "#bfbfbf", "#bfbfbf", "#2b2b2b", "#bfbfbf", "#2b2b2b", "#bfbfbf"]
+	noteTwo =            ["#bfbfbf", "#bfbfbf", "#2b2b2b", "#bfbfbf", "#2b2b2b", "#bfbfbf", "#2b2b2b", "#bfbfbf", "#bfbfbf", "#2b2b2b", "#bfbfbf", "#2b2b2b"]
+	noteThree =          ["#2b2b2b", "#bfbfbf", "#bfbfbf", "#2b2b2b", "#bfbfbf", "#2b2b2b", "#bfbfbf", "#2b2b2b", "#bfbfbf", "#bfbfbf", "#2b2b2b", "#bfbfbf"]
+	noteFour =           ["#bfbfbf", "#2b2b2b", "#bfbfbf", "#bfbfbf", "#2b2b2b", "#bfbfbf", "#2b2b2b", "#bfbfbf", "#2b2b2b", "#bfbfbf", "#bfbfbf", "#2b2b2b"]
+	noteSix =            ["#2b2b2b", "#bfbfbf", "#2b2b2b", "#bfbfbf", "#bfbfbf", "#2b2b2b", "#bfbfbf", "#2b2b2b", "#bfbfbf", "#2b2b2b", "#bfbfbf", "#bfbfbf"]
+	noteSeven =          ["#bfbfbf", "#2b2b2b", "#bfbfbf", "#2b2b2b", "#bfbfbf", "#bfbfbf", "#2b2b2b", "#bfbfbf", "#2b2b2b", "#bfbfbf", "#2b2b2b", "#bfbfbf"]
+	noteEight =          ["#bfbfbf", "#bfbfbf", "#2b2b2b", "#bfbfbf", "#2b2b2b", "#bfbfbf", "#bfbfbf", "#2b2b2b", "#bfbfbf", "#2b2b2b", "#bfbfbf", "#2b2b2b"]
+	noteFive =           ["#2b2b2b", "#bfbfbf", "#bfbfbf", "#2b2b2b", "#bfbfbf", "#2b2b2b", "#bfbfbf", "#bfbfbf", "#2b2b2b", "#bfbfbf", "#2b2b2b", "#bfbfbf"]
+	noteNine =           ["#bfbfbf", "#2b2b2b", "#bfbfbf", "#bfbfbf", "#2b2b2b", "#bfbfbf", "#2b2b2b", "#bfbfbf", "#bfbfbf", "#2b2b2b", "#bfbfbf", "#2b2b2b"]
+	noteTen =            ["#2b2b2b", "#bfbfbf", "#2b2b2b", "#bfbfbf", "#bfbfbf", "#2b2b2b", "#bfbfbf", "#2b2b2b", "#bfbfbf", "#bfbfbf", "#2b2b2b", "#bfbfbf"]
+	noteEleven =         ["#bfbfbf", "#2b2b2b", "#bfbfbf", "#2b2b2b", "#bfbfbf", "#bfbfbf", "#2b2b2b", "#bfbfbf", "#2b2b2b", "#bfbfbf", "#bfbfbf", "#2b2b2b"]
+	noteTwelve =         ["#2b2b2b", "#bfbfbf", "#2b2b2b", "#bfbfbf", "#2b2b2b", "#bfbfbf", "#bfbfbf", "#2b2b2b", "#bfbfbf", "#2b2b2b", "#bfbfbf", "#bfbfbf"]
 	
-	// Gives Color of the Sheet
-	baseNoteColorPallet =           ["#886644", "#c4ffa3", "#eafffe", "#f5bb00", "#090b3a", "#ffaaaa", "#ffffff", "#da4e2a", "#20330a", "#fffc5b", "#45a3e5", "#fefe00", "#fffafa", "#1a2844", "#9bbc0f", "#fff6fe", "#222222", "#886644", "#ffffa0", "#ffffff", "#681701", "#88bce8"]
-	secondNoteColorPallet =         ["#444444", "#444444", "#444444", "#f5bb00", "#444444", "#ffceaa", "#ededed", "#444444", "#444444", "#444444", "#444444", "#111111", "#444444", "#444444", "#9bbc0f", "#41323b", "#222222", "#444444", "#ffffa0", "#ffffff", "#754a3f", "#99c8ef"]
-	thirdNoteColorPallet =          ["#444444", "#444444", "#444444", "#f5bb00", "#444444", "#ffdfaa", "#cecece", "#444444", "#444444", "#444444", "#444444", "#111111", "#444444", "#444444", "#9bbc0f", "#41323b", "#222222", "#444444", "#ffffa0", "#ffffff", "#754a3f", "#abd3f4"]
-	fourthNoteColorPallet =         ["#444444", "#444444", "#444444", "#f5bb00", "#444444", "#fff5aa", "#bababa", "#444444", "#444444", "#444444", "#444444", "#111111", "#444444", "#444444", "#8bac0f", "#41323b", "#222222", "#444444", "#ffffa0", "#ffffff", "#754a3f", "#b8d7f2"]
-	sixthNoteColorPallet =          ["#444444", "#444444", "#444444", "#f5bb00", "#444444", "#e8ffaa", "#afafaf", "#444444", "#444444", "#444444", "#444444", "#fa0103", "#444444", "#faf4c3", "#8bac0f", "#41323b", "#222222", "#10997e", "#ffffa0", "#ffffff", "#754a3f", "#cbe0f2"]
-	seventhNoteColorPallet =        ["#444444", "#444444", "#444444", "#f5bb00", "#444444", "#bfffb2", "#a5a5a5", "#444444", "#444444", "#444444", "#444444", "#111111", "#444444", "#444444", "#8bac0f", "#41323b", "#222222", "#444444", "#ffffa0", "#ffffff", "#754a3f", "#e5f0f9"]
-	eigthNoteColorPallet =          ["#444444", "#444444", "#444444", "#f5bb00", "#444444", "#b2ffc8", "#999999", "#444444", "#444444", "#444444", "#444444", "#111111", "#444444", "#444444", "#306230", "#41323b", "#222222", "#444444", "#ffffa0", "#ffffff", "#754a3f", "#ffffff"]
-	fifthNoteColorPallet =          ["#446688", "#96fffb", "#b7f1ff", "#f5bb00", "#3f669b", "#b2ffe4", "#8e8e8e", "#5d9511", "#74bc21", "#ff5e3a", "#864cbf", "#111111", "#ff91ce", "#dabbe6", "#306230", "#fff6fe", "#444444", "#60389b", "#ffffa0", "#ffffff", "#914300", "#e5f0f9"]
-	ninthNoteColorPallet =          ["#444444", "#444444", "#444444", "#f5bb00", "#444444", "#b2f3ff", "#828282", "#444444", "#444444", "#444444", "#444444", "#0001fc", "#444444", "#444444", "#306230", "#41323b", "#222222", "#444444", "#ffffa0", "#ffffff", "#754a3f", "#cbe0f2"]
-	tenNoteColorPallet =            ["#444444", "#444444", "#444444", "#f5bb00", "#444444", "#b2b3ff", "#777777", "#444444", "#444444", "#444444", "#444444", "#111111", "#444444", "#444444", "#0f380f", "#41323b", "#222222", "#444444", "#ffffa0", "#ffffff", "#754a3f", "#b8d7f2"]
-	elevenNoteColorPallet =         ["#444444", "#444444", "#444444", "#f5bb00", "#444444", "#e0b2ff", "#565656", "#444444", "#444444", "#444444", "#444444", "#111111", "#444444", "#444444", "#0f380f", "#41323b", "#222222", "#444444", "#ffffa0", "#ffffff", "#754a3f", "#abd3f4"]
-	twelveNoteColorPallet =         ["#444444", "#444444", "#444444", "#f5bb00", "#444444", "#ffafe9", "#282828", "#444444", "#444444", "#444444", "#444444", "#111111", "#444444", "#444444", "#0f380f", "#41323b", "#222222", "#444444", "#ffffa0", "#ffffff", "#754a3f", "#99c8ef"]	
+	baseNoteColorPallet =           ["#886644", "#c4ffa3", "#eafffe", "#f5bb00", "#090b3a", "#ffaaaa", "#ffffff", "#da4e2a", "#20330a", "#fffc5b", "#45a3e5", "#fefe00", "#fffafa", "#1a2844", "#9bbc0f", "#fff6fe", "#222222", "#886644", "#ffffa0", "#ffffff"]
+	secondNoteColorPallet =         ["#444444", "#444444", "#444444", "#f5bb00", "#444444", "#ffceaa", "#ededed", "#444444", "#444444", "#444444", "#444444", "#111111", "#444444", "#444444", "#9bbc0f", "#41323b", "#222222", "#444444", "#ffffa0", "#ffffff"]
+	thirdNoteColorPallet =          ["#444444", "#444444", "#444444", "#f5bb00", "#444444", "#ffdfaa", "#cecece", "#444444", "#444444", "#444444", "#444444", "#111111", "#444444", "#444444", "#9bbc0f", "#41323b", "#222222", "#444444", "#ffffa0", "#ffffff"]
+	fourthNoteColorPallet =         ["#444444", "#444444", "#444444", "#f5bb00", "#444444", "#fff5aa", "#bababa", "#444444", "#444444", "#444444", "#444444", "#111111", "#444444", "#444444", "#8bac0f", "#41323b", "#222222", "#444444", "#ffffa0", "#ffffff"]
+	sixthNoteColorPallet =          ["#444444", "#444444", "#444444", "#f5bb00", "#444444", "#e8ffaa", "#afafaf", "#444444", "#444444", "#444444", "#444444", "#fa0103", "#444444", "#faf4c3", "#8bac0f", "#41323b", "#222222", "#10997e", "#ffffa0", "#ffffff"]
+	seventhNoteColorPallet =        ["#444444", "#444444", "#444444", "#f5bb00", "#444444", "#bfffb2", "#a5a5a5", "#444444", "#444444", "#444444", "#444444", "#111111", "#444444", "#444444", "#8bac0f", "#41323b", "#222222", "#444444", "#ffffa0", "#ffffff"]
+	eigthNoteColorPallet =          ["#444444", "#444444", "#444444", "#f5bb00", "#444444", "#b2ffc8", "#999999", "#444444", "#444444", "#444444", "#444444", "#111111", "#444444", "#444444", "#306230", "#41323b", "#222222", "#444444", "#ffffa0", "#ffffff"]
+	fifthNoteColorPallet =          ["#446688", "#96fffb", "#b7f1ff", "#f5bb00", "#3f669b", "#b2ffe4", "#8e8e8e", "#5d9511", "#74bc21", "#ff5e3a", "#864cbf", "#111111", "#ff91ce", "#dabbe6", "#306230", "#fff6fe", "#444444", "#60389b", "#ffffa0", "#ffffff"]
+	ninthNoteColorPallet =          ["#444444", "#444444", "#444444", "#f5bb00", "#444444", "#b2f3ff", "#828282", "#444444", "#444444", "#444444", "#444444", "#0001fc", "#444444", "#444444", "#306230", "#41323b", "#222222", "#444444", "#ffffa0", "#ffffff"]
+	tenNoteColorPallet =            ["#444444", "#444444", "#444444", "#f5bb00", "#444444", "#b2b3ff", "#777777", "#444444", "#444444", "#444444", "#444444", "#111111", "#444444", "#444444", "#0f380f", "#41323b", "#222222", "#444444", "#ffffa0", "#ffffff"]
+	elevenNoteColorPallet =         ["#444444", "#444444", "#444444", "#f5bb00", "#444444", "#e0b2ff", "#565656", "#444444", "#444444", "#444444", "#444444", "#111111", "#444444", "#444444", "#0f380f", "#41323b", "#222222", "#444444", "#ffffa0", "#ffffff"]
+	twelveNoteColorPallet =         ["#444444", "#444444", "#444444", "#f5bb00", "#444444", "#ffafe9", "#282828", "#444444", "#444444", "#444444", "#444444", "#111111", "#444444", "#444444", "#0f380f", "#41323b", "#222222", "#444444", "#ffffa0", "#ffffff"]	
 	
-	channelOneBrightColorPallet =         ["#25f3ff"]
-	channelTwoBrightColorPallet =         ["#44ff44"]
-	channelThreeBrightColorPallet =       ["#ffff25"]
-	channelFourBrightColorPallet =        ["#ff9752"]
-	channelFiveBrightColorPallet =        ["#ff90ff"]
-	channelSixBrightColorPallet =         ["#7500c4"]
-	channelSevenBrightColorPallet =       ["#1000ff"]
-	channelEightBrightColorPallet =       ["#00ff9f"]
-	channelNineBrightColorPallet =        ["#ffbf00"]
-	channelTenBrightColorPallet =         ["#d85d00"]
-	channelElevenBrightColorPallet =      ["#ff00a1"]
-	channelTwelveBrightColorPallet =      ["#c26afc"]
+	channelOneBrightColorPallet =      ["#25f3ff"]
+	channelTwoBrightColorPallet =      ["#44ff44"]
+	channelThreeBrightColorPallet =    ["#ffff25"]
+	channelFourBrightColorPallet =     ["#ff9752"]
+	channelFiveBrightColorPallet =     ["#ff90ff"]
+	channelSixBrightColorPallet =      ["#7500c4"]
+	channelSevenBrightColorPallet =    ["#1000ff"]
+	channelEightBrightColorPallet =    ["#00ff9f"]
+	channelNineBrightColorPallet =      ["#ffbf00"]
+	channelTenBrightColorPallet =       ["#d85d00"]
+	channelElevenBrightColorPallet =    ["#ff00a1"]
+	channelTwelveBrightColorPallet =    ["#c26afc"]
 	channelThirteenBrightColorPallet =    ["#ff1616"]
 	channelFourteenBrightColorPallet =    ["#ffffff"]
 	channelFifteenBrightColorPallet =     ["#768dfc"]
 	channelSixteenBrightColorPallet =     ["#a5ff00"]
 
-	channelOneDimColorPallet =         ["#0099a1"]
-	channelTwoDimColorPallet =         ["#439143"]
-	channelThreeDimColorPallet =       ["#a1a100"]
-	channelFourDimColorPallet =        ["#c75000"]
-	channelFiveDimColorPallet =        ["#d020d0"]
-	channelSixDimColorPallet =         ["#492184"]
-	channelSevenDimColorPallet =       ["#221b89"]
-	channelEightDimColorPallet =       ["#00995f"]
-	channelNineDimColorPallet =        ["#d6b03e"]
-	channelTenDimColorPallet =         ["#b25915"]
-	channelElevenDimColorPallet =      ["#891a60"]
-	channelTwelveDimColorPallet =      ["#965cbc"]
+	channelOneDimColorPallet =      ["#0099a1"]
+	channelTwoDimColorPallet =      ["#439143"]
+	channelThreeDimColorPallet =    ["#a1a100"]
+	channelFourDimColorPallet =     ["#c75000"]
+	channelFiveDimColorPallet =     ["#d020d0"]
+	channelSixDimColorPallet =      ["#492184"]
+	channelSevenDimColorPallet =    ["#221b89"]
+	channelEightDimColorPallet =    ["#00995f"]
+	channelNineDimColorPallet =      ["#d6b03e"]
+	channelTenDimColorPallet =       ["#b25915"]
+	channelElevenDimColorPallet =    ["#891a60"]
+	channelTwelveDimColorPallet =    ["#965cbc"]
 	channelThirteenDimColorPallet =    ["#991010"]
 	channelFourteenDimColorPallet =    ["#aaaaaa"]
 	channelFifteenDimColorPallet =     ["#5869BD"]
 	channelSixteenDimColorPallet =     ["#7c9b42"]
 	
-    Config.keyNames =      ["B", "A♯", "A", "G♯", "G", "F♯", "F", "E", "D♯", "D", "C♯", "C"];
-    Config.keyTransposes = [23,  22,   21,  20,   19,  18,   17,  16,  15,   14,  13,   12 ];
-    Config.mixNames =      ["Type A (B & S)", "Type B (M)", "Type C"];
-    Config.sampleRateNames =     ["40200kHz", "44100kHz", "48000kHz", "51900kHz", "55800kHz"];
+    Config.keyNames = ["B", "A♯", "A", "G♯", "G", "F♯", "F", "E", "D♯", "D", "C♯", "C"];
+    Config.keyTransposes = [23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12];
     Config.tempoSteps = 24;
     Config.reverbRange = 5;
     Config.blendRange = 4;
     Config.riffRange = 11;
+    Config.driveRange = 24;
+    Config.csignRange = 24;
 	Config.detuneRange = 24;
-	Config.muffRange = 24;
     Config.beatsPerBarMin = 1;
     Config.beatsPerBarMax = 24;
     Config.barCountMin = 1;
@@ -372,42 +349,38 @@ var beepbox;
     Config.patternsPerChannelMax = 64;
     Config.instrumentsPerChannelMin = 1;
     Config.instrumentsPerChannelMax = 64;
-    Config.partNames =  ["÷3 (triplets)", "÷4 (standard)", "÷6", "÷8", "÷16 (arpfest)", "÷12", "÷9", "÷5", "÷50", "÷24"];
-    Config.partCounts = [3,               4,               6,    8,    16,              12,    9,    5,    50,    24   ];
-    Config.waveNames =   ["triangle", "square", "pulse wide", "pulse narrow", "sawtooth", "double saw", "double pulse", "spiky", "plateau", "glitch", "10% pulse", "sunsoft bass", "loud pulse", "sax", "guitar", "sine", "atari bass", "atari pulse", "1% pulse", "curved sawtooth", "viola", "brass", "acoustic bass", "lyre", "ramp pulse", "piccolo", "squaretooth", "flatline", "pnryshk a (u5)", "pnryshk b (riff)"];
-    Config.waveVolumes = [1.0,        0.5,      0.5,          0.5,            0.65,       0.5,          0.4,            0.4,     0.94,      0.5,      0.5,         1.0,            0.6,          0.1,   0.25,     1.0,    1.0,          1.0,           1.0,        1.0,               1.0,     1.0,     1.0,             0.2,    0.2,          0.9,       0.9,           1.0,        0.4,                 0.5];
-    Config.drumNames =           ["retro", "white", "periodic", "detuned periodic", "shine", "hollow", "deep", "cutter", "metallic"];
-    Config.drumVolumes =         [0.25,    1.0,     0.4,        0.3,                0.3,     1.5,      1.5,    0.25,     1.0       ];
-    Config.drumBasePitches =     [69,      69,      69,         69,                 69,      96,       120,    96,       96        ];
-    Config.drumPitchFilterMult = [100.0,   8.0,     100.0,      100.0,              100.0,   1.0,      100.0,  100.0,    100.0     ];
-    Config.drumWaveIsSoft =      [false,   true,    false,      false,              false,   true,     true,   false,    false     ];
-    Config._drumWaves =          [null, null, null, null, null, null, null];
-    Config.filterNames = ["none", "sustain sharp", "sustain medium", "sustain soft", "decay sharp", "decay medium", "decay soft", "decay drawn", "fade sharp", "fade medium", "fade soft", "ring", "muffled", "submerged", "shift", "overtone", "woosh", "undertone"];
-    Config.filterBases = [0.0, 2.0, 3.5, 5.0, 1.0, 2.5, 4.0, 1.0, 5.0, 7.5, 10.0, -1.0, 4.0, 6.0, 0.0, 1.0, 2.0, 5.0];
-    Config.filterDecays = [0.0, 0.0, 0.0, 0.0, 10.0, 7.0, 4.0, 0.5, -10.0, -7.0, -4.0, 0.2, 0.2, 0.3, 0.0, 0.0, -6.0, 0.0];
-    Config.filterVolumes = [0.2, 0.4, 0.7, 1.0, 0.5, 0.75, 1.0, 0.5, 0.4, 0.7, 1.0, 0.5, 0.75, 0.4, 0.4, 1.0, 0.5, 1.75];
-    Config.transitionNames = ["seamless", "sudden", "smooth", "slide", "trill", "click", "bow", "blip"];
+    Config.partNames = ["÷3 (triplets)", "÷4 (standard)", "÷6", "÷8", "÷16 (arpfest)", "÷12 (smaller arpfest)", "÷9 (ninths)", "÷5 (fifths)", "÷·50 (fiftieths)", "÷24 (larger arpfest)"];
+    Config.partCounts = [3, 4, 6, 8, 16, 12, 9, 5, 50, 24];
+    Config.waveNames = ["triangle", "square", "pulse wide", "pulse narrow", "sawtooth", "double saw", "double pulse", "spiky", "plateau", "glitch", "10% pulse", "sunsoft bass", "loud pulse", "sax", "guitar", "sine", "atari bass", "atari pulse", "1% pulse", "curved sawtooth", "viola", "brass", "acoustic bass", "lyre", "ramp pulse", "piccolo", "squaretooth", "flatline"];
+    Config.waveVolumes = [1.0, 0.5, 0.5, 0.5, 0.65, 0.5, 0.4, 0.4, 0.94, 0.5, 0.5, 1.0, 0.6, 0.2, 0.5, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.2, 0.2, 0.9, 0.9, 1.0];
+    Config.drumNames = ["retro", "white", "periodic", "detuned periodic", "shine", "hollow", "deep", "cutter", "metallic"];
+    Config.drumVolumes = [0.25, 1.0, 0.4, 0.3, 0.3, 1.5, 1.5, 0.25, 1.0];
+    Config.drumBasePitches = [69, 69, 69, 69, 69, 96, 120, 96, 96];
+    Config.drumPitchFilterMult = [100.0, 8.0, 100.0, 100.0, 100.0, 1.0, 100.0, 100.0, 100.0];
+    Config.drumWaveIsSoft = [false, true, false, false, false, true, true, false, false];
+    Config._drumWaves = [null, null, null, null, null, null, null];
+    Config.filterNames = ["none", "sustain sharp", "sustain medium", "sustain soft", "decay sharp", "decay medium", "decay soft", "decay drawn", "fade sharp", "fade medium", "fade soft", "ring", "muffled", "submerged", "shift", "overtone", "woosh"];
+    Config.filterBases = [0.0, 2.0, 3.5, 5.0, 1.0, 2.5, 4.0, 1.0, 5.0, 7.5, 10.0, -1.0, 4.0, 6.0, 0.0, 1.0, 2.0];
+    Config.filterDecays = [0.0, 0.0, 0.0, 0.0, 10.0, 7.0, 4.0, 0.5, -10.0, -7.0, -4.0, 0.2, 0.2, 0.3, 0.0, 0.0, -6.0];
+    Config.filterVolumes = [0.2, 0.4, 0.7, 1.0, 0.5, 0.75, 1.0, 0.5, 0.4, 0.7, 1.0, 0.5, 0.75, 0.4, 0.4, 1.0, 0.5];
+    Config.transitionNames = ["seamless", "sudden", "smooth", "slide", "trill", "click", "bow"];
     Config.effectNames = ["none", "vibrato light", "vibrato delayed", "vibrato heavy", "tremolo light", "tremolo heavy", "alien", "stutter", "strum"];
     Config.effectVibratos = [0.0, 0.15, 0.3, 0.45, 0.0, 0.0, 1.0, 0.0, 0.05];
     Config.effectTremolos = [0.0, 0.0, 0.0, 0.0, 0.25, 0.5, 0.0, 1.0, 0.025];
     Config.effectVibratoDelays = [0, 0, 3, 0, 0, 0, 0, 0];
-    Config.chorusNames = ["union", "shimmer", "hum", "honky tonk", "dissonant", "fifths", "octaves", "spinner", "detune", "bowed", "rising", "vibrate", "fourths", "bass", "dirty", "stationary", "harmonic (legacy)", "recurve", "voiced", "fluctuate"];
+    Config.chorusNames = ["union", "shimmer", "hum", "honky tonk", "dissonant", "fifths", "octaves", "spinner", "detune", "bowed", "rising", "vibrate", "fourths", "bass", "dirty", "stationary", "union harmony", "recurve", "voiced", "fluctuate"];
     Config.chorusIntervals = [0.0, 0.02, 0.05, 0.1, 0.25, 3.5, 6, 0.02, 0.0, 0.02, 1.0, 3.5, 4, 0, 0.0, 3.5, 0.0, 0.005, 0.25, 12];
     Config.chorusOffsets = [0.0, 0.0, 0.0, 0.0, 0.0, 3.5, 6, 0.0, 0.25, 0.0, 0.7, 7, 4, -7, 0.1, 0.0, 0.0, 0.0, 3.0, 0.0];
     Config.chorusVolumes = [0.9, 0.9, 1.0, 1.0, 0.95, 0.95, 0.9, 1.0, 1.0, 1.0, 0.95, 0.975, 0.95, 1.0, 0.975, 0.9, 1.0, 1.0, 0.9, 1.0];
     Config.chorusSigns = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, -1.0, 1.0, 1.0, 1.0, 1.0, 1.0, -1.0, 1.0, -1.0, 1.0, 1.0];
-    Config.chorusRiffApp = [0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0];
-    Config.chorusHarmonizes = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
-	Config.harmDisplay = ["arpeggio", "duet", "chord", "seventh", "half arpeggio", "arp-chord"];
-    Config.harmNames = [0, 1, 2, 3, 4, 5];
+    Config.chorusHarmonizes = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true, false, false];
+    Config.harmNames = [false, true];
 	Config.imuteNames = ["◉", "◎"];
 	Config.imuteValues = [1, 0];
-	Config.octoffNames = ["none", "+2 (2 octaves)",  "+1 1/2 (octave and fifth)",  "+1 (octave)",  "+1/2 (fifth)", "-1/2 (fifth)", "-1 (octave)", "-1 1/2 (octave and fifth)", "-2 (2 octaves"];
-	Config.octoffValues = [0.0, 24.0, 19.0, 12.0, 7.0, -7.0, -12.0, -19.0, -24.0];
-	Config.volumeNames = ["loudest", "loud", "medium", "quiet", "quietest", "mute", "i", "couldnt", "be", "bothered"];
-    Config.volumeValues = [0.0, 0.25, 0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0, -1.0];
-    Config.volumeMValues = [0.0, 0.5, 1.0, 1.5, 2.0, -1.0];
-    Config.ipanValues = [-1.0, -0.75, -0.5, -0.25, 0.0, 0.25, 0.5, 0.75, 1.0];
+	Config.octoffNames = ["none", "pitch 4",  "pitch 3",  "pitch 2",  "pitch 1", "bass 1", "bass 2", "bass 3", "bass 4"];
+	Config.octoffValues = [0.0, 24.0, 18.0, 12.0, 6.0, -6.0, -12.0, -18.0, -24.0];
+	Config.volumeNames = ["loudest", "loud", "medium", "quiet", "quietest", "mute"];
+    Config.volumeValues = [0.0, 0.5, 1.0, 1.5, 2.0, -1.0];
     Config.operatorCount = 4;
 	
     Config.operatorAlgorithmNames = [
@@ -424,8 +397,9 @@ var beepbox;
         "1 2 3←4",
         "(1 2 3)←4",
         "1 2 3 4",
+		"1←4 2 3",
     ];
-    Config.midiAlgorithmNames = ["1<(2 3 4)", "1<(2 3<4)", "1<2<(3 4)", "1<(2 3)<4", "1<2<3<4", "1<3 2<4", "1 2<(3 4)", "1 2<3<4", "(1 2)<3<4", "(1 2)<(3 4)", "1 2 3<4", "(1 2 3)<4", "1 2 3 4"];
+    Config.midiAlgorithmNames = ["1<(2 3 4)", "1<(2 3<4)", "1<2<(3 4)", "1<(2 3)<4", "1<2<3<4", "1<3 2<4", "1 2<(3 4)", "1 2<3<4", "(1 2)<3<4", "(1 2)<(3 4)", "1 2 3<4", "(1 2 3)<4", "1 2 3 4", "1<4 2 3"];
     Config.operatorModulatedBy = [
         [[2, 3, 4], [], [], []],
         [[2, 3], [], [4], []],
@@ -440,6 +414,7 @@ var beepbox;
         [[], [], [4], []],
         [[4], [4], [4], []],
         [[], [], [], []],
+		[[4], [], [], []],
     ];
     Config.operatorAssociatedCarrier = [
         [1, 1, 1, 1],
@@ -455,8 +430,9 @@ var beepbox;
         [1, 2, 3, 3],
         [1, 2, 3, 3],
         [1, 2, 3, 4],
+		[1, 2, 3, 3],
     ];
-    Config.operatorCarrierCounts = [1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 4];
+    Config.operatorCarrierCounts = [1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 4, 3];
     Config.operatorCarrierChorus = [0.0, 0.04, -0.073, 0.091];
     Config.operatorAmplitudeMax = 15;
     Config.operatorFrequencyNames = ["1×", "~1×", "2×", "~2×", "3×", "4×", "5×", "6×", "7×", "8×", "9×", "10×", "11×", "13×", "16×", "20×"];
@@ -464,11 +440,10 @@ var beepbox;
     Config.operatorFrequencies = [1.0, 1.0, 2.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 13.0, 16.0, 20.0];
     Config.operatorHzOffsets = [0.0, 1.5, 0.0, -1.3, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0];
     Config.operatorAmplitudeSigns = [1.0, -1.0, 1.0, -1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0];
-    Config.operatorEnvelopeNames = ["custom", "steady", "punch", "flare 1", "flare 2", "flare 3", "pluck 1", "pluck 2", "pluck 3", "swell 1", "swell 2", "swell 3", "tremolo1", "tremolo2", "tremolo3", "custom flare", "custom tremolo", "flute 1", "flute 2", "flute 3"];
-    Config.operatorEnvelopeType = [0, 1, 2, 3, 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 5, 3, 5, 6, 6, 6];
-	Config.operatorSpecialCustomVolume = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true, true, false, false, false];
-    Config.operatorEnvelopeSpeed = [0.0, 0.0, 0.0, 32.0, 8.0, 2.0, 32.0, 8.0, 2.0, 32.0, 8.0, 2.0, 4.0, 2.0, 1.0, 8.0, 0.0, 16.0, 8.0, 4.0];
-    Config.operatorEnvelopeInverted = [false, false, false, false, false, false, false, false, false, true, true, true, false, false, false, false, false, false, false, false];
+    Config.operatorEnvelopeNames = ["custom", "steady", "punch", "flare 1", "flare 2", "flare 3", "pluck 1", "pluck 2", "pluck 3", "swell 1", "swell 2", "swell 3", "tremolo1", "tremolo2", "tremolo3"];
+    Config.operatorEnvelopeType = [0, 1, 2, 3, 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 5];
+    Config.operatorEnvelopeSpeed = [0.0, 0.0, 0.0, 32.0, 8.0, 2.0, 32.0, 8.0, 2.0, 32.0, 8.0, 2.0, 4.0, 2.0, 1.0];
+    Config.operatorEnvelopeInverted = [false, false, false, false, false, false, false, false, false, true, true, true, false, false, false];
     Config.operatorFeedbackNames = [
         "1⟲",
         "2⟲",
@@ -488,12 +463,6 @@ var beepbox;
         "1→3 2→4",
         "1→4 2→3",
         "1→2→3→4",
-		"1🗘2",
-		"1🗘3",
-		"1🗘4",
-		"2🗘3",
-		"2🗘4",
-		"3🗘4",
     ];
     Config.midiFeedbackNames = [
         "1",
@@ -514,12 +483,6 @@ var beepbox;
         "1>3 2>4",
         "1>4 2>3",
         "1>2>3>4",
-		"1-2",
-		"1-3",
-		"1-4",
-		"2-3",
-		"2-4",
-		"3-4",
     ];
     Config.operatorFeedbackIndices = [
         [[1], [], [], []],
@@ -540,28 +503,21 @@ var beepbox;
         [[], [], [1], [2]],
         [[], [], [2], [1]],
         [[], [1], [2], [3]],
-        [[2], [1], [],  []  ],
-        [[3], [],  [1], []  ],
-        [[4], [],  [],  [1] ],
-        [[],  [3], [2], []  ],
-        [[],  [4], [],  [2] ],
-        [[],  [],  [4], [3] ],
     ];
     Config.pitchChannelTypeNames =    ["chip", "FM (expert)"];
-	Config.drumChannelTypeNames =     ["noise"]
-    Config.instrumentTypeNames =      ["chip", "FM", "noise", "cs"];
-    Config.pitchChannelColorsDim =    [channelOneDimColorPallet, channelTwoDimColorPallet, channelThreeDimColorPallet, channelFourDimColorPallet, channelFiveDimColorPallet, channelSixDimColorPallet, channelSevenDimColorPallet, channelEightDimColorPallet, channelNineDimColorPallet, channelTenDimColorPallet, channelElevenDimColorPallet, channelTwelveDimColorPallet];
+    Config.instrumentTypeNames =      ["chip", "FM", "noise"];
+    Config.pitchChannelColorsDim = [channelOneDimColorPallet, channelTwoDimColorPallet, channelThreeDimColorPallet, channelFourDimColorPallet, channelFiveDimColorPallet, channelSixDimColorPallet, channelSevenDimColorPallet, channelEightDimColorPallet, channelNineDimColorPallet, channelTenDimColorPallet, channelElevenDimColorPallet, channelTwelveDimColorPallet];
     Config.pitchChannelColorsBright = [channelOneBrightColorPallet, channelTwoBrightColorPallet, channelThreeBrightColorPallet, channelFourBrightColorPallet, channelFiveBrightColorPallet, channelSixBrightColorPallet, channelSevenBrightColorPallet, channelEightBrightColorPallet, channelNineBrightColorPallet, channelTenBrightColorPallet, channelElevenBrightColorPallet, channelTwelveBrightColorPallet];
-    Config.pitchNoteColorsDim =       [channelOneDimColorPallet, channelTwoDimColorPallet, channelThreeDimColorPallet, channelFourDimColorPallet, channelFiveDimColorPallet, channelSixDimColorPallet, channelSevenDimColorPallet, channelEightDimColorPallet, channelNineDimColorPallet, channelTenDimColorPallet, channelElevenDimColorPallet, channelTwelveDimColorPallet];
-    Config.pitchNoteColorsBright =    [channelOneBrightColorPallet, channelTwoBrightColorPallet, channelThreeBrightColorPallet, channelFourBrightColorPallet, channelFiveBrightColorPallet, channelSixBrightColorPallet, channelSevenBrightColorPallet, channelEightBrightColorPallet, channelNineBrightColorPallet, channelTenBrightColorPallet, channelElevenBrightColorPallet, channelTwelveBrightColorPallet];
+    Config.pitchNoteColorsDim = [channelOneDimColorPallet, channelTwoDimColorPallet, channelThreeDimColorPallet, channelFourDimColorPallet, channelFiveDimColorPallet, channelSixDimColorPallet, channelSevenDimColorPallet, channelEightDimColorPallet, channelNineDimColorPallet, channelTenDimColorPallet, channelElevenDimColorPallet, channelTwelveDimColorPallet];
+    Config.pitchNoteColorsBright = [channelOneBrightColorPallet, channelTwoBrightColorPallet, channelThreeBrightColorPallet, channelFourBrightColorPallet, channelFiveBrightColorPallet, channelSixBrightColorPallet, channelSevenBrightColorPallet, channelEightBrightColorPallet, channelNineBrightColorPallet, channelTenBrightColorPallet, channelElevenBrightColorPallet, channelTwelveBrightColorPallet];
     Config.drumChannelColorsDim =     [channelThirteenDimColorPallet, channelFourteenDimColorPallet, channelFifteenDimColorPallet, channelSixteenDimColorPallet];
     Config.drumChannelColorsBright =  [channelThirteenBrightColorPallet, channelFourteenBrightColorPallet, channelFifteenBrightColorPallet, channelSixteenBrightColorPallet];
     Config.drumNoteColorsDim =        [channelThirteenDimColorPallet, channelFourteenDimColorPallet, channelFifteenDimColorPallet, channelSixteenDimColorPallet];
     Config.drumNoteColorsBright =     [channelThirteenBrightColorPallet, channelFourteenBrightColorPallet, channelFifteenBrightColorPallet, channelSixteenBrightColorPallet];
 	Config.settNoteColorsDim =        ["#991010"];
     Config.settNoteColorsBright =     ["#ffffff", "#00ff00", "#42dcff", "#ffff25", "#4449a3", "#f6ff00", "#000000", "#fdd01d", "#69c400", "#fffc5b", "#66bf39", "#fefe00", "#75093e", "#818383", "#8bac0f", "#ffedca", "#000000", "#ffffff", "#ffffff"];
-    Config.midiPitchChannelNames =    ["cyan channel", "yellow channel", "orange channel", "green channel", "purple channel", "blue channel"];
-    Config.midiDrumChannelNames =     ["gray channel", "brown channel", "indigo channel"];
+    Config.midiPitchChannelNames =    ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
+    Config.midiDrumChannelNames =     ["13", "14", "15", "16"];
     Config.midiSustainInstruments = [
         0x47,
         0x50,
@@ -584,17 +540,14 @@ var beepbox;
         0x6A,
         0x21,
     ];
-	
     Config.drumInterval = 6;
     Config.drumCount = 12;
     Config.pitchCount = 37;
     Config.maxPitch = 84;
-    Config.pitchChannelCountMin = 0;
+    Config.pitchChannelCountMin = 1;
     Config.pitchChannelCountMax = 12;
     Config.drumChannelCountMin = 0;
     Config.drumChannelCountMax = 4;
-    Config.volBendMin = 3;
-    Config.volBendMax = 5;
     Config.waves = [
         Config._centerWave([1.0 / 15.0, 3.0 / 15.0, 5.0 / 15.0, 7.0 / 15.0, 9.0 / 15.0, 11.0 / 15.0, 13.0 / 15.0, 15.0 / 15.0, 15.0 / 15.0, 13.0 / 15.0, 11.0 / 15.0, 9.0 / 15.0, 7.0 / 15.0, 5.0 / 15.0, 3.0 / 15.0, 1.0 / 15.0, -1.0 / 15.0, -3.0 / 15.0, -5.0 / 15.0, -7.0 / 15.0, -9.0 / 15.0, -11.0 / 15.0, -13.0 / 15.0, -15.0 / 15.0, -15.0 / 15.0, -13.0 / 15.0, -11.0 / 15.0, -9.0 / 15.0, -7.0 / 15.0, -5.0 / 15.0, -3.0 / 15.0, -1.0 / 15.0]),
         Config._centerWave([1.0, -1.0]),
@@ -624,41 +577,7 @@ var beepbox;
 		Config._centerWave([1, 4, 2, 1, -0.1, -1, -0.12]),
 		Config._centerWave([0.2, 1.0, 2.6, 1.0, 0.0, -2.4]),
 		Config._centerWave([1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]),
-		Config._centerWave([1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.0]),
-		Config._centerWave([1.0, -0.9, 0.8, -0.7, 0.6, -0.5, 0.4, -0.3, 0.2, -0.1, 0.0, -0.1, 0.2, -0.3, 0.4, -0.5, 0.6, -0.7, 0.8, -0.9, 1.0]),
-		];
-    Config.wavesMixC = [
-        Config._centerWave([1.0 / 15.0, 3.0 / 15.0, 5.0 / 15.0, 7.0 / 15.0, 9.0 / 15.0, 11.0 / 15.0, 13.0 / 15.0, 15.0 / 15.0, 15.0 / 15.0, 13.0 / 15.0, 11.0 / 15.0, 9.0 / 15.0, 7.0 / 15.0, 5.0 / 15.0, 3.0 / 15.0, 1.0 / 15.0, -1.0 / 15.0, -3.0 / 15.0, -5.0 / 15.0, -7.0 / 15.0, -9.0 / 15.0, -11.0 / 15.0, -13.0 / 15.0, -15.0 / 15.0, -15.0 / 15.0, -13.0 / 15.0, -11.0 / 15.0, -9.0 / 15.0, -7.0 / 15.0, -5.0 / 15.0, -3.0 / 15.0, -1.0 / 15.0]),
-        Config._centerWave([1.0, -1.0]),
-        Config._centerWave([1.0, -1.0, -1.0, -1.0]),
-        Config._centerWave([1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]),
-        Config._centerWave([1.0 / 31.0, 3.0 / 31.0, 5.0 / 31.0, 7.0 / 31.0, 9.0 / 31.0, 11.0 / 31.0, 13.0 / 31.0, 15.0 / 31.0, 17.0 / 31.0, 19.0 / 31.0, 21.0 / 31.0, 23.0 / 31.0, 25.0 / 31.0, 27.0 / 31.0, 29.0 / 31.0, 31.0 / 31.0, -31.0 / 31.0, -29.0 / 31.0, -27.0 / 31.0, -25.0 / 31.0, -23.0 / 31.0, -21.0 / 31.0, -19.0 / 31.0, -17.0 / 31.0, -15.0 / 31.0, -13.0 / 31.0, -11.0 / 31.0, -9.0 / 31.0, -7.0 / 31.0, -5.0 / 31.0, -3.0 / 31.0, -1.0 / 31.0]),
-        Config._centerWave([0.0, -0.2, -0.4, -0.6, -0.8, -1.0, 1.0, -0.8, -0.6, -0.4, -0.2, 1.0, 0.8, 0.6, 0.4, 0.2]),
-        Config._centerWave([1.0, 1.0, 1.0, 1.0, 1.0, -1.0, -1.0, -1.0, 1.0, 1.0, 1.0, 1.0, -1.0, -1.0, -1.0, -1.0]),
-        Config._centerWave([1.0, -1.0, 1.0, -1.0, 1.0, 0.0]),
-        Config._centerWave([0.0, 0.2, 0.4, 0.5, 0.6, 0.7, 0.8, 0.85, 0.9, 0.95, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.95, 0.9, 0.85, 0.8, 0.7, 0.6, 0.5, 0.4, 0.2, 0.0, -0.2, -0.4, -0.5, -0.6, -0.7, -0.8, -0.85, -0.9, -0.95, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -0.95, -0.9, -0.85, -0.8, -0.7, -0.6, -0.5, -0.4, -0.2]),
-		Config._centerWave([1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, -1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, -1.0, -1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, -1.0, -1.0, -1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, -1.0, -1.0, -1.0, -1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, -1.0, -1.0, -1.0, -1.0, -1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, -1.0, -1.0, -1.0, -1.0, -1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, -1.0, -1.0, -1.0, -1.0,1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, -1.0, -1.0, -1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, -1.0, -1.0]),
-		Config._centerWave([1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]),
-		Config._centerWave([0.0, 0.1875, 0.3125, 0.5625, 0.5, 0.75, 0.875, 1.0, 1.0, 0.6875, 0.5, 0.625, 0.625, 0.5, 0.375, 0.5625, 0.4375, 0.5625, 0.4375, 0.4375, 0.3125, 0.1875, 0.1875, 0.375, 0.5625, 0.5625, 0.5625, 0.5625, 0.5625, 0.4375, 0.25, 0.0]),
-		Config._centerWave([1.0, 0.7, 0.1, 0.1, 0, 0, 0, 0, 0, 0.1, 0.2, 0.15, 0.25, 0.125, 0.215, 0.345, 4.0]),
-		Config._centerWave([1.0 / 15.0, 3.0 / 15.0, 5.0 / 15.0, 9.0, 0.06]),
-		Config._centerWave([-0.5, 3.5, 3.0, -0.5, -0.25, -1.0]),
-		Config._centerWave([0.0, 0.05, 0.125, 0.2, 0.25, 0.3, 0.425, 0.475, 0.525, 0.625, 0.675, 0.725, 0.775, 0.8, 0.825, 0.875, 0.9, 0.925, 0.95, 0.975, 0.98, 0.99, 0.995, 1, 0.995, 0.99, 0.98, 0.975, 0.95, 0.925, 0.9, 0.875, 0.825, 0.8, 0.775, 0.725, 0.675, 0.625, 0.525, 0.475, 0.425, 0.3, 0.25, 0.2, 0.125, 0.05, 0.0, -0.05, -0.125, -0.2, -0.25, -0.3, -0.425, -0.475, -0.525, -0.625, -0.675, -0.725, -0.775, -0.8, -0.825, -0.875, -0.9, -0.925, -0.95, -0.975, -0.98, -0.99, -0.995, -1, -0.995, -0.99, -0.98, -0.975, -0.95, -0.925, -0.9, -0.875, -0.825, -0.8, -0.775, -0.725, -0.675, -0.625, -0.525, -0.475, -0.425, -0.3, -0.25, -0.2, -0.125, -0.05]),
-		Config._centerWave([1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0]),
-		Config._centerWave([0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]),
-		Config._centerWave([1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]),
-		Config._centerWave([1.0, 1.0 / 2.0, 1.0 / 3.0, 1.0 / 4.0]),
-		Config._centerWave([-0.9, -1.0, -0.85, -0.775, -0.7, -0.6, -0.5, -0.4, -0.325, -0.225, -0.2, -0.125, -0.1, -0.11, -0.125, -0.15, -0.175, -0.18, -0.2, -0.21, -0.22, -0.21, -0.2, -0.175, -0.15, -0.1, -0.5, 0.75, 0.11, 0.175, 0.2, 0.25, 0.26, 0.275, 0.26, 0.25, 0.225, 0.2, 0.19, 0.18, 0.19, 0.2, 0.21, 0.22, 0.23, 0.24, 0.25, 0.26, 0.275, 0.28, 0.29, 0.3, 0.29, 0.28, 0.27, 0.26, 0.25, 0.225, 0.2, 0.175, 0.15, 0.1, 0.075, 0.0, -0.01, -0.025, 0.025, 0.075, 0.2, 0.3, 0.475, 0.6, 0.75, 0.85, 0.85, 1.0, 0.99, 0.95, 0.8, 0.675, 0.475, 0.275, 0.01, -0.15, -0.3, -0.475, -0.5, -0.6, -0.71, -0.81, -0.9, -1.0, -0.9]),
-		Config._centerWave([-1.0, -0.95, -0.975, -0.9, -0.85, -0.8, -0.775, -0.65, -0.6, -0.5, -0.475, -0.35, -0.275, -0.2, -0.125, -0.05, 0.0, 0.075, 0.125, 0.15, 0.20, 0.21, 0.225, 0.25, 0.225, 0.21, 0.20, 0.19, 0.175, 0.125, 0.10, 0.075, 0.06, 0.05, 0.04, 0.025, 0.04, 0.05, 0.10, 0.15, 0.225, 0.325, 0.425, 0.575, 0.70, 0.85, 0.95, 1.0, 0.9, 0.675, 0.375, 0.2, 0.275, 0.4, 0.5, 0.55, 0.6, 0.625, 0.65, 0.65, 0.65, 0.65, 0.64, 0.6, 0.55, 0.5, 0.4, 0.325, 0.25, 0.15, 0.05, -0.05, -0.15, -0.275, -0.35, -0.45, -0.55, -0.65, -0.7, -0.78, -0.825, -0.9, -0.925, -0.95, -0.975]),
-		Config._centerWave([0.7, 0.0, 0.1, -0.1, -0.2, -0.4, -0.3, -0.7]),
-		Config._centerWave([1.0, -1.0, 4.0, 2.15, 4.1, 5.05, 0.0, -0.05, 1.0]),
-		Config._centerWave([4.5, -1.7, 1.0, -1.7]),
-		Config._centerWave([0.1, 0.4, 0.2, 0.1, -0.1, -1, -0.12]),
-		Config._centerWave([.03, .13, .30, 1.0, 0.0, -.26]),
-		Config._centerWave([2, 1.75, 1.5, 1.25, 1, .75, .5, .25, 0.0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75]),
-		Config._centerWave([1.0, 1.9, 1.8, 1.7, 1.6, 1.5, 1.4, 1.3, 1.2, 1.1, 1.0]),
-		Config._centerWave([-1.0, -0.9, 0.8, -0.7, 0.6, -0.5, 0.4, -0.3, 0.2, -0.1, 0.0, -0.1, 0.2, -0.3, 0.4, -0.5, 0.6, -0.7, 0.8, -0.9, -1.0]),
-		];
+    ];
     Config.sineWaveLength = 1 << 8;
     Config.sineWaveMask = Config.sineWaveLength - 1;
     Config.sineWave = Config.generateSineWave();
@@ -826,7 +745,7 @@ var beepbox;
         Operator.prototype.reset = function (index) {
             this.frequency = 0;
             this.amplitude = (index <= 1) ? Config.operatorAmplitudeMax : 0;
-            this.envelope = 1;
+            this.envelope = (index == 0) ? 0 : 1;
         };
         Operator.prototype.copy = function (other) {
             this.frequency = other.frequency;
@@ -848,7 +767,6 @@ var beepbox;
 			this.octoff = 0;
             this.chorus = 0;
             this.volume = 0;
-			this.ipan = 4;
             this.algorithm = 0;
             this.feedbackType = 0;
             this.feedbackAmplitude = 0;
@@ -866,7 +784,6 @@ var beepbox;
             this.effect = 0;
 			this.harm = 0;
 			this.imute = 0;
-			this.ipan = 4;
 			this.octoff = 0;
             this.chorus = 0;
             this.volume = 0;
@@ -888,7 +805,6 @@ var beepbox;
                     this.effect = 0;
 					this.harm = 0;
 					this.imute = 0;
-					this.ipan = 4;
 					this.octoff = 0;
                     this.chorus = 0;
                     this.volume = 0;
@@ -898,20 +814,15 @@ var beepbox;
                     this.transition = 1;
                     this.volume = 0;
 					this.imute = 0;
-					this.ipan = 4;
-					this.harm = 0;
-					this.octoff = 0;
                     break;
                 case 2:
                     this.transition = 1;
 					this.octoff = 0;
-					this.ipan = 4;
                     this.effect = 0;
                     this.algorithm = 0;
                     this.feedbackType = 0;
                     this.feedbackAmplitude = 0;
                     this.feedbackEnvelope = 1;
-					this.volume = 0;
                     for (var i = 0; i < this.operators.length; i++) {
                         this.operators[i].reset(i);
                     }
@@ -928,7 +839,6 @@ var beepbox;
             this.volume = other.volume;
 			this.harm = other.harm;
 			this.imute = other.imute;
-			this.ipan = other.ipan;
 			this.octoff = other.octoff;
             this.algorithm = other.algorithm;
             this.feedbackType = other.feedbackType;
@@ -965,18 +875,6 @@ var beepbox;
         Song.prototype.getChannelCount = function () {
             return this.pitchChannelCount + this.drumChannelCount;
         };
-        Song.prototype.getChannelUnusedCount = function () {
-            return ((Config.pitchChannelCountMax + Config.drumChannelCountMax) - (this.pitchChannelCount + this.drumChannelCount));
-        };
-        Song.prototype.getThemeName = function () {
-            return (Config.themeNames[this.theme]);
-        }; 
-        Song.prototype.getTimeSig = function () {
-            return ((this.beatsPerBar) + '/' + (this.partsPerBeat) + ' with ' + (this.barCount) + ' bars.');
-        };
-        Song.prototype.getScaleNKey = function () {
-            return (' "' +(Config.scaleNames[this.scale]) + '" and your key is ' + (Config.keyNames[this.key]));
-        };
         Song.prototype.getChannelIsDrum = function (channel) {
             return (channel >= this.pitchChannelCount);
         };
@@ -992,29 +890,25 @@ var beepbox;
         Song.prototype.getNoteColorBright = function (channel) {
             return channel < this.pitchChannelCount ? Config.pitchNoteColorsBright[channel] : Config.drumNoteColorsBright[channel - this.pitchChannelCount];
         };
-        Song.prototype.getVolBend = function () {
-            return this.volBendCount;
-        }; 
         Song.prototype.initToDefault = function (andResetChannels) {
             if (andResetChannels === void 0) { andResetChannels = true; }
             this.scale = 0;
 			this.theme = 0;
+			this.aSettings = 0;
             this.key = Config.keyNames.length - 1;
-			this.mix = 1;
-			this.sampleRate = 2;
             this.loopStart = 0;
             this.loopLength = 4;
             this.tempo = 7;
             this.reverb = 0;
             this.blend = 0;
             this.riff = 0;
+            this.drive = 0;
+            this.csign = 0;
 			this.detune = 0;
-			this.muff = 0;
             this.beatsPerBar = 8;
             this.barCount = 16;
             this.patternsPerChannel = 8;
             this.partsPerBeat = 4;
-            this.volBendCount = 4;
             this.instrumentsPerChannel = 1;
             if (andResetChannels) {
                 this.pitchChannelCount = 4;
@@ -1058,9 +952,8 @@ var beepbox;
             buffer.push(base64IntToCharCode[Song._latestVersion]);
             buffer.push(110, base64IntToCharCode[this.pitchChannelCount], base64IntToCharCode[this.drumChannelCount]);
             buffer.push(122, base64IntToCharCode[this.theme]);
+			buffer.push(117, base64IntToCharCode[this.aSettings]);
 			buffer.push(115, base64IntToCharCode[this.scale]);
-			buffer.push(117, base64IntToCharCode[this.mix]);
-			buffer.push(124, base64IntToCharCode[this.sampleRate]);
             buffer.push(107, base64IntToCharCode[this.key]);
             buffer.push(108, base64IntToCharCode[this.loopStart >> 6], base64IntToCharCode[this.loopStart & 0x3f]);
             buffer.push(101, base64IntToCharCode[(this.loopLength - 1) >> 6], base64IntToCharCode[(this.loopLength - 1) & 0x3f]);
@@ -1068,8 +961,9 @@ var beepbox;
             buffer.push(109, base64IntToCharCode[this.reverb]);
             buffer.push(120, base64IntToCharCode[this.blend]);
             buffer.push(121, base64IntToCharCode[this.riff]);
+            buffer.push(124, base64IntToCharCode[this.drive]);
+            buffer.push(68, base64IntToCharCode[this.csign]);
 			buffer.push(72, base64IntToCharCode[this.detune]);
-			buffer.push(36, base64IntToCharCode[this.muff]);
             buffer.push(97, base64IntToCharCode[this.beatsPerBar - 1]);
             buffer.push(103, base64IntToCharCode[(this.barCount - 1) >> 6], base64IntToCharCode[(this.barCount - 1) & 0x3f]);
             buffer.push(106, base64IntToCharCode[this.patternsPerChannel - 1]);
@@ -1091,7 +985,6 @@ var beepbox;
                             buffer.push(99, base64IntToCharCode[instrument.effect]);
 							buffer.push(113, base64IntToCharCode[instrument.harm]);
 							buffer.push(71, base64IntToCharCode[instrument.imute]);
-							buffer.push(76, base64IntToCharCode[instrument.ipan]);
 							buffer.push(66, base64IntToCharCode[instrument.octoff]);
                             buffer.push(104, base64IntToCharCode[instrument.chorus]);
                             buffer.push(118, base64IntToCharCode[instrument.volume]);
@@ -1100,12 +993,10 @@ var beepbox;
                             buffer.push(100, base64IntToCharCode[instrument.transition]);
                             buffer.push(99, base64IntToCharCode[instrument.effect]);
 							buffer.push(66, base64IntToCharCode[instrument.octoff]);
-							buffer.push(76, base64IntToCharCode[instrument.ipan]);
                             buffer.push(65, base64IntToCharCode[instrument.algorithm]);
                             buffer.push(70, base64IntToCharCode[instrument.feedbackType]);
                             buffer.push(95, base64IntToCharCode[instrument.feedbackAmplitude]);
                             buffer.push(86, base64IntToCharCode[instrument.feedbackEnvelope]);
-							buffer.push(118, base64IntToCharCode[instrument.volume]);
                             buffer.push(81);
                             for (var o = 0; o < Config.operatorCount; o++) {
                                 buffer.push(base64IntToCharCode[instrument.operators[o].frequency]);
@@ -1124,14 +1015,10 @@ var beepbox;
                         }
                     }
                     else {
-						buffer.push(84, base64IntToCharCode[2]);
+                        buffer.push(84, base64IntToCharCode[2]);
                         buffer.push(119, base64IntToCharCode[instrument.wave]);
                         buffer.push(100, base64IntToCharCode[instrument.transition]);
                         buffer.push(118, base64IntToCharCode[instrument.volume]);
-						buffer.push(71, base64IntToCharCode[instrument.imute]);
-						buffer.push(113, base64IntToCharCode[instrument.harm]);
-						buffer.push(66, base64IntToCharCode[instrument.octoff]);
-						buffer.push(76, base64IntToCharCode[instrument.ipan]);
                     }
                 }
             }
@@ -1296,9 +1183,8 @@ var beepbox;
             var beforeFour = version < 4;
             var beforeFive = version < 5;
             var beforeSix = version < 6;
-			var beforeSeven = version < 7;
             var base64CharCodeToInt = Song._base64CharCodeToInt;
-            this.initToDefault(beforeSeven);
+            this.initToDefault(beforeSix);
             if (beforeThree) {
                 for (var _i = 0, _a = this.channels; _i < _a.length; _i++) {
                     var channel = _a[_i];
@@ -1326,14 +1212,14 @@ var beepbox;
                     if (beforeThree && this.scale == 10)
                         this.scale = 11;
                 }
-                else if (command == 117) {
-                    this.mix = base64CharCodeToInt[compressed.charCodeAt(charIndex++)];
-                }
                 else if (command == 107) {
                     this.key = base64CharCodeToInt[compressed.charCodeAt(charIndex++)];
                 }
 				else if (command == 122) {
                     this.theme = base64CharCodeToInt[compressed.charCodeAt(charIndex++)];
+                }
+				else if (command == 117) {
+                    this.aSettings = base64CharCodeToInt[compressed.charCodeAt(charIndex++)];
                 }
                 else if (command == 108) {
                     if (beforeFive) {
@@ -1373,20 +1259,17 @@ var beepbox;
                     this.riff = Song._clip(0, Config.riffRange, this.riff);
                 }    
                 else if (command == 124) {
-					this.sampleRate = base64CharCodeToInt[compressed.charCodeAt(charIndex++)];
+                    this.drive = base64CharCodeToInt[compressed.charCodeAt(charIndex++)];
+                    this.drive = Song._clip(0, Config.driveRange, this.drive);
                 }    
                 else if (command == 68) {
-                    if (beforeSeven) {
-					}
+                    this.csign = base64CharCodeToInt[compressed.charCodeAt(charIndex++)];
+                    this.csign = Song._clip(0, Config.csignRange, this.csign);
                 }    					
                 else if (command == 72) {
                     this.detune = base64CharCodeToInt[compressed.charCodeAt(charIndex++)];
                     this.detune = Song._clip(0, Config.detuneRange, this.detune);
-                }    	
-                else if (command == 36) {
-                    this.muff = base64CharCodeToInt[compressed.charCodeAt(charIndex++)];
-                    this.muff = Song._clip(0, Config.muffRange, this.muff);
-                }    					
+                }    				
                 else if (command == 97) {
                     if (beforeThree) {
                         this.beatsPerBar = [6, 7, 8, 9, 10][base64CharCodeToInt[compressed.charCodeAt(charIndex++)]];
@@ -1568,9 +1451,6 @@ var beepbox;
                         this.channels[instrumentChannelIterator].instruments[instrumentIndexIterator].imute = Song._clip(0, Config.imuteNames.length, base64CharCodeToInt[compressed.charCodeAt(charIndex++)]);
                     }
                 }
-				else if (command == 76) {
-                    this.channels[instrumentChannelIterator].instruments[instrumentIndexIterator].ipan = Song._clip(0, Config.ipanValues.length, base64CharCodeToInt[compressed.charCodeAt(charIndex++)]);
-                }   
 				else if (command == 66) {
                     if (beforeThree) {
                         channel = base64CharCodeToInt[compressed.charCodeAt(charIndex++)];
@@ -1836,12 +1716,10 @@ var beepbox;
                     var instrument = this.channels[channel].instruments[i];
                     if (isDrum) {
                         instrumentArray.push({
-							type: Config.instrumentTypeNames[2],
+                            type: Config.instrumentTypeNames[2],
                             volume: (5 - instrument.volume) * 20,
-							imute: Config.imuteNames[instrument.imute],
                             wave: Config.drumNames[instrument.wave],
                             transition: Config.transitionNames[instrument.transition],
-							octoff: Config.octoffNames[instrument.octoff],
                         });
                     }
                     else {
@@ -1871,10 +1749,9 @@ var beepbox;
                             }
                             instrumentArray.push({
                                 type: Config.instrumentTypeNames[instrument.type],
-								volume: (5 - instrument.volume) * 20,
                                 transition: Config.transitionNames[instrument.transition],
                                 effect: Config.effectNames[instrument.effect],
-								octoff: Config.octoffNames[instrument.octoff],
+								octoff: Config.effectNames[instrument.octoff],
                                 algorithm: Config.operatorAlgorithmNames[instrument.algorithm],
                                 feedbackType: Config.operatorFeedbackNames[instrument.feedbackType],
                                 feedbackAmplitude: instrument.feedbackAmplitude,
@@ -1936,10 +1813,9 @@ var beepbox;
             return {
                 format: Song._format,
                 version: Song._latestVersion,
+				aSettings: Config.aSettingsNames[this.aSettings],
 				theme: Config.themeNames[this.theme],
                 scale: Config.scaleNames[this.scale],
-				mix: Config.mixNames[this.mix],
-				sampleRate: Config.sampleRateNames[this.sampleRate],
                 key: Config.keyNames[this.key],
                 introBars: this.loopStart,
                 loopBars: this.loopLength,
@@ -1949,8 +1825,9 @@ var beepbox;
                 reverb: this.reverb,
                 blend: this.blend,
                 riff: this.riff,
+                drive: this.drive,
+                csign: this.csign,
 				detune: this.detune,
-				muff: this.muff,
                 channels: channelArray,
             };
         };
@@ -1967,14 +1844,6 @@ var beepbox;
                 var scale = oldScaleNames[jsonObject.scale] != undefined ? oldScaleNames[jsonObject.scale] : Config.scaleNames.indexOf(jsonObject.scale);
                 if (scale != -1)
                     this.scale = scale;
-            }
-            if (jsonObject.mix != undefined) {
-                if (jsonObject.mix != -1)
-                    this.mix = jsonObject.mix;
-            }
-            if (jsonObject.sampleRate != undefined) {
-                if (jsonObject.sampleRate != -1)
-                    this.sampleRate = jsonObject.sampleRate;
             }
             if (jsonObject.key != undefined) {
                 if (typeof (jsonObject.key) == "number") {
@@ -2012,11 +1881,14 @@ var beepbox;
             if (jsonObject.riff != undefined) {
                 this.riff = Song._clip(0, Config.riffRange, jsonObject.riff | 0);
             }
+            if (jsonObject.drive != undefined) {
+                this.drive = Song._clip(0, Config.driveRange, jsonObject.drive | 0);
+            }
+            if (jsonObject.csign != undefined) {
+                this.csign = Song._clip(0, Config.csignRange, jsonObject.csign | 0);
+            }
             if (jsonObject.detune != undefined) {
                 this.detune = Song._clip(0, Config.detuneRange, jsonObject.detune | 0);
-            }
-            if (jsonObject.muff != undefined) {
-                this.muff = Song._clip(0, Config.muffRange, jsonObject.muff | 0);
             }
             if (jsonObject.beatsPerBar != undefined) {
                 this.beatsPerBar = Math.max(Config.beatsPerBarMin, Math.min(Config.beatsPerBarMax, jsonObject.beatsPerBar | 0));
@@ -2105,12 +1977,6 @@ var beepbox;
                             instrument.wave = Config.drumNames.indexOf(instrumentObject.wave);
                             if (instrument.wave == -1)
                                 instrument.wave = 1;
-                            instrument.imute = Config.imuteNames.indexOf(instrumentObject.imute);
-                            if (instrument.imute == -1)
-                                instrument.imute = 0;
-							if (instrumentObject.ipan != undefined) {
-								instrument.ipan = Song._clip(0, Config.ipanValues, jsonObject.ipan | 0);
-								}
                         }
                         else {
                             instrument.type = Config.instrumentTypeNames.indexOf(instrumentObject.type);
@@ -2145,9 +2011,6 @@ var beepbox;
 								instrument.imute = Config.imuteNames.indexOf(instrumentObject.imute);
                                 if (instrument.imute == -1)
                                     instrument.imute = 0;
-								if (instrumentObject.ipan != undefined) {
-								instrument.ipan = Song._clip(0, Config.ipanValues, jsonObject.ipan | 0);
-								}
                             }
                             else if (instrument.type == 1) {
                                 instrument.effect = Config.effectNames.indexOf(instrumentObject.effect);
@@ -2191,9 +2054,6 @@ var beepbox;
                                     if (operator.envelope == -1)
                                         operator.envelope = 0;
                                 }
-								if (instrumentObject.ipan != undefined) {
-								instrument.ipan = Song._clip(0, Config.ipanValues, jsonObject.ipan | 0);
-								}
                             }
                             else {
                                 throw new Error("Unrecognized instrument type.");
@@ -2365,14 +2225,11 @@ var beepbox;
     beepbox.Song = Song;
     var SynthChannel = (function () {
         function SynthChannel() {
-            this.sampleLeft = 0.0;
-			this.sampleRight = 0.0;
+            this.sample = 0.0;
             this.phases = [];
             this.phaseDeltas = [];
             this.volumeStarts = [];
             this.volumeDeltas = [];
-			this.volumeLeft = [];
-			this.volumeRight = [];
             this.phaseDeltaScale = 0.0;
             this.filter = 0.0;
             this.filterScale = 0.0;
@@ -2389,8 +2246,7 @@ var beepbox;
                 this.phases[i] = 0.0;
                 this.feedbackOutputs[i] = 0.0;
             }
-            this.sampleLeft = 0.0;
-			this.sampleRight = 0.0;
+            this.sample = 0.0;
         };
         return SynthChannel;
     }());
@@ -2422,23 +2278,16 @@ var beepbox;
             this.stillGoing = false;
             this.effectPhase = 0.0;
             this.limit = 0.0;
-            this.delayLineLeft = new Float32Array(16384);
-			this.delayLineRight = new Float32Array(16384);
-            this.delayPosLeft = 0;
-            this.delayFeedback0Left = 0.0;
-            this.delayFeedback1Left = 0.0;
-            this.delayFeedback2Left = 0.0;
-            this.delayFeedback3Left = 0.0;
-			this.delayPosRight = 0;
-            this.delayFeedback0Right = 0.0;
-            this.delayFeedback1Right = 0.0;
-            this.delayFeedback2Right = 0.0;
-            this.delayFeedback3Right = 0.0;
+            this.delayLine = new Float32Array(16384);
+            this.delayPos = 0;
+            this.delayFeedback0 = 0.0;
+            this.delayFeedback1 = 0.0;
+            this.delayFeedback2 = 0.0;
+            this.delayFeedback3 = 0.0;
             this.audioProcessCallback = function (audioProcessingEvent) {
                 var outputBuffer = audioProcessingEvent.outputBuffer;
-                var dataLeft = outputBuffer.getChannelData(0);
-                var dataRight = outputBuffer.getChannelData(1);
-				_this.synthesize(dataLeft, dataRight, outputBuffer.length);
+                var outputData = outputBuffer.getChannelData(0);
+                _this.synthesize(outputData, outputBuffer.length);
             };
             if (song != null)
                 this.setSong(song);
@@ -2514,7 +2363,7 @@ var beepbox;
         });
         Object.defineProperty(Synth.prototype, "totalSeconds", {
             get: function () {
-                return Math.round(this.totalSamples / this.samplesPerSecond);
+                return this.totalSamples / this.samplesPerSecond;
             },
             enumerable: true,
             configurable: true
@@ -2536,21 +2385,6 @@ var beepbox;
                 this.song = song;
             }
         };
-		Synth.prototype.spsCalc = function () {
-			Synth.warmUpSynthesizer(this.song);
-			if (this.song.sampleRate == -1)
-				return 40200;
-			else if (this.song.sampleRate == -1)
-				return 44100;
-			else if (this.song.sampleRate == -1)
-				return 48000;
-			else if (this.song.sampleRate == -1)
-				return 51900;
-			else if (this.song.sampleRate == -1)
-				return 55800;
-			else
-				return this.audioCtx.sampleRate;
-		}
         Synth.prototype.play = function () {
             if (!this.paused)
                 return;
@@ -2558,12 +2392,12 @@ var beepbox;
             Synth.warmUpSynthesizer(this.song);
             var contextClass = (window.AudioContext || window.webkitAudioContext || window.mozAudioContext || window.oAudioContext || window.msAudioContext);
             this.audioCtx = this.audioCtx || new contextClass();
-			this.scriptNode = this.audioCtx.createScriptProcessor ? this.audioCtx.createScriptProcessor(2048, 0, 2) : this.audioCtx.createJavaScriptNode(2048, 0, 2);
+            this.scriptNode = this.audioCtx.createScriptProcessor ? this.audioCtx.createScriptProcessor(2048, 0, 1) : this.audioCtx.createJavaScriptNode(2048, 0, 1);
             this.scriptNode.onaudioprocess = this.audioProcessCallback;
-            this.scriptNode.connect(this.audioCtx.destination);
             this.scriptNode.channelCountMode = 'explicit';
             this.scriptNode.channelInterpretation = 'speakers';
-			this.samplesPerSecond = this.spsCalc()
+            this.scriptNode.connect(this.audioCtx.destination);
+            this.samplesPerSecond = this.audioCtx.sampleRate;
             this.effectAngle = Math.PI * 2.0 / (this.effectDuration * this.samplesPerSecond);
             this.effectYMult = 2.0 * Math.cos(this.effectAngle);
             this.limitDecay = 1.0 / (2.0 * this.samplesPerSecond);
@@ -2572,6 +2406,7 @@ var beepbox;
             if (this.paused)
                 return;
             this.paused = true;
+            this.scriptNode.disconnect(this.audioCtx.destination);
             if (this.audioCtx.close) {
                 this.audioCtx.close();
                 this.audioCtx = null;
@@ -2596,20 +2431,13 @@ var beepbox;
                 var channel = _a[_i];
                 channel.reset();
             }
-            this.delayPosLeft = 0;
-            this.delayFeedback0Left = 0.0;
-            this.delayFeedback1Left = 0.0;
-            this.delayFeedback2Left = 0.0;
-            this.delayFeedback3Left = 0.0;
-            for (var i = 0; i < this.delayLineLeft.length; i++)
-                this.delayLineLeft[i] = 0.0;
-			this.delayPosRight = 0;
-            this.delayFeedback0Right = 0.0;
-            this.delayFeedback1Right = 0.0;
-            this.delayFeedback2Right = 0.0;
-            this.delayFeedback3Right = 0.0;
-            for (var i = 0; i < this.delayLineRight.length; i++)
-                this.delayLineRight[i] = 0.0;
+            this.delayPos = 0;
+            this.delayFeedback0 = 0.0;
+            this.delayFeedback1 = 0.0;
+            this.delayFeedback2 = 0.0;
+            this.delayFeedback3 = 0.0;
+            for (var i = 0; i < this.delayLine.length; i++)
+                this.delayLine[i] = 0.0;
         };
         Synth.prototype.nextBar = function () {
             if (!this.song)
@@ -2647,11 +2475,10 @@ var beepbox;
             }
             this.playheadInternal += this.bar - oldBar;
         };
-        Synth.prototype.synthesize = function (dataLeft, dataRight, bufferLength) {
+        Synth.prototype.synthesize = function (data, bufferLength) {
             if (this.song == null) {
                 for (var i = 0; i < bufferLength; i++) {
-                    dataLeft[i] = 0.0;
-					dataRight[i] = 0.0;
+                    data[i] = 0.0;
                 }
                 return;
             }
@@ -2702,14 +2529,13 @@ var beepbox;
             while (true) {
                 if (ended) {
                     while (bufferIndex < bufferLength) {
-                        dataLeft[bufferIndex] = 0.0;
-						dataRight[bufferIndex] = 0.0;
+                        data[bufferIndex] = 0.0;
                         bufferIndex++;
                     }
                     break;
                 }
                 var generatedSynthesizer = Synth.getGeneratedSynthesizer(this.song, this.bar);
-                bufferIndex = generatedSynthesizer(this, this.song, dataLeft, dataRight, bufferLength, bufferIndex, samplesPerArpeggio);
+                bufferIndex = generatedSynthesizer(this, this.song, data, bufferLength, bufferIndex, samplesPerArpeggio);
                 var finishedBuffer = (bufferIndex == -1);
                 if (finishedBuffer) {
                     break;
@@ -2755,26 +2581,13 @@ var beepbox;
                         return curve;
                     }
                 case 5:
-					if (Config.operatorSpecialCustomVolume[envelope]) {
-						return 0.5 - Math.cos(beats * 2.0 * Math.PI * (customVolume * 4)) * 0.5;
-					}
-					else {
-						return 0.5 - Math.cos(beats * 2.0 * Math.PI * Config.operatorEnvelopeSpeed[envelope]) * 0.5;
-					}
+                    return 0.5 - Math.cos(beats * 2.0 * Math.PI * Config.operatorEnvelopeSpeed[envelope]) * 0.5;
                 case 2:
                     return Math.max(1.0, 2.0 - time * 10.0);
                 case 3:
                     var speed = Config.operatorEnvelopeSpeed[envelope];
-					if (Config.operatorSpecialCustomVolume[envelope]) {
-						var attack = 0.25 / Math.sqrt(customVolume);
-						return time < attack ? time / attack : 1.0 / (1.0 + (time - attack) * (customVolume * 16));
-					}
-					else {
-						var attack = 0.25 / Math.sqrt(speed);
-						return time < attack ? time / attack : 1.0 / (1.0 + (time - attack) * speed);
-					}
-				case 6:
-                    return Math.max(-1.0 - time, -2.0 + time);
+                    var attack = 0.25 / Math.sqrt(speed);
+                    return time < attack ? time / attack : 1.0 / (1.0 + (time - attack) * speed);
                 default: throw new Error("Unrecognized operator envelope type.");
             }
         };
@@ -2789,7 +2602,6 @@ var beepbox;
             var pitchDamping = isDrum ? (Config.drumWaveIsSoft[instrument.wave] ? 24.0 : 60.0) : 48.0;
             var secondsPerPart = 4.0 * samplesPerArpeggio / synth.samplesPerSecond;
             var beatsPerPart = 1.0 / song.partsPerBeat;
-
             synthChannel.phaseDeltaScale = 0.0;
             synthChannel.filter = 1.0;
             synthChannel.filterScale = 1.0;
@@ -2815,8 +2627,6 @@ var beepbox;
                 synthChannel.phaseDeltas[i] = 0.0;
                 synthChannel.volumeStarts[i] = 0.0;
                 synthChannel.volumeDeltas[i] = 0.0;
-				synthChannel.volumeLeft[0] = 0.0;
-				synthChannel.volumeRight[0] = 0.0;
             }
             if (pianoMode) {
                 pitches = synth.pianoPitch;
@@ -2905,9 +2715,6 @@ var beepbox;
 	                    else if (transition == 6) {
 							intervalTickStart = -1.0
 						}
-						else if (transition == 7) {
-							transitionVolumeTickStart = 6.0;
-						}
                     }
                     if (tickTimeEnd == noteEnd) {
                         if (transition == 0) {
@@ -2949,9 +2756,8 @@ var beepbox;
                     var totalCarrierVolume = 0.0;
                     var carrierCount = Config.operatorCarrierCounts[instrument.algorithm];
                     for (var i = 0; i < Config.operatorCount; i++) {
-						var isCarrier = (i < Config.operatorCarrierCounts[instrument.algorithm]);
                         var associatedCarrierIndex = Config.operatorAssociatedCarrier[instrument.algorithm][i] - 1;
-                        var pitch = pitches[(i < pitches.length) ? i : ((associatedCarrierIndex < pitches.length) ? associatedCarrierIndex : 0)] + beepbox.Config.octoffValues[instrument.octoff] + (song.detune / 24);
+                        var pitch = pitches[(i < pitches.length) ? i : ((associatedCarrierIndex < pitches.length) ? associatedCarrierIndex : 0)];
                         var freqMult = Config.operatorFrequencies[instrument.operators[i].frequency];
                         var chorusInterval = Config.operatorCarrierChorus[associatedCarrierIndex];
                         var startPitch = (pitch + intervalStart) * intervalScale + chorusInterval;
@@ -2959,33 +2765,15 @@ var beepbox;
                         synthChannel.phaseDeltas[i] = startFreq * sampleTime * Config.sineWaveLength;
                         if (resetPhases)
                             synthChannel.reset();
-						var amplitudeCurve = Synth.operatorAmplitudeCurve(instrument.operators[i].amplitude);
-						if ((Config.volumeValues[instrument.volume] != -1.0 && song.mix == 2) || (Config.volumeMValues[instrument.volume] != -1.0 && song.mix != 2)) {
-							if (song.mix == 2)
-								var amplitudeMult = isCarrier ? (amplitudeCurve * Config.operatorAmplitudeSigns[instrument.operators[i].frequency]) * ((1 - (Config.volumeValues[instrument.volume] / 2.3))) : (amplitudeCurve * Config.operatorAmplitudeSigns[instrument.operators[i].frequency]);
-							else
-								var amplitudeMult = (amplitudeCurve * Config.operatorAmplitudeSigns[instrument.operators[i].frequency]) * ((1 - (Config.volumeMValues[instrument.volume] / 2.3)));
-						}
-						else if (Config.volumeValues[instrument.volume] != -1.0) {
-							var amplitudeMult = 0;
-						}
-						else if (Config.volumeMValues[instrument.volume] != -1.0) {
-							var amplitudeMult = 0;
-						}
+                        var amplitudeCurve = Synth.operatorAmplitudeCurve(instrument.operators[i].amplitude);
+                        var amplitudeMult = amplitudeCurve * Config.operatorAmplitudeSigns[instrument.operators[i].frequency];
                         var volumeStart = amplitudeMult * Config.imuteValues[instrument.imute];
                         var volumeEnd = amplitudeMult * Config.imuteValues[instrument.imute];
-						synthChannel.volumeLeft[0] = Math.min(1, 1 + Config.ipanValues[instrument.ipan]);
-						synthChannel.volumeRight[0] = Math.min(1, 1 - Config.ipanValues[instrument.ipan]);
                         if (i < carrierCount) {
                             var volumeMult = 0.03;
                             var endPitch = (pitch + intervalEnd) * intervalScale;
-							if (song.mix == 3) {
-                            var pitchVolumeStart = Math.pow(5.0, -startPitch / pitchDamping);
-                            var pitchVolumeEnd = Math.pow(5.0, -endPitch / pitchDamping);
-							} else {
-							var pitchVolumeStart = Math.pow(2.0, -startPitch / pitchDamping);
+                            var pitchVolumeStart = Math.pow(2.0, -startPitch / pitchDamping);
                             var pitchVolumeEnd = Math.pow(2.0, -endPitch / pitchDamping);
-							}
                             volumeStart *= pitchVolumeStart * volumeMult * transitionVolumeStart;
                             volumeEnd *= pitchVolumeEnd * volumeMult * transitionVolumeEnd;
                             totalCarrierVolume += amplitudeCurve;
@@ -3015,162 +2803,31 @@ var beepbox;
                 }
                 else {
                     var pitch = pitches[0];
-					if (!isDrum) {
-						if (Config.harmNames[instrument.harm] == 1) {
-							var harmonyOffset = 0.0;
-							if (pitches.length == 2) {
-								harmonyOffset = (pitches[1] - pitches[0]);
-							}
-							else if (pitches.length == 3) {
-								harmonyOffset = (pitches[(arpeggio >> 1) + 1] - pitches[0]);
-							}
-							else if (pitches.length == 4) {
-								harmonyOffset = pitches[(arpeggio == 3 ? 1 : arpeggio) + 1] - pitches[0];
-							}
-							synthChannel.harmonyMult = Math.pow(2.0, harmonyOffset / 12.0);
-							synthChannel.harmonyVolumeMult = Math.pow(2.0, -harmonyOffset / pitchDamping);
-						}
-						else if (Config.harmNames[instrument.harm] == 2) {
-							var harmonyOffset = 0.0;
-							if (pitches.length == 2) {
-								harmonyOffset = pitches[1] - pitches[0];
-							}
-							else if (pitches.length == 3) {
-								harmonyOffset = (pitches[2] - pitches[0]);
-							}
-							else if (pitches.length == 4) {
-								harmonyOffset = pitches[(arpeggio == 3 ? 2 : arpeggio) + 1] - pitches[0];
-							}
-							synthChannel.harmonyMult = Math.pow(2.0, harmonyOffset / 12.0);
-							synthChannel.harmonyVolumeMult = Math.pow(2.0, -harmonyOffset / pitchDamping);
-						}
-						else if (Config.harmNames[instrument.harm] == 3) {
-							var harmonyOffset = 0.0;
-							if (pitches.length == 2) {
-								harmonyOffset = pitches[1] - pitches[0];
-							}
-							else if (pitches.length == 3) {
-								harmonyOffset = (pitches[2] - pitches[0]);
-							}
-							else if (pitches.length == 4) {
-								harmonyOffset = (pitches[3] - pitches[0]);
-							}
-							synthChannel.harmonyMult = Math.pow(2.0, harmonyOffset / 12.0);
-							synthChannel.harmonyVolumeMult = Math.pow(2.0, -harmonyOffset / pitchDamping);
-						}
-						var pitch = pitches[0];
-						 if (Config.harmNames[instrument.harm] == 4) {
-							var harmonyOffset = 0.0;
-							if (pitches.length == 2) {
-								harmonyOffset = pitches[1] - pitches[0];
-							}
-							else if (pitches.length == 3) {
-								harmonyOffset = pitches[(arpeggio >> 1) + 1] - pitches[0];
-							}
-							else if (pitches.length == 4) {
-								harmonyOffset = pitches[(arpeggio >> 1) + 2] - pitches[0];
-							}
-							synthChannel.harmonyMult = Math.pow(2.0, harmonyOffset / 12.0);
-							synthChannel.harmonyVolumeMult = Math.pow(2.0, -harmonyOffset / pitchDamping);
-						}
-						else if (Config.harmNames[instrument.harm] == 5) {
-							var harmonyOffset = 0.0;
-							if (pitches.length == 2) {
-								harmonyOffset = pitches[1] - pitches[0];
-							}
-							else if (pitches.length == 3) {
-								harmonyOffset = (pitches[2] - pitches[0]);
-							}
-							else if (pitches.length == 4) {
-								harmonyOffset = (pitches[(arpeggio == 3 ? 2 : arpeggio)] - pitches[0]);
-							}
-							synthChannel.harmonyMult = Math.pow(2.0, harmonyOffset / 12.0);
-							synthChannel.harmonyVolumeMult = Math.pow(2.0, -harmonyOffset / pitchDamping);
-						}
-						else if (Config.harmNames[instrument.harm] == 0) {
-							if (pitches.length == 2) {
-								pitch = pitches[arpeggio >> 1];
-							}
-							else if (pitches.length == 3) {
-								pitch = pitches[arpeggio == 3 ? 1 : arpeggio];
-							}
-							else if (pitches.length == 4) {
-								pitch = pitches[arpeggio];
-							}
-						}
-					}
-					if (isDrum) {
-						if (Config.harmNames[instrument.harm] == 0) {
-							if (pitches.length == 1) {
-								pitch = pitches[0] + beepbox.Config.octoffValues[instrument.octoff];
-							}
-							if (pitches.length == 2) {
-								pitch = pitches[arpeggio >> 1] + beepbox.Config.octoffValues[instrument.octoff];
-							}
-							else if (pitches.length == 3) {
-								pitch = pitches[arpeggio == 3 ? 1 : arpeggio] + beepbox.Config.octoffValues[instrument.octoff];
-							}
-							else if (pitches.length == 4) {
-								pitch = pitches[arpeggio] + beepbox.Config.octoffValues[instrument.octoff];
-							}
-						}
-						if (Config.harmNames[instrument.harm] == 1) {
-							if (pitches.length == 1) {
-								pitch = pitches[0] + beepbox.Config.octoffValues[instrument.octoff];
-							}
-							if (pitches.length == 2) {
-								pitch = (pitches[1] + pitches[0]) / 2 + beepbox.Config.octoffValues[instrument.octoff];
-							}
-							else if (pitches.length == 3) {
-								pitch = (pitches[(arpeggio >> 1) + 1] + pitches[0]) / 2 + beepbox.Config.octoffValues[instrument.octoff];
-							}
-							else if (pitches.length == 4) {
-								pitch = (pitches[(arpeggio == 3 ? 1 : arpeggio) + 1] + pitches[0]) / 2 + beepbox.Config.octoffValues[instrument.octoff];
-							}
-						}
-						if (Config.harmNames[instrument.harm] == 2) {
-							if (pitches.length == 1) {
-								pitch = pitches[0] + beepbox.Config.octoffValues[instrument.octoff];
-							}
-							if (pitches.length == 2) {
-								pitch = (pitches[1] + pitches[0]) / 2 + beepbox.Config.octoffValues[instrument.octoff];
-							}
-							else if (pitches.length == 3) {
-								pitch = (pitches[2] + pitches[0]) / 2 + beepbox.Config.octoffValues[instrument.octoff];
-							}
-							else if (pitches.length == 4) {
-								pitch = (pitches[(arpeggio == 3 ? 2 : arpeggio) + 1] + pitches[0]) / 2 + beepbox.Config.octoffValues[instrument.octoff];
-							}
-						}
-						if (Config.harmNames[instrument.harm] == 3) {
-							if (pitches.length == 1) {
-								pitch = pitches[0] + beepbox.Config.octoffValues[instrument.octoff];
-							}
-							if (pitches.length == 2) {
-								pitch = (pitches[1] + pitches[0]) / 2 + beepbox.Config.octoffValues[instrument.octoff];
-							}
-							else if (pitches.length == 3) {
-								pitch = (pitches[2] + pitches[0]) / 2 + beepbox.Config.octoffValues[instrument.octoff];
-							}
-							else if (pitches.length == 4) {
-								pitch = (pitches[3] + pitches[0]) / 2 + beepbox.Config.octoffValues[instrument.octoff];
-							}
-						}
-						if (Config.harmNames[instrument.harm] == 4) {
-							if (pitches.length == 1) {
-								pitch = pitches[0] + beepbox.Config.octoffValues[instrument.octoff];
-							}
-							if (pitches.length == 2) {
-								pitch = (pitches[1] + pitches[0]) / 2 + beepbox.Config.octoffValues[instrument.octoff];
-							}
-							else if (pitches.length == 3) {
-								pitch = (pitches[(arpeggio >> 1) + 1] + pitches[0]) / 2 + beepbox.Config.octoffValues[instrument.octoff];
-							}
-							else if (pitches.length == 4) {
-								pitch = pitches[(arpeggio >> 1) + 2] + pitches[0] + beepbox.Config.octoffValues[instrument.octoff];
-							}
-						}
-					}
+                    if (Config.harmNames[instrument.harm]) {
+                        var harmonyOffset = 0.0;
+                        if (pitches.length == 2) {
+                            harmonyOffset = pitches[1] - pitches[0];
+                        }
+                        else if (pitches.length == 3) {
+                            harmonyOffset = pitches[(arpeggio >> 1) + 1] - pitches[0];
+                        }
+                        else if (pitches.length == 4) {
+                            harmonyOffset = pitches[(arpeggio == 3 ? 1 : arpeggio) + 1] - pitches[0];
+                        }
+                        synthChannel.harmonyMult = Math.pow(2.0, harmonyOffset / 12.0);
+                        synthChannel.harmonyVolumeMult = Math.pow(2.0, -harmonyOffset / pitchDamping);
+                    }
+                    else {
+                        if (pitches.length == 2) {
+                            pitch = pitches[arpeggio >> 1];
+                        }
+                        else if (pitches.length == 3) {
+                            pitch = pitches[arpeggio == 3 ? 1 : arpeggio];
+                        }
+                        else if (pitches.length == 4) {
+                            pitch = pitches[arpeggio];
+                        }
+                    }
                     var startPitch = (pitch + intervalStart) * intervalScale;
                     var endPitch = (pitch + intervalEnd) * intervalScale;
                     var startFreq = synth.frequencyFromPitch(basePitch + startPitch);
@@ -3178,46 +2835,26 @@ var beepbox;
                     var pitchVolumeEnd = Math.pow(2.0, -endPitch / pitchDamping);
                     if (isDrum && Config.drumWaveIsSoft[instrument.wave]) {
                         synthChannel.filter = Math.min(1.0, startFreq * sampleTime * Config.drumPitchFilterMult[instrument.wave]);
-					}
+                    }
                     var settingsVolumeMult = void 0;
                     if (!isDrum) {
                         var filterScaleRate = Config.filterDecays[instrument.filter];
-                        synthChannel.filter = Math.pow(2, -filterScaleRate * secondsPerPart * decayTimeStart)
-						if (synthChannel.filterScaleRate < 0) {
-							var endFilter = Math.pow(2, -filterScaleRate * secondsPerPart * decayTimeEnd);
-						}
-						else {
-							var endFilter = Math.pow(2, -filterScaleRate * secondsPerPart * decayTimeEnd);
-						}
+                        synthChannel.filter = Math.pow(2, -filterScaleRate * secondsPerPart * decayTimeStart);
+                        var endFilter = Math.pow(2, -filterScaleRate * secondsPerPart * decayTimeEnd);
                         synthChannel.filterScale = Math.pow(endFilter / synthChannel.filter, 1.0 / samples);
                         settingsVolumeMult = 0.27 * 0.5 * Config.waveVolumes[instrument.wave] * Config.filterVolumes[instrument.filter] * Config.chorusVolumes[instrument.chorus];
                     }
                     else {
-						if (song.mix == 0) {
-							settingsVolumeMult = 0.19 * Config.drumVolumes[instrument.wave];
-						}
-						else if (song.mix == 3) {
-							settingsVolumeMult = (0.12 * Config.drumVolumes[instrument.wave]);
-						}
-						else {
-							settingsVolumeMult = 0.09 * Config.drumVolumes[instrument.wave];
-						}
+                        settingsVolumeMult = 0.09 * Config.drumVolumes[instrument.wave];
                     }
                     if (resetPhases && !isDrum) {
                         synthChannel.reset();
                     }
                     synthChannel.phaseDeltas[0] = startFreq * sampleTime;
-					if (song.mix == 2)
-						var instrumentVolumeMult = (instrument.volume == 9) ? 0.0 : Math.pow(3, -Config.volumeValues[instrument.volume]) * Config.imuteValues[instrument.imute];
-					else if (song.mix == 1)
-						var instrumentVolumeMult = (instrument.volume >= 5) ? 0.0 : Math.pow(3, -Config.volumeMValues[instrument.volume]) * Config.imuteValues[instrument.imute];
-					else
-						var instrumentVolumeMult = (instrument.volume >= 5) ? 0.0 : Math.pow(2, -Config.volumeMValues[instrument.volume]) * Config.imuteValues[instrument.imute];
+                    var instrumentVolumeMult = (instrument.volume == 5) ? 0.0 : Math.pow(3, -Config.volumeValues[instrument.volume]) * Config.imuteValues[instrument.imute];
                     synthChannel.volumeStarts[0] = transitionVolumeStart * envelopeVolumeStart * pitchVolumeStart * settingsVolumeMult * instrumentVolumeMult;
                     var volumeEnd = transitionVolumeEnd * envelopeVolumeEnd * pitchVolumeEnd * settingsVolumeMult * instrumentVolumeMult;
                     synthChannel.volumeDeltas[0] = (volumeEnd - synthChannel.volumeStarts[0]) / samples;
-					synthChannel.volumeLeft[0] = Math.min(1, 1 + Config.ipanValues[instrument.ipan]);
-					synthChannel.volumeRight[0] = Math.min(1, 1 - Config.ipanValues[instrument.ipan]);
                 }
                 synthChannel.phaseDeltaScale = Math.pow(2.0, ((intervalEnd - intervalStart) * intervalScale / 12.0) / samples);
                 synthChannel.vibratoScale = (partsSinceStart < Config.effectVibratoDelays[instrument.effect]) ? 0.0 : Math.pow(2.0, Config.effectVibratos[instrument.effect] / 12.0) - 1.0;
@@ -3228,8 +2865,6 @@ var beepbox;
                     synthChannel.phaseDeltas[0] = 0.0;
                     synthChannel.volumeStarts[0] = 0.0;
                     synthChannel.volumeDeltas[0] = 0.0;
-					synthChannel.volumeLeft[0] = 0.0;
-					synthChannel.volumeRight[0] = 0.0;
                 }
             }
         };
@@ -3331,7 +2966,7 @@ var beepbox;
                         synthSource.push(line);
                     }
                 }
-                Synth.generatedSynthesizers[fingerprint] = new Function("synth", "song", "dataLeft", "dataRight", "bufferLength", "bufferIndex", "samplesPerArpeggio", synthSource.join("\n"));
+                Synth.generatedSynthesizers[fingerprint] = new Function("synth", "song", "data", "bufferLength", "bufferIndex", "samplesPerArpeggio", synthSource.join("\n"));
             }
             return Synth.generatedSynthesizers[fingerprint];
         };
@@ -3354,10 +2989,9 @@ var beepbox;
     }());
     Synth.negativePhaseGuard = 1000;
     Synth.generatedSynthesizers = {};
-    Synth.synthSourceTemplate = ("\n\t\t\tvar sampleTime = 1.0 / synth.samplesPerSecond;\n\t\t\tvar effectYMult = +synth.effectYMult;\n\t\t\tvar limitDecay = +synth.limitDecay;\n\t\t\tvar volume = +synth.volume;\n\t\t\tvar delayLineLeft = synth.delayLineLeft;\n\t\t\tvar delayLineRight = synth.delayLineRight;\n\t\t\tvar reverb = Math.pow(song.reverb / beepbox.Config.reverbRange, 0.667) * 0.425;\n\t\t\tvar blend = Math.pow(song.blend / beepbox.Config.blendRange, 0.667) * 0.425;\n\t\t\tvar mix = song.mix;\n\t\t\tvar muff = Math.pow(song.muff / beepbox.Config.muffRange, 0.667) * 0.425;\n\t\t\tvar detune = song.detune;\n\t\t\tvar riff = Math.pow(song.riff / beepbox.Config.riffRange, 0.667) * 0.425; \n\t\t\tvar sineWave = beepbox.Config.sineWave;\n\t\t\t\n\t\t\t// Initialize instruments based on current pattern.\n\t\t\tvar instrumentChannel# = song.getPatternInstrument(#, synth.bar); // ALL\n\t\t\tvar instrument# = song.channels[#].instruments[instrumentChannel#]; // ALL\n\t\t\tvar channel#Wave = (mix <= 1) ? beepbox.Config.waves[instrument#.wave] : beepbox.Config.wavesMixC[instrument#.wave]; // CHIP\n\t\t\tvar channel#Wave = beepbox.Config.getDrumWave(instrument#.wave); // NOISE\n\t\t\tvar channel#WaveLength = channel#Wave.length; // CHIP\n\t\t\tvar channel#FilterBase = (song.mix == 2) ? Math.pow(2 - (blend * 2) + (muff * 2), -beepbox.Config.filterBases[instrument#.filter]) : Math.pow(2, -beepbox.Config.filterBases[instrument#.filter] + (blend * 4) - (muff * 4)); // CHIP\n\t\t\tvar channel#TremoloScale = beepbox.Config.effectTremolos[instrument#.effect]; // PITCH\n\t\t\t\n\t\t\twhile (bufferIndex < bufferLength) {\n\t\t\t\t\n\t\t\t\tvar samples;\n\t\t\t\tvar samplesLeftInBuffer = bufferLength - bufferIndex;\n\t\t\t\tif (synth.arpeggioSampleCountdown <= samplesLeftInBuffer) {\n\t\t\t\t\tsamples = synth.arpeggioSampleCountdown;\n\t\t\t\t} else {\n\t\t\t\t\tsamples = samplesLeftInBuffer;\n\t\t\t\t}\n\t\t\t\tsynth.arpeggioSampleCountdown -= samples;\n\t\t\t\t\n\t\t\t\tvar time = synth.part + synth.beat * song.partsPerBeat;\n\t\t\t\t\n\t\t\t\tbeepbox.Synth.computeChannelInstrument(synth, song, #, time, sampleTime, samplesPerArpeggio, samples); // ALL\n\t\t\t\tvar synthChannel# = synth.channels[#]; // ALL\n\t\t\t\t\n\t\t\t\tvar channel#ChorusA = Math.pow(2.0, (beepbox.Config.chorusOffsets[instrument#.chorus] + beepbox.Config.chorusIntervals[instrument#.chorus] + beepbox.Config.octoffValues[instrument#.octoff] + (detune / 24) * ((riff * beepbox.Config.chorusRiffApp[instrument#.chorus]) + 1)) / 12.0); // CHIP\n\t\t\t\tvar channel#ChorusB = Math.pow(2.0, (beepbox.Config.chorusOffsets[instrument#.chorus] - beepbox.Config.chorusIntervals[instrument#.chorus] + beepbox.Config.octoffValues[instrument#.octoff] + (detune / 24) * ((riff * beepbox.Config.chorusRiffApp[instrument#.chorus]) + 1)) / 12.0); // CHIP\n\t\t\t\tvar channel#ChorusSign = synthChannel#.harmonyVolumeMult * (beepbox.Config.chorusSigns[instrument#.chorus]); // CHIP\n\t\t\t\tchannel#ChorusB *= synthChannel#.harmonyMult; // CHIP\n\t\t\t\tvar channel#ChorusDeltaRatio = channel#ChorusB / channel#ChorusA * ((riff * beepbox.Config.chorusRiffApp[instrument#.chorus]) + 1); // CHIP\n\t\t\t\t\n\t\t\t\tvar channel#PhaseDelta = synthChannel#.phaseDeltas[0] * channel#ChorusA * ((riff * beepbox.Config.chorusRiffApp[instrument#.chorus]) + 1); // CHIP\n\t\t\t\tvar channel#PhaseDelta = synthChannel#.phaseDeltas[0] / 32768.0; // NOISE\n\t\t\t\tvar channel#PhaseDeltaScale = synthChannel#.phaseDeltaScale; // ALL\n\t\t\t\tvar channel#Volume = synthChannel#.volumeStarts[0]; // CHIP\n\t\t\t\tvar channel#Volume = synthChannel#.volumeStarts[0]; // NOISE\n\t\t\t\tvar channel#VolumeLeft = synthChannel#.volumeLeft[0]; // ALL\n\t\t\t\tvar channel#VolumeRight = synthChannel#.volumeRight[0]; // ALL\n\t\t\t\tvar channel#VolumeDelta = synthChannel#.volumeDeltas[0]; // CHIP\n\t\t\t\tvar channel#VolumeDelta = synthChannel#.volumeDeltas[0]; // NOISE\n\t\t\t\tvar channel#Filter = synthChannel#.filter * channel#FilterBase; // CHIP\n\t\t\t\tvar channel#Filter = synthChannel#.filter; // NOISE\n\t\t\t\tvar channel#FilterScale = synthChannel#.filterScale; // CHIP\n\t\t\t\tvar channel#VibratoScale = synthChannel#.vibratoScale; // PITCH\n\t\t\t\t\n\t\t\t\tvar effectY     = Math.sin(synth.effectPhase);\n\t\t\t\tvar prevEffectY = Math.sin(synth.effectPhase - synth.effectAngle);\n\t\t\t\t\n\t\t\t\tvar channel#PhaseA = synth.channels[#].phases[0] % 1; // CHIP\n\t\t\t\tvar channel#PhaseB = synth.channels[#].phases[1] % 1; // CHIP\n\t\t\t\tvar channel#Phase  = synth.channels[#].phases[0] % 1; // NOISE\n\t\t\t\t\n\t\t\t\tvar channel#Operator$Phase       = ((synth.channels[#].phases[$] % 1) + " + Synth.negativePhaseGuard + ") * " + Config.sineWaveLength + "; // FM\n\t\t\t\tvar channel#Operator$PhaseDelta  = synthChannel#.phaseDeltas[$]; // FM\n\t\t\t\tvar channel#Operator$OutputMult  = synthChannel#.volumeStarts[$]; // FM\n\t\t\t\tvar channel#Operator$OutputDelta = synthChannel#.volumeDeltas[$]; // FM\n\t\t\t\tvar channel#Operator$Output      = synthChannel#.feedbackOutputs[$]; // FM\n\t\t\t\tvar channel#FeedbackMult         = synthChannel#.feedbackMult; // FM\n\t\t\t\tvar channel#FeedbackDelta        = synthChannel#.feedbackDelta; // FM\n\t\t\t\t\n\t\t\t\tvar channel#SampleLeft = +synth.channels[#].sampleLeft; // ALL\n\t\t\t\tvar channel#SampleRight = +synth.channels[#].sampleRight; // ALL\n\t\t\t\t\n\t\t\t\tvar delayPosLeft = 0|synth.delayPosLeft;\n\t\t\t\tvar delayFeedback0Left = +synth.delayFeedback0Left;\n\t\t\t\tvar delayFeedback1Left = +synth.delayFeedback1Left;\n\t\t\t\tvar delayFeedback2Left = +synth.delayFeedback2Left;\n\t\t\t\tvar delayFeedback3Left = +synth.delayFeedback3Left;\n\t\t\t\tvar delayPosRight = 0|synth.delayPosRight;\n\t\t\t\tvar delayFeedback0Right = +synth.delayFeedback0Right;\n\t\t\t\tvar delayFeedback1Right = +synth.delayFeedback1Right;\n\t\t\t\tvar delayFeedback2Right = +synth.delayFeedback2Right;\n\t\t\t\tvar delayFeedback3Right = +synth.delayFeedback3Right;\n\t\t\t\tvar limit = +synth.limit;\n\t\t\t\t\n\t\t\t\twhile (samples) {\n\t\t\t\t\tvar channel#Vibrato = 1.0 + channel#VibratoScale * effectY; // PITCH\n\t\t\t\t\tvar channel#Tremolo = 1.0 + channel#TremoloScale * (effectY - 1.0); // PITCH\n\t\t\t\t\tvar temp = effectY;\n\t\t\t\t\teffectY = effectYMult * effectY - prevEffectY;\n\t\t\t\t\tprevEffectY = temp;\n\t\t\t\t\t\n\t\t\t\t\tchannel#SampleLeft += ((channel#Wave[0|(channel#PhaseA * channel#WaveLength)] + channel#Wave[0|(channel#PhaseB * channel#WaveLength)] * channel#ChorusSign) * channel#Volume * channel#Tremolo - channel#SampleLeft) * channel#Filter * channel#VolumeLeft; // CHIP \n\t\t\t\t\tchannel#SampleLeft += (channel#Wave[0|(channel#Phase * 32768.0)] * channel#Volume - channel#SampleLeft) * channel#Filter * channel#VolumeLeft; // NOISE\n\t\t\t\t\tchannel#SampleRight += ((channel#Wave[0|(channel#PhaseA * channel#WaveLength)] + channel#Wave[0|(channel#PhaseB * channel#WaveLength)] * channel#ChorusSign) * channel#Volume * channel#Tremolo - channel#SampleRight) * channel#Filter * channel#VolumeRight; // CHIP \n\t\t\t\t\tchannel#SampleRight += (channel#Wave[0|(channel#Phase * 32768.0)] * channel#Volume - channel#SampleRight) * channel#Filter * channel#VolumeRight; // NOISE\n\t\t\t\t\tchannel#Volume += channel#VolumeDelta; // CHIP\n\t\t\t\t\tchannel#Volume += channel#VolumeDelta; // NOISE\n\t\t\t\t\tchannel#PhaseA += channel#PhaseDelta * channel#Vibrato; // CHIP\n\t\t\t\t\tchannel#PhaseB += channel#PhaseDelta * channel#Vibrato * channel#ChorusDeltaRatio; // CHIP\n\t\t\t\t\tchannel#Phase += channel#PhaseDelta; // NOISE\n\t\t\t\t\tchannel#Filter *= channel#FilterScale; // CHIP\n\t\t\t\t\tchannel#PhaseA -= 0|channel#PhaseA; // CHIP\n\t\t\t\t\tchannel#PhaseB -= 0|channel#PhaseB; // CHIP\n\t\t\t\t\tchannel#Phase -= 0|channel#Phase; // NOISE\n\t\t\t\t\tchannel#PhaseDelta *= channel#PhaseDeltaScale; // CHIP\n\t\t\t\t\tchannel#PhaseDelta *= channel#PhaseDeltaScale; // NOISE\n\t\t\t\t\t\n\t\t\t\t\t// INSERT OPERATOR COMPUTATION HERE\n\t\t\t\t\tchannel#SampleLeft = channel#Tremolo * (/*channel#Operator$Scaled*/) * channel#VolumeLeft; // CARRIER OUTPUTS\n\t\t\t\t\tchannel#SampleRight = channel#Tremolo * (/*channel#Operator$Scaled*/) * channel#VolumeRight; // CARRIER OUTPUTS\n\t\t\t\t\tchannel#FeedbackMult += channel#FeedbackDelta; // FM\n\t\t\t\t\tchannel#Operator$OutputMult += channel#Operator$OutputDelta; // FM\n\t\t\t\t\tchannel#Operator$Phase += channel#Operator$PhaseDelta * channel#Vibrato; // FM\n\t\t\t\t\tchannel#Operator$PhaseDelta *= channel#PhaseDeltaScale; // FM\n\t\t\t\t\t\n\t\t\t\t\t// Reverb, implemented using a feedback delay network with a Hadamard matrix and lowpass filters.\n\t\t\t\t\t// good ratios:    0.555235 + 0.618033 + 0.818 +   1.0 = 2.991268\n\t\t\t\t\t// Delay lengths:  3041     + 3385     + 4481  +  5477 = 16384 = 2^14\n\t\t\t\t\t// Buffer offsets: 3041    -> 6426   -> 10907 -> 16384\n\t\t\t\t\tvar delayPos1Left = (delayPosLeft +  3041) & 0x3FFF;\n\t\t\t\t\tvar delayPos2Left = (delayPosLeft +  6426) & 0x3FFF;\n\t\t\t\t\tvar delayPos3Left = (delayPosLeft + 10907) & 0x3FFF;\n\t\t\t\t\tvar delaySampleLeft0 = (delayLineLeft[delayPosLeft]\n\t\t\t\t\t\t+ channel#SampleLeft // PITCH\n\t\t\t\t\t);\n\t\t\t\t\tvar delayPos1Right = (delayPosRight +  3041) & 0x3FFF;\n\t\t\t\t\tvar delayPos2Right = (delayPosRight +  6426) & 0x3FFF;\n\t\t\t\t\tvar delayPos3Right = (delayPosRight + 10907) & 0x3FFF;\n\t\t\t\t\tvar delaySampleRight0 = (delayLineRight[delayPosRight]\n\t\t\t\t\t\t+ channel#SampleRight // PITCH\n\t\t\t\t\t);\n\t\t\t\t\tvar delaySampleLeft1 = delayLineLeft[delayPos1Left];\n\t\t\t\t\tvar delaySampleLeft2 = delayLineLeft[delayPos2Left];\n\t\t\t\t\tvar delaySampleLeft3 = delayLineLeft[delayPos3Left];\n\t\t\t\t\tvar delayTemp0Left = -delaySampleLeft0 + delaySampleLeft1;\n\t\t\t\t\tvar delayTemp1Left = -delaySampleLeft0 - delaySampleLeft1;\n\t\t\t\t\tvar delayTemp2Left = -delaySampleLeft2 + delaySampleLeft3;\n\t\t\t\t\tvar delayTemp3Left = -delaySampleLeft2 - delaySampleLeft3;\n\t\t\t\t\tdelayFeedback0Left += ((delayTemp0Left + delayTemp2Left) * reverb - delayFeedback0Left) * 0.5;\n\t\t\t\t\tdelayFeedback1Left += ((delayTemp1Left + delayTemp3Left) * reverb - delayFeedback1Left) * 0.5;\n\t\t\t\t\tdelayFeedback2Left += ((delayTemp0Left - delayTemp2Left) * reverb - delayFeedback2Left) * 0.5;\n\t\t\t\t\tdelayFeedback3Left += ((delayTemp1Left - delayTemp3Left) * reverb - delayFeedback3Left) * 0.5;\n\t\t\t\t\tdelayLineLeft[delayPos1Left] = delayFeedback0Left;\n\t\t\t\t\tdelayLineLeft[delayPos2Left] = delayFeedback1Left;\n\t\t\t\t\tdelayLineLeft[delayPos3Left] = delayFeedback2Left;\n\t\t\t\t\tdelayLineLeft[delayPosLeft ] = delayFeedback3Left;\n\t\t\t\t\tdelayPosLeft = (delayPosLeft + 1) & 0x3FFF;\n\t\t\t\t\t\n\t\t\t\t\tvar delaySampleRight1 = delayLineRight[delayPos1Right];\n\t\t\t\t\tvar delaySampleRight2 = delayLineRight[delayPos2Right];\n\t\t\t\t\tvar delaySampleRight3 = delayLineRight[delayPos3Right];\n\t\t\t\t\tvar delayTemp0Right = -delaySampleRight0 + delaySampleRight1;\n\t\t\t\t\tvar delayTemp1Right = -delaySampleRight0 - delaySampleRight1;\n\t\t\t\t\tvar delayTemp2Right = -delaySampleRight2 + delaySampleRight3;\n\t\t\t\t\tvar delayTemp3Right = -delaySampleRight2 - delaySampleRight3;\n\t\t\t\t\tdelayFeedback0Right += ((delayTemp0Right + delayTemp2Right) * reverb - delayFeedback0Right) * 0.5;\n\t\t\t\t\tdelayFeedback1Right += ((delayTemp1Right + delayTemp3Right) * reverb - delayFeedback1Right) * 0.5;\n\t\t\t\t\tdelayFeedback2Right += ((delayTemp0Right - delayTemp2Right) * reverb - delayFeedback2Right) * 0.5;\n\t\t\t\t\tdelayFeedback3Right += ((delayTemp1Right - delayTemp3Right) * reverb - delayFeedback3Right) * 0.5;\n\t\t\t\t\tdelayLineRight[delayPos1Right] = delayFeedback0Right;\n\t\t\t\t\tdelayLineRight[delayPos2Right] = delayFeedback1Right;\n\t\t\t\t\tdelayLineRight[delayPos3Right] = delayFeedback2Right;\n\t\t\t\t\tdelayLineRight[delayPosRight ] = delayFeedback3Right;\n\t\t\t\t\tdelayPosRight = (delayPosRight + 1) & 0x3FFF;\n\t\t\t\t\t\n\t\t\t\t\tvar sampleLeft = delaySampleLeft0 + delaySampleLeft1 + delaySampleLeft2 + delaySampleLeft3\n\t\t\t\t\t\t+ channel#SampleLeft // NOISE\n\t\t\t\t\t;\n\t\t\t\t\t\n\t\t\t\t\tvar sampleRight = delaySampleRight0 + delaySampleRight1 + delaySampleRight2 + delaySampleRight3\n\t\t\t\t\t\t+ channel#SampleRight // NOISE\n\t\t\t\t\t;\n\t\t\t\t\t\n\t\t\t\t\tvar abs = sampleLeft < 0.0 ? -sampleLeft : sampleLeft;\n\t\t\t\t\tlimit -= limitDecay;\n\t\t\t\t\tif (limit < abs) limit = abs;\n\t\t\t\t\tsampleLeft /= limit * 0.75 + 0.25;\n\t\t\t\t\tsampleLeft *= volume;\n\t\t\t\t\tsampleLeft = sampleLeft;\n\t\t\t\t\tdataLeft[bufferIndex] = sampleLeft;\n\t\t\t\t\tsampleRight /= limit * 0.75 + 0.25;\n\t\t\t\t\tsampleRight *= volume;\n\t\t\t\t\tsampleRight = sampleRight;\n\t\t\t\t\tdataRight[bufferIndex] = sampleRight;\n\t\t\t\t\tbufferIndex++;\n\t\t\t\t\tsamples--;\n\t\t\t\t}\n\t\t\t\t\n\t\t\t\tsynthChannel#.phases[0] = channel#PhaseA; // CHIP\n\t\t\t\tsynthChannel#.phases[1] = channel#PhaseB; // CHIP\n\t\t\t\tsynthChannel#.phases[0] = channel#Phase; // NOISE\n\t\t\t\tsynthChannel#.phases[$] = channel#Operator$Phase / " + Config.sineWaveLength + "; // FM\n\t\t\t\tsynthChannel#.feedbackOutputs[$] = channel#Operator$Output; // FM\n\t\t\t\tsynthChannel#.sampleLeft = channel#SampleLeft; // ALL\n\t\t\t\tsynthChannel#.sampleRight = channel#SampleRight; // ALL\n\t\t\t\t\n\t\t\t\tsynth.delayPosLeft = delayPosLeft;\n\t\t\t\tsynth.delayFeedback0Left = delayFeedback0Left;\n\t\t\t\tsynth.delayFeedback1Left = delayFeedback1Left;\n\t\t\t\tsynth.delayFeedback2Left = delayFeedback2Left;\n\t\t\t\tsynth.delayFeedback3Left = delayFeedback3Left;\n\t\t\t\tsynth.delayPosRight = delayPosRight;\n\t\t\t\tsynth.delayFeedback0Right = delayFeedback0Right;\n\t\t\t\tsynth.delayFeedback1Right = delayFeedback1Right;\n\t\t\t\tsynth.delayFeedback2Right = delayFeedback2Right;\n\t\t\t\tsynth.delayFeedback3Right = delayFeedback3Right;\n\t\t\t\tsynth.limit = limit;\n\t\t\t\t\n\t\t\t\tif (effectYMult * effectY - prevEffectY > prevEffectY) {\n\t\t\t\t\tsynth.effectPhase = Math.asin(effectY);\n\t\t\t\t} else {\n\t\t\t\t\tsynth.effectPhase = Math.PI - Math.asin(effectY);\n\t\t\t\t}\n\t\t\t\t\n\t\t\t\tif (synth.arpeggioSampleCountdown == 0) {\n\t\t\t\t\tsynth.arpeggio++;\n\t\t\t\t\tsynth.arpeggioSampleCountdown = samplesPerArpeggio;\n\t\t\t\t\tif (synth.arpeggio == 4) {\n\t\t\t\t\t\tsynth.arpeggio = 0;\n\t\t\t\t\t\tsynth.part++;\n\t\t\t\t\t\tif (synth.part == song.partsPerBeat) {\n\t\t\t\t\t\t\tsynth.part = 0;\n\t\t\t\t\t\t\tsynth.beat++;\n\t\t\t\t\t\t\tif (synth.beat == song.beatsPerBar) {\n\t\t\t\t\t\t\t\t// The bar ended, may need to regenerate synthesizer.\n\t\t\t\t\t\t\t\treturn bufferIndex;\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\t\n\t\t\t// Indicate that the buffer is finished generating.\n\t\t\treturn -1;\n\t\t").split("\n");
-	Synth.operatorSourceTemplate = ("\n\t\t\t\t\t\tvar channel#Operator$PhaseMix = channel#Operator$Phase/* + channel#Operator@Scaled*/;\n\t\t\t\t\t\tvar channel#Operator$PhaseInt = channel#Operator$PhaseMix|0;\n\t\t\t\t\t\tvar channel#Operator$Index    = channel#Operator$PhaseInt & " + Config.sineWaveMask + ";\n\t\t\t\t\t\tvar channel#Operator$Sample   = sineWave[channel#Operator$Index];\n\t\t\t\t\t\tchannel#Operator$Output       = channel#Operator$Sample + (sineWave[channel#Operator$Index + 1] - channel#Operator$Sample) * (channel#Operator$PhaseMix - channel#Operator$PhaseInt);\n\t\t\t\t\t\tvar channel#Operator$Scaled   = channel#Operator$OutputMult * channel#Operator$Output;\n\t\t").split("\n");
+    Synth.synthSourceTemplate = ("\n\t\t\tvar sampleTime = 1.0 / synth.samplesPerSecond;\n\t\t\tvar effectYMult = +synth.effectYMult;\n\t\t\tvar limitDecay = +synth.limitDecay;\n\t\t\tvar volume = +synth.volume;\n\t\t\tvar delayLine = synth.delayLine;\n\t\t\tvar reverb = Math.pow(song.reverb / beepbox.Config.reverbRange, 0.667) * 0.425;\n\t\t\tvar blend = Math.pow(song.blend / beepbox.Config.blendRange, 0.667) * 0.425;\n\t\t\tvar riff = Math.pow(song.riff / beepbox.Config.riffRange, 0.667) * 0.425;\n\t\t\tvar drive = Math.pow(song.drive / beepbox.Config.driveRange, 0.667) * 0.425;\n\t\t\tvar csign = Math.pow(song.csign / beepbox.Config.csignRange, 0.667) * 0.425;  \n\t\t\tvar detune = Math.pow(song.detune / beepbox.Config.detuneRange, 0.667) * 0.425; \n\t\t\tvar sineWave = beepbox.Config.sineWave;\n\t\t\t\n\t\t\t// Initialize instruments based on current pattern.\n\t\t\tvar instrumentChannel# = song.getPatternInstrument(#, synth.bar); // ALL\n\t\t\tvar instrument# = song.channels[#].instruments[instrumentChannel#]; // ALL\n\t\t\tvar channel#Wave = beepbox.Config.waves[instrument#.wave]; // CHIP\n\t\t\tvar channel#Wave = beepbox.Config.getDrumWave(instrument#.wave); // NOISE\n\t\t\tvar channel#WaveLength = channel#Wave.length; // CHIP\n\t\t\tvar channel#FilterBase = Math.pow(2, -beepbox.Config.filterBases[instrument#.filter] + (blend * 4)); // CHIP\n\t\t\tvar channel#TremoloScale = beepbox.Config.effectTremolos[instrument#.effect]; // PITCH\n\t\t\t\n\t\t\twhile (bufferIndex < bufferLength) {\n\t\t\t\t\n\t\t\t\tvar samples;\n\t\t\t\tvar samplesLeftInBuffer = bufferLength - bufferIndex;\n\t\t\t\tif (synth.arpeggioSampleCountdown <= samplesLeftInBuffer) {\n\t\t\t\t\tsamples = synth.arpeggioSampleCountdown;\n\t\t\t\t} else {\n\t\t\t\t\tsamples = samplesLeftInBuffer;\n\t\t\t\t}\n\t\t\t\tsynth.arpeggioSampleCountdown -= samples;\n\t\t\t\t\n\t\t\t\tvar time = synth.part + synth.beat * song.partsPerBeat;\n\t\t\t\t\n\t\t\t\tbeepbox.Synth.computeChannelInstrument(synth, song, #, time, sampleTime, samplesPerArpeggio, samples); // ALL\n\t\t\t\tvar synthChannel# = synth.channels[#]; // ALL\n\t\t\t\t\n\t\t\t\tvar channel#ChorusA = Math.pow(2.0, (beepbox.Config.chorusOffsets[instrument#.chorus] + beepbox.Config.chorusIntervals[instrument#.chorus] + detune + beepbox.Config.octoffValues[instrument#.octoff] * (riff + 1)) / 12.0); // CHIP\n\t\t\t\tvar channel#ChorusB = Math.pow(2.0, (beepbox.Config.chorusOffsets[instrument#.chorus] - beepbox.Config.chorusIntervals[instrument#.chorus] + detune + beepbox.Config.octoffValues[instrument#.octoff] * (riff + 1)) / 12.0); // CHIP\n\t\t\t\tvar channel#ChorusSign = synthChannel#.harmonyVolumeMult * (beepbox.Config.chorusSigns[instrument#.chorus] + (csign * 4)); // CHIP\n\t\t\t\tif (instrument#.chorus == 0) synthChannel#.phases[1] = synthChannel#.phases[0]; // CHIP\n\t\t\t\tchannel#ChorusB *= synthChannel#.harmonyMult + (detune); // CHIP\n\t\t\t\tvar channel#ChorusDeltaRatio = channel#ChorusB / channel#ChorusA * (riff + 1) + (detune); // CHIP\n\t\t\t\t\n\t\t\t\tvar channel#PhaseDelta = synthChannel#.phaseDeltas[0] * channel#ChorusA * (riff + 1) + (detune); // CHIP\n\t\t\t\tvar channel#PhaseDelta = synthChannel#.phaseDeltas[0] / 32768.0; // NOISE\n\t\t\t\tvar channel#PhaseDeltaScale = synthChannel#.phaseDeltaScale; // ALL\n\t\t\t\tvar channel#Volume = synthChannel#.volumeStarts[0]; // CHIP\n\t\t\t\tvar channel#Volume = synthChannel#.volumeStarts[0]; // NOISE\n\t\t\t\tvar channel#VolumeDelta = synthChannel#.volumeDeltas[0]; // CHIP\n\t\t\t\tvar channel#VolumeDelta = synthChannel#.volumeDeltas[0]; // NOISE\n\t\t\t\tvar channel#Filter = synthChannel#.filter * channel#FilterBase; // CHIP\n\t\t\t\tvar channel#Filter = synthChannel#.filter; // NOISE\n\t\t\t\tvar channel#FilterScale = synthChannel#.filterScale; // CHIP\n\t\t\t\tvar channel#VibratoScale = synthChannel#.vibratoScale; // PITCH\n\t\t\t\t\n\t\t\t\tvar effectY     = Math.sin(synth.effectPhase);\n\t\t\t\tvar prevEffectY = Math.sin(synth.effectPhase - synth.effectAngle);\n\t\t\t\t\n\t\t\t\tvar channel#PhaseA = synth.channels[#].phases[0] % 1; // CHIP\n\t\t\t\tvar channel#PhaseB = synth.channels[#].phases[1] % 1; // CHIP\n\t\t\t\tvar channel#Phase  = synth.channels[#].phases[0] % 1; // NOISE\n\t\t\t\t\n\t\t\t\tvar channel#Operator$Phase       = ((synth.channels[#].phases[$] % 1) + " + Synth.negativePhaseGuard + ") * " + Config.sineWaveLength + "; // FM\n\t\t\t\tvar channel#Operator$PhaseDelta  = synthChannel#.phaseDeltas[$]; // FM\n\t\t\t\tvar channel#Operator$OutputMult  = synthChannel#.volumeStarts[$]; // FM\n\t\t\t\tvar channel#Operator$OutputDelta = synthChannel#.volumeDeltas[$]; // FM\n\t\t\t\tvar channel#Operator$Output      = synthChannel#.feedbackOutputs[$]; // FM\n\t\t\t\tvar channel#FeedbackMult         = synthChannel#.feedbackMult; // FM\n\t\t\t\tvar channel#FeedbackDelta        = synthChannel#.feedbackDelta; // FM\n\t\t\t\t\n\t\t\t\tvar channel#Sample = +synth.channels[#].sample; // ALL\n\t\t\t\t\n\t\t\t\tvar delayPos = 0|synth.delayPos;\n\t\t\t\tvar delayFeedback0 = +synth.delayFeedback0;\n\t\t\t\tvar delayFeedback1 = +synth.delayFeedback1;\n\t\t\t\tvar delayFeedback2 = +synth.delayFeedback2;\n\t\t\t\tvar delayFeedback3 = +synth.delayFeedback3;\n\t\t\t\tvar limit = +synth.limit;\n\t\t\t\t\n\t\t\t\twhile (samples) {\n\t\t\t\t\tvar channel#Vibrato = 1.0 + channel#VibratoScale * effectY; // PITCH\n\t\t\t\t\tvar channel#Tremolo = 1.0 + channel#TremoloScale * (effectY - 1.0); // PITCH\n\t\t\t\t\tvar temp = effectY;\n\t\t\t\t\teffectY = effectYMult * effectY - prevEffectY;\n\t\t\t\t\tprevEffectY = temp;\n\t\t\t\t\t\n\t\t\t\t\tchannel#Sample += ((channel#Wave[0|(channel#PhaseA * channel#WaveLength)] + channel#Wave[0|(channel#PhaseB * channel#WaveLength)] * channel#ChorusSign) * channel#Volume * channel#Tremolo - channel#Sample) * channel#Filter + (drive / 100); // CHIP\n\t\t\t\t\tchannel#Sample += (channel#Wave[0|(channel#Phase * 32768.0)] * channel#Volume - channel#Sample) * channel#Filter; // NOISE\n\t\t\t\t\tchannel#Volume += channel#VolumeDelta; // CHIP\n\t\t\t\t\tchannel#Volume += channel#VolumeDelta; // NOISE\n\t\t\t\t\tchannel#PhaseA += channel#PhaseDelta * channel#Vibrato; // CHIP\n\t\t\t\t\tchannel#PhaseB += channel#PhaseDelta * channel#Vibrato * channel#ChorusDeltaRatio; // CHIP\n\t\t\t\t\tchannel#Phase += channel#PhaseDelta; // NOISE\n\t\t\t\t\tchannel#Filter *= channel#FilterScale; // CHIP\n\t\t\t\t\tchannel#PhaseA -= 0|channel#PhaseA; // CHIP\n\t\t\t\t\tchannel#PhaseB -= 0|channel#PhaseB; // CHIP\n\t\t\t\t\tchannel#Phase -= 0|channel#Phase; // NOISE\n\t\t\t\t\tchannel#PhaseDelta *= channel#PhaseDeltaScale; // CHIP\n\t\t\t\t\tchannel#PhaseDelta *= channel#PhaseDeltaScale; // NOISE\n\t\t\t\t\t\n\t\t\t\t\t// INSERT OPERATOR COMPUTATION HERE\n\t\t\t\t\tchannel#Sample = channel#Tremolo * (/*channel#Operator$Scaled*/); // CARRIER OUTPUTS\n\t\t\t\t\tchannel#FeedbackMult += channel#FeedbackDelta; // FM\n\t\t\t\t\tchannel#Operator$OutputMult += channel#Operator$OutputDelta; // FM\n\t\t\t\t\tchannel#Operator$Phase += channel#Operator$PhaseDelta * channel#Vibrato; // FM\n\t\t\t\t\tchannel#Operator$PhaseDelta *= channel#PhaseDeltaScale; // FM\n\t\t\t\t\t\n\t\t\t\t\t// Reverb, implemented using a feedback delay network with a Hadamard matrix and lowpass filters.\n\t\t\t\t\t// good ratios:    0.555235 + 0.618033 + 0.818 +   1.0 = 2.991268\n\t\t\t\t\t// Delay lengths:  3041     + 3385     + 4481  +  5477 = 16384 = 2^14\n\t\t\t\t\t// Buffer offsets: 3041    -> 6426   -> 10907 -> 16384\n\t\t\t\t\tvar delayPos1 = (delayPos +  3041) & 0x3FFF;\n\t\t\t\t\tvar delayPos2 = (delayPos +  6426) & 0x3FFF;\n\t\t\t\t\tvar delayPos3 = (delayPos + 10907) & 0x3FFF;\n\t\t\t\t\tvar delaySample0 = (delayLine[delayPos]\n\t\t\t\t\t\t+ channel#Sample // PITCH\n\t\t\t\t\t);\n\t\t\t\t\tvar delaySample1 = delayLine[delayPos1];\n\t\t\t\t\tvar delaySample2 = delayLine[delayPos2];\n\t\t\t\t\tvar delaySample3 = delayLine[delayPos3];\n\t\t\t\t\tvar delayTemp0 = -delaySample0 + delaySample1;\n\t\t\t\t\tvar delayTemp1 = -delaySample0 - delaySample1;\n\t\t\t\t\tvar delayTemp2 = -delaySample2 + delaySample3;\n\t\t\t\t\tvar delayTemp3 = -delaySample2 - delaySample3;\n\t\t\t\t\tdelayFeedback0 += ((delayTemp0 + delayTemp2) * reverb - delayFeedback0) * 0.5;\n\t\t\t\t\tdelayFeedback1 += ((delayTemp1 + delayTemp3) * reverb - delayFeedback1) * 0.5;\n\t\t\t\t\tdelayFeedback2 += ((delayTemp0 - delayTemp2) * reverb - delayFeedback2) * 0.5;\n\t\t\t\t\tdelayFeedback3 += ((delayTemp1 - delayTemp3) * reverb - delayFeedback3) * 0.5;\n\t\t\t\t\tdelayLine[delayPos1] = delayFeedback0;\n\t\t\t\t\tdelayLine[delayPos2] = delayFeedback1;\n\t\t\t\t\tdelayLine[delayPos3] = delayFeedback2;\n\t\t\t\t\tdelayLine[delayPos ] = delayFeedback3;\n\t\t\t\t\tdelayPos = (delayPos + 1) & 0x3FFF;\n\t\t\t\t\t\n\t\t\t\t\tvar sample = delaySample0 + delaySample1 + delaySample2 + delaySample3\n\t\t\t\t\t\t+ channel#Sample // NOISE\n\t\t\t\t\t;\n\t\t\t\t\t\n\t\t\t\t\tvar abs = sample < 0.0 ? -sample : sample;\n\t\t\t\t\tlimit -= limitDecay;\n\t\t\t\t\tif (limit < abs) limit = abs;\n\t\t\t\t\tsample /= limit * 0.75 + 0.25;\n\t\t\t\t\tsample *= volume;\n\t\t\t\t\tdata[bufferIndex] = sample;\n\t\t\t\t\tbufferIndex++;\n\t\t\t\t\tsamples--;\n\t\t\t\t}\n\t\t\t\t\n\t\t\t\tsynthChannel#.phases[0] = channel#PhaseA; // CHIP\n\t\t\t\tsynthChannel#.phases[1] = channel#PhaseB; // CHIP\n\t\t\t\tsynthChannel#.phases[0] = channel#Phase; // NOISE\n\t\t\t\tsynthChannel#.phases[$] = channel#Operator$Phase / " + Config.sineWaveLength + "; // FM\n\t\t\t\tsynthChannel#.feedbackOutputs[$] = channel#Operator$Output; // FM\n\t\t\t\tsynthChannel#.sample = channel#Sample; // ALL\n\t\t\t\t\n\t\t\t\tsynth.delayPos = delayPos;\n\t\t\t\tsynth.delayFeedback0 = delayFeedback0;\n\t\t\t\tsynth.delayFeedback1 = delayFeedback1;\n\t\t\t\tsynth.delayFeedback2 = delayFeedback2;\n\t\t\t\tsynth.delayFeedback3 = delayFeedback3;\n\t\t\t\tsynth.limit = limit;\n\t\t\t\t\n\t\t\t\tif (effectYMult * effectY - prevEffectY > prevEffectY) {\n\t\t\t\t\tsynth.effectPhase = Math.asin(effectY);\n\t\t\t\t} else {\n\t\t\t\t\tsynth.effectPhase = Math.PI - Math.asin(effectY);\n\t\t\t\t}\n\t\t\t\t\n\t\t\t\tif (synth.arpeggioSampleCountdown == 0) {\n\t\t\t\t\tsynth.arpeggio++;\n\t\t\t\t\tsynth.arpeggioSampleCountdown = samplesPerArpeggio;\n\t\t\t\t\tif (synth.arpeggio == 4) {\n\t\t\t\t\t\tsynth.arpeggio = 0;\n\t\t\t\t\t\tsynth.part++;\n\t\t\t\t\t\tif (synth.part == song.partsPerBeat) {\n\t\t\t\t\t\t\tsynth.part = 0;\n\t\t\t\t\t\t\tsynth.beat++;\n\t\t\t\t\t\t\tif (synth.beat == song.beatsPerBar) {\n\t\t\t\t\t\t\t\t// The bar ended, may need to regenerate synthesizer.\n\t\t\t\t\t\t\t\treturn bufferIndex;\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\t\n\t\t\t// Indicate that the buffer is finished generating.\n\t\t\treturn -1;\n\t\t").split("\n");
+    Synth.operatorSourceTemplate = ("\n\t\t\t\t\t\tvar channel#Operator$PhaseMix = channel#Operator$Phase/* + channel#Operator@Scaled*/;\n\t\t\t\t\t\tvar channel#Operator$PhaseInt = channel#Operator$PhaseMix|0;\n\t\t\t\t\t\tvar channel#Operator$Index    = channel#Operator$PhaseInt & " + Config.sineWaveMask + ";\n\t\t\t\t\t\tvar channel#Operator$Sample   = sineWave[channel#Operator$Index];\n\t\t\t\t\t\tchannel#Operator$Output       = channel#Operator$Sample + (sineWave[channel#Operator$Index + 1] - channel#Operator$Sample) * (channel#Operator$PhaseMix - channel#Operator$PhaseInt);\n\t\t\t\t\t\tvar channel#Operator$Scaled   = channel#Operator$OutputMult * channel#Operator$Output;\n\t\t").split("\n");
     beepbox.Synth = Synth;
-	
 })(beepbox || (beepbox = {}));
 var beepbox;
 (function (beepbox) {
@@ -3468,8 +3102,7 @@ var beepbox;
             this.showLetters = localStorage.getItem("showLetters") == "true";
             this.showChannels = localStorage.getItem("showChannels") == "true";
             this.showScrollBar = localStorage.getItem("showScrollBar") == "true";
-			this.advancedSettings = localStorage.getItem("advancedSettings") == "true" || localStorage.getItem("advancedSettings") == null;
-			if (localStorage.getItem("volume") != null)
+            if (localStorage.getItem("volume") != null)
                 this.volume = Number(localStorage.getItem("volume"));
             this.synth.volume = this._calcVolume();
             var state = window.history.state;
@@ -3541,7 +3174,6 @@ var beepbox;
             localStorage.setItem("showLetters", this.showLetters ? "true" : "false");
             localStorage.setItem("showChannels", this.showChannels ? "true" : "false");
             localStorage.setItem("showScrollBar", this.showScrollBar ? "true" : "false");
-			localStorage.setItem("advancedSettings", this.advancedSettings ? "true" : "false");
             localStorage.setItem("volume", String(this.volume));
         };
         SongDocument.prototype.setVolume = function (val) {
@@ -3651,7 +3283,7 @@ var beepbox;
 (function (beepbox) {
     var styleSheet = document.createElement('style');
     styleSheet.type = "text/css";
-    styleSheet.appendChild(document.createTextNode("\n\n.beepboxEditor {\n\tdisplay: flex;\n\t-webkit-touch-callout: none;\n\t-webkit-user-select: none;\n\t-khtml-user-select: none;\n\t-moz-user-select: none;\n\t-ms-user-select: none;\n\tuser-select: none;\n\tposition: relative;\n\ttouch-action: manipulation;\n\tcursor: default;\n\tfont-size: small;\n\toverflow: hidden;\n}\n\n.beepboxEditor div {\n\tmargin: 0;\n\tpadding: 0;\n}\n\n.beepboxEditor .promptContainer {\n\tposition: absolute;\n\ttop: 0;\n\tleft: 0;\n\twidth: 100%;\n\theight: 100%;\n\tbackground: rgba(0,0,0,0.5);\n\tdisplay: flex;\n\tjustify-content: center;\n\talign-items: center;\n}\n\n.beepboxEditor .prompt {\n\tmargin: auto;\n\ttext-align: center;\n\tbackground: #000;\n\tborder-radius: 15px;\n\tborder: 4px solid #444;\n\tcolor: #fff;\n\tpadding: 20px;\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n.beepboxEditor .prompt > *:not(:first-child) {\n\tmargin-top: 1.5em;\n}\n\n/* Use psuedo-elements to add cross-browser up & down arrows to select elements: */\n.beepboxEditor .selectContainer {\n\tposition: relative;\n}\n.beepboxEditor .selectContainer:not(.menu)::before {\n\tcontent: \"\";\n\tposition: absolute;\n\tright: 0.3em;\n\ttop: 0.4em;\n\tborder-bottom: 0.4em solid currentColor;\n\tborder-left: 0.3em solid transparent;\n\tborder-right: 0.3em solid transparent;\n\tpointer-events: none;\n}\n.beepboxEditor .selectContainer:not(.menu)::after {\n\tcontent: \"\";\n\tposition: absolute;\n\tright: 0.3em;\n\tbottom: 0.4em;\n\tborder-top: 0.4em solid currentColor;\n\tborder-left: 0.3em solid transparent;\n\tborder-right: 0.3em solid transparent;\n\tpointer-events: none;\n}\n.beepboxEditor .selectContainer.menu::after {\n\tcontent: \"\";\n\tposition: absolute;\n\tright: 0.7em;\n\tmargin: auto;\n\ttop: 0;\n\tbottom: 0;\n\theight: 0;\n\tborder-top: 0.4em solid currentColor;\n\tborder-left: 0.3em solid transparent;\n\tborder-right: 0.3em solid transparent;\n\tpointer-events: none;\n}\n.beepboxEditor select {\n\tmargin: 0;\n\tpadding: 0 0.3em;\n\tdisplay: block;\n\theight: 2em;\n\tborder: none;\n\tborder-radius: 0.4em;\n\tbackground: #363636;\n\tcolor: inherit;\n\tfont-size: inherit;\n\tcursor: pointer;\n\tfont-family: inherit;\n\n\t-webkit-appearance:none;\n\t-moz-appearance: none;\n\tappearance: none;\n}\n.beepboxEditor .menu select {\n\tpadding: 0 2em;\n}\n.beepboxEditor select:focus {\n\tbackground: #565656;\n\toutline: none;\n}\n.beepboxEditor .menu select {\n\ttext-align: center;\n\ttext-align-last: center;\n}\n\n/* This makes it look better in firefox on my computer... What about others?\n@-moz-document url-prefix() {\n\t.beepboxEditor select { padding: 0 2px; }\n}\n*/\n.beepboxEditor button {\n\tmargin: 0;\n\tposition: relative;\n\theight: 2em;\n\tborder: none;\n\tborder-radius: 0.4em;\n\tbackground: #363636;\n\tcolor: inherit;\n\tfont-size: inherit;\n\tfont-family: inherit;\n\tcursor: pointer;\n}\n.beepboxEditor button:focus {\n\tbackground: #565656;\n\toutline: none;\n}\n.beepboxEditor button.playButton, .beepboxEditor button.pauseButton {\n\tpadding-left: 2em;\n}\n.beepboxEditor button.playButton::before {\n\tcontent: \"\";\n\tposition: absolute;\n\tleft: 0.7em;\n\ttop: 50%;\n\tmargin-top: -0.65em;\n\tborder-left: 1em solid currentColor;\n\tborder-top: 0.65em solid transparent;\n\tborder-bottom: 0.65em solid transparent;\n\tpointer-events: none;\n}\n.beepboxEditor button.pauseButton::before {\n\tcontent: \"\";\n\tposition: absolute;\n\tleft: 0.7em;\n\ttop: 50%;\n\tmargin-top: -0.65em;\n\twidth: 0.3em;\n\theight: 1.3em;\n\tbackground: currentColor;\n\tpointer-events: none;\n}\n.beepboxEditor button.pauseButton::after {\n\tcontent: \"\";\n\tposition: absolute;\n\tleft: 1.4em;\n\ttop: 50%;\n\tmargin-top: -0.65em;\n\twidth: 0.3em;\n\theight: 1.3em;\n\tbackground: currentColor;\n\tpointer-events: none;\n}\n\n.beepboxEditor button.prevBarButton::before {\n\tcontent: \"\";\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\tmargin-left: -0.5em;\n\tmargin-top: -0.5em;\n\twidth: 0.2em;\n\theight: 1em;\n\tbackground: currentColor;\n\tpointer-events: none;\n}\n.beepboxEditor button.prevBarButton::after {\n\tcontent: \"\";\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\tmargin-left: -0.3em;\n\tmargin-top: -0.5em;\n\tborder-right: 0.8em solid currentColor;\n\tborder-top: 0.5em solid transparent;\n\tborder-bottom: 0.5em solid transparent;\n\tpointer-events: none;\n}\n\n.beepboxEditor button.nextBarButton::before {\n\tcontent: \"\";\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\tmargin-left: -0.5em;\n\tmargin-top: -0.5em;\n\tborder-left: 0.8em solid currentColor;\n\tborder-top: 0.5em solid transparent;\n\tborder-bottom: 0.5em solid transparent;\n\tpointer-events: none;\n}\n.beepboxEditor button.nextBarButton::after {\n\tcontent: \"\";\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\tmargin-left: 0.3em;\n\tmargin-top: -0.5em;\n\twidth: 0.2em;\n\theight: 1em;\n\tbackground: currentColor;\n\tpointer-events: none;\n}\n\n.beepboxEditor canvas {\n\toverflow: hidden;\n\tposition: absolute;\n\tdisplay: block;\n}\n\n.beepboxEditor .trackContainer {\n\toverflow-x: hidden;\n}\n\n.beepboxEditor .selectRow {\n\tmargin: 0;\n\theight: 2.5em;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: space-between;\n}\n\n.beepboxEditor .selectRow > span {\n\tcolor: #999;\n}\n\n.beepboxEditor .operatorRow {\n\tmargin: 0;\n\theight: 2.5em;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n}\n\n.beepboxEditor .operatorRow > * {\n\tflex-grow: 1;\n\tflex-shrink: 1;\n}\n\n.beepboxEditor .editor-widget-column {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n.beepboxEditor .editor-widgets {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n.beepboxEditor .editor-menus {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n.beepboxEditor .editor-settings {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n.beepboxEditor .editor-song-settings {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n.beepboxEditor .editor-instrument-settings {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n.beepboxEditor .editor-right-widget-column {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n.beepboxEditor .editor-right-menus {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n.beepboxEditor .editor-right-settings {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n.beepboxEditor .editor-right-song-settings {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n.beepboxEditor .editor-right-instrument-settings {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n.beepboxEditor .editor-right-side-top > *, .beepboxEditor .editor-right-side-bottom > * {\n\tflex-shrink: 0;\n}\n\n.beepboxEditor input[type=text], .beepboxEditor input[type=number] {\n\tfont-size: inherit;\n\tbackground: transparent;\n\tborder: 1px solid #777;\n\tcolor: white;\n}\n\n.beepboxEditor input[type=checkbox] {\n  transform: scale(1.5);\n}\n\n.beepboxEditor input[type=range] {\n\t-webkit-appearance: none;\n\tcolor: inherit;\n\twidth: 100%;\n\theight: 2em;\n\tfont-size: inherit;\n\tmargin: 0;\n\tcursor: pointer;\n\tbackground-color: black;\n\ttouch-action: pan-y;\n}\n.beepboxEditor input[type=range]:focus {\n\toutline: none;\n}\n.beepboxEditor input[type=range]::-webkit-slider-runnable-track {\n\twidth: 100%;\n\theight: 0.5em;\n\tcursor: pointer;\n\tbackground: #363636;\n}\n.beepboxEditor input[type=range]::-webkit-slider-thumb {\n\theight: 2em;\n\twidth: 0.5em;\n\tborder-radius: 0.25em;\n\tbackground: currentColor;\n\tcursor: pointer;\n\t-webkit-appearance: none;\n\tmargin-top: -0.75em;\n}\n.beepboxEditor input[type=range]:focus::-webkit-slider-runnable-track {\n\tbackground: #565656;\n}\n.beepboxEditor input[type=range]::-moz-range-track {\n\twidth: 100%;\n\theight: 0.5em;\n\tcursor: pointer;\n\tbackground: #363636;\n}\n.beepboxEditor input[type=range]:focus::-moz-range-track {\n\tbackground: #565656;\n}\n.beepboxEditor input[type=range]::-moz-range-thumb {\n\theight: 2em;\n\twidth: 0.5em;\n\tborder-radius: 0.25em;\n\tborder: none;\n\tbackground: currentColor;\n\tcursor: pointer;\n}\n.beepboxEditor input[type=range]::-ms-track {\n\twidth: 100%;\n\theight: 0.5em;\n\tcursor: pointer;\n\tbackground: #363636;\n\tborder-color: transparent;\n}\n.beepboxEditor input[type=range]:focus::-ms-track {\n\tbackground: #565656;\n}\n.beepboxEditor input[type=range]::-ms-thumb {\n\theight: 2em;\n\twidth: 0.5em;\n\tborder-radius: 0.25em;\n\tbackground: currentColor;\n\tcursor: pointer;\n}\n.beepboxEditor .hintButton {\n\tborder: 1px solid currentColor;\n\tborder-radius: 50%;\n\ttext-decoration: none;\n\twidth: 1em;\n\theight: 1em;\n\ttext-align: center;\n\tmargin-left: auto;\n\tmargin-right: .4em;\n\tcursor: pointer;\n}\n\n/* wide screen */\n@media (min-width: 501px) {\n\t#beepboxEditorContainer {\n\t\tdisplay: table;\n\t}\n\t.beepboxEditor {\n\t\tflex-direction: row;\n\t}\n\t.beepboxEditor:focus-within {\n\t\toutline: 3px solid #555;\n\t}\n\t.beepboxEditor .trackContainer {\n\t\twidth: 512px;\n\t}\n\t.beepboxEditor .trackSelectBox {\n\t\tdisplay: none;\n\t}\n\t.beepboxEditor .playback-controls {\n\t\tdisplay: flex;\n\t\tflex-direction: column;\n\t}\n\t.beepboxEditor .playback-bar-controls {\n\t\tdisplay: flex;\n\t\tflex-direction: row;\n\t\tmargin: .2em 0;\n\t}\n\t.beepboxEditor .playback-volume-controls {\n\t\tdisplay: flex;\n\t\tflex-direction: row;\n\t\tmargin: .2em 0;\n\t\talign-items: center;\n\t}\n\t.beepboxEditor .pauseButton, .beepboxEditor .playButton {\n\t\tflex-grow: 1;\n\t}\n\t.beepboxEditor .nextBarButton, .beepboxEditor .prevBarButton {\n\t\tflex-grow: 1;\n\t\tmargin-left: 10px;\n\t}\n\t.beepboxEditor .editor-widget-column {\n\t\tmargin-left: 6px;\n\t\twidth: 14em;\n\t\tflex-direction: column;\n\t}\n\t.beepboxEditor .editor-right-widget-column {\n\t\tmargin-left: 6px;\n\t\twidth: 14em;\n\t\tflex-direction: column;\n\t}\n\t.beepboxEditor .editor-widgets {\n\t\tflex-grow: 1;\n\t}\n\t.beepboxEditor .editor-right-widgets {\n\t\tflex-grow: 1;\n\t}\n\t.beepboxEditor .editor-settings input, .beepboxEditor .editor-settings select {\n\t\twidth: 8.6em;\n\t}\n\t.beepboxEditor .editor-right-settings input, .beepboxEditor .editor-right-settings select {\n\t\twidth: 8.6em;\n\t}\n\t.beepboxEditor .editor-menus > * {\n\t\tflex-grow: 1;\n\t\tmargin: .2em 0;\n\t}\n\t.beepboxEditor .editor-right-menus > * {\n\t\tflex-grow: 1;\n\t\tmargin: .2em 0;\n\t}\n\t.beepboxEditor .editor-menus > button {\n\t\tpadding: 0 2em;\n\t\twhite-space: nowrap;\n\t}\n\t.beepboxEditor .editor-right-menus > button {\n\t\tpadding: 0 2em;\n\t\twhite-space: nowrap;\n\t}\n}\n\n/* narrow screen */\n@media (max-width: 500px) {\n\t.beepboxEditor {\n\t\tflex-direction: column;\n\t}\n\t.beepboxEditor:focus-within {\n\t\toutline: none;\n\t}\n\t.beepboxEditor .editorBox {\n\t\tmax-height: 75vh;\n\t}\n\t.beepboxEditor .editor-menus {\n\t\tflex-direction: row;\n\t}\n\t.beepboxEditor .editor-right-menus {\n\t\tflex-direction: row;\n\t}\n\t.beepboxEditor .editor-menus > * {\n\t\tflex-grow: 1;\n\t\tmargin: .10em;\n\t}\n\t.beepboxEditor .editor-right-menus > * {\n\t\tflex-grow: 1;\n\t\tmargin: .2em;\n\t}\n\t.beepboxEditor .editor-menus > button {\n\t\tpadding-left: 2em;\n\t\twhite-space: nowrap;\n\t}\n\t.beepboxEditor .editor-right-menus > button {\n\t\tpadding-left: 2em;\n\t\twhite-space: nowrap;\n\t}\n\t.beepboxEditor .trackContainer {\n\t\toverflow-x: auto;\n\t}\n\t.beepboxEditor .barScrollBar {\n\t\tdisplay: none;\n\t}\n\t.beepboxEditor .playback-controls {\n\t\tdisplay: flex;\n\t\tflex-direction: row;\n\t\tmargin: .2em 0;\n\t}\n\t.beepboxEditor .playback-bar-controls {\n\t\tdisplay: flex;\n\t\tflex-direction: row;\n\t\tflex-grow: 1;\n\t}\n\t.beepboxEditor .playback-volume-controls {\n\t\tdisplay: flex;\n\t\tflex-direction: row;\n\t\talign-items: center;\n\t\tflex-grow: 1;\n\t\tmargin: 0 .2em;\n\t}\n\t.beepboxEditor .editor-widget-column {\n\t\tflex-direction: column-reverse;\n\t}\n\t.beepboxEditor .editor-settings {\n\t\tflex-direction: row;\n\t}\n\t.beepboxEditor .editor-right-widget-column {\n\t\tflex-direction: column-reverse;\n\t}\n\t.beepboxEditor .editor-right-settings {\n\t\tflex-direction: row;\n\t}\n\t.beepboxEditor .pauseButton, .beepboxEditor .playButton,\n\t.beepboxEditor .nextBarButton, .beepboxEditor .prevBarButton {\n\t\tflex-grow: 1;\n\t\tmargin: 0 .2em;\n\t}\n\t.beepboxEditor .editor-song-settings, .beepboxEditor .editor-instrument-settings {\n\t\tflex-grow: 1;\n\t\tmargin: 0 .2em;\n\t}\n\t.beepboxEditor .editor-right-song-settings, .beepboxEditor .editor-right-instrument-settings {\n\t\tflex-grow: 1;\n\t\tmargin: 0 .2em;\n\t}\n\t.beepboxEditor .editor-settings input, .beepboxEditor .editor-settings .selectContainer {\n\t\twidth: 60%;\n\t}\n\t.beepboxEditor .editor-right-settings input, .beepboxEditor .editor-right-settings .selectContainer {\n\t\twidth: 60%;\n\t}\n\t.beepboxEditor .editor-settings select {\n\t\twidth: 100%;\n\t}\n\t.beepboxEditor .editor-right-settings select {\n\t\twidth: 100%;\n\t}\n\t.fullWidthOnly {\n\t\tdisplay: none;\n\t}\n\tp {\n\t\tmargin: 1em 0.5em;\n\t}\n}\n\n"));
+    styleSheet.appendChild(document.createTextNode("\n\n.beepboxEditor {\n\tdisplay: flex;\n\t-webkit-touch-callout: none;\n\t-webkit-user-select: none;\n\t-khtml-user-select: none;\n\t-moz-user-select: none;\n\t-ms-user-select: none;\n\tuser-select: none;\n\tposition: relative;\n\ttouch-action: manipulation;\n\tcursor: default;\n\tfont-size: small;\n\toverflow: hidden;\n}\n\n.beepboxEditor div {\n\tmargin: 0;\n\tpadding: 0;\n}\n\n.beepboxEditor .promptContainer {\n\tposition: absolute;\n\ttop: 0;\n\tleft: 0;\n\twidth: 100%;\n\theight: 100%;\n\tbackground: rgba(0,0,0,0.5);\n\tdisplay: flex;\n\tjustify-content: center;\n\talign-items: center;\n}\n\n.beepboxEditor .prompt {\n\tmargin: auto;\n\ttext-align: center;\n\tbackground: #000;\n\tborder-radius: 15px;\n\tborder: 4px solid #444;\n\tcolor: #fff;\n\tpadding: 20px;\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n.beepboxEditor .prompt > *:not(:first-child) {\n\tmargin-top: 1.5em;\n}\n\n/* Use psuedo-elements to add cross-browser up & down arrows to select elements: */\n.beepboxEditor .selectContainer {\n\tposition: relative;\n}\n.beepboxEditor .selectContainer:not(.menu)::before {\n\tcontent: \"\";\n\tposition: absolute;\n\tright: 0.3em;\n\ttop: 0.4em;\n\tborder-bottom: 0.4em solid currentColor;\n\tborder-left: 0.3em solid transparent;\n\tborder-right: 0.3em solid transparent;\n\tpointer-events: none;\n}\n.beepboxEditor .selectContainer:not(.menu)::after {\n\tcontent: \"\";\n\tposition: absolute;\n\tright: 0.3em;\n\tbottom: 0.4em;\n\tborder-top: 0.4em solid currentColor;\n\tborder-left: 0.3em solid transparent;\n\tborder-right: 0.3em solid transparent;\n\tpointer-events: none;\n}\n.beepboxEditor .selectContainer.menu::after {\n\tcontent: \"\";\n\tposition: absolute;\n\tright: 0.7em;\n\tmargin: auto;\n\ttop: 0;\n\tbottom: 0;\n\theight: 0;\n\tborder-top: 0.4em solid currentColor;\n\tborder-left: 0.3em solid transparent;\n\tborder-right: 0.3em solid transparent;\n\tpointer-events: none;\n}\n.beepboxEditor select {\n\tmargin: 0;\n\tpadding: 0 0.3em;\n\tdisplay: block;\n\theight: 2em;\n\tborder: none;\n\tborder-radius: 0.4em;\n\tbackground: #444444;\n\tcolor: inherit;\n\tfont-size: inherit;\n\tcursor: pointer;\n\tfont-family: inherit;\n\n\t-webkit-appearance:none;\n\t-moz-appearance: none;\n\tappearance: none;\n}\n.beepboxEditor .menu select {\n\tpadding: 0 2em;\n}\n.beepboxEditor select:focus {\n\tbackground: #777777;\n\toutline: none;\n}\n.beepboxEditor .menu select {\n\ttext-align: center;\n\ttext-align-last: center;\n}\n\n/* This makes it look better in firefox on my computer... What about others?\n@-moz-document url-prefix() {\n\t.beepboxEditor select { padding: 0 2px; }\n}\n*/\n.beepboxEditor button {\n\tmargin: 0;\n\tposition: relative;\n\theight: 2em;\n\tborder: none;\n\tborder-radius: 0.4em;\n\tbackground: #444;\n\tcolor: inherit;\n\tfont-size: inherit;\n\tfont-family: inherit;\n\tcursor: pointer;\n}\n.beepboxEditor button:focus {\n\tbackground: #777;\n\toutline: none;\n}\n.beepboxEditor button.playButton, .beepboxEditor button.pauseButton {\n\tpadding-left: 2em;\n}\n.beepboxEditor button.playButton::before {\n\tcontent: \"\";\n\tposition: absolute;\n\tleft: 0.7em;\n\ttop: 50%;\n\tmargin-top: -0.65em;\n\tborder-left: 1em solid currentColor;\n\tborder-top: 0.65em solid transparent;\n\tborder-bottom: 0.65em solid transparent;\n\tpointer-events: none;\n}\n.beepboxEditor button.pauseButton::before {\n\tcontent: \"\";\n\tposition: absolute;\n\tleft: 0.7em;\n\ttop: 50%;\n\tmargin-top: -0.65em;\n\twidth: 0.3em;\n\theight: 1.3em;\n\tbackground: currentColor;\n\tpointer-events: none;\n}\n.beepboxEditor button.pauseButton::after {\n\tcontent: \"\";\n\tposition: absolute;\n\tleft: 1.4em;\n\ttop: 50%;\n\tmargin-top: -0.65em;\n\twidth: 0.3em;\n\theight: 1.3em;\n\tbackground: currentColor;\n\tpointer-events: none;\n}\n\n.beepboxEditor button.prevBarButton::before {\n\tcontent: \"\";\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\tmargin-left: -0.5em;\n\tmargin-top: -0.5em;\n\twidth: 0.2em;\n\theight: 1em;\n\tbackground: currentColor;\n\tpointer-events: none;\n}\n.beepboxEditor button.prevBarButton::after {\n\tcontent: \"\";\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\tmargin-left: -0.3em;\n\tmargin-top: -0.5em;\n\tborder-right: 0.8em solid currentColor;\n\tborder-top: 0.5em solid transparent;\n\tborder-bottom: 0.5em solid transparent;\n\tpointer-events: none;\n}\n\n.beepboxEditor button.nextBarButton::before {\n\tcontent: \"\";\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\tmargin-left: -0.5em;\n\tmargin-top: -0.5em;\n\tborder-left: 0.8em solid currentColor;\n\tborder-top: 0.5em solid transparent;\n\tborder-bottom: 0.5em solid transparent;\n\tpointer-events: none;\n}\n.beepboxEditor button.nextBarButton::after {\n\tcontent: \"\";\n\tposition: absolute;\n\tleft: 50%;\n\ttop: 50%;\n\tmargin-left: 0.3em;\n\tmargin-top: -0.5em;\n\twidth: 0.2em;\n\theight: 1em;\n\tbackground: currentColor;\n\tpointer-events: none;\n}\n\n.beepboxEditor canvas {\n\toverflow: hidden;\n\tposition: absolute;\n\tdisplay: block;\n}\n\n.beepboxEditor .trackContainer {\n\toverflow-x: hidden;\n}\n\n.beepboxEditor .selectRow {\n\tmargin: 0;\n\theight: 2.5em;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n\tjustify-content: space-between;\n}\n\n.beepboxEditor .selectRow > span {\n\tcolor: #999;\n}\n\n.beepboxEditor .operatorRow {\n\tmargin: 0;\n\theight: 2.5em;\n\tdisplay: flex;\n\tflex-direction: row;\n\talign-items: center;\n}\n\n.beepboxEditor .operatorRow > * {\n\tflex-grow: 1;\n\tflex-shrink: 1;\n}\n\n.beepboxEditor .editor-widget-column {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n.beepboxEditor .editor-widgets {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n.beepboxEditor .editor-menus {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n.beepboxEditor .editor-settings {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n.beepboxEditor .editor-song-settings {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n.beepboxEditor .editor-instrument-settings {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n.beepboxEditor .editor-right-widget-column {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n.beepboxEditor .editor-right-menus {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n.beepboxEditor .editor-right-settings {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n.beepboxEditor .editor-right-song-settings {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n.beepboxEditor .editor-right-instrument-settings {\n\tdisplay: flex;\n\tflex-direction: column;\n}\n\n.beepboxEditor .editor-right-side-top > *, .beepboxEditor .editor-right-side-bottom > * {\n\tflex-shrink: 0;\n}\n\n.beepboxEditor input[type=text], .beepboxEditor input[type=number] {\n\tfont-size: inherit;\n\tbackground: transparent;\n\tborder: 1px solid #777;\n\tcolor: white;\n}\n\n.beepboxEditor input[type=checkbox] {\n  transform: scale(1.5);\n}\n\n.beepboxEditor input[type=range] {\n\t-webkit-appearance: none;\n\tcolor: inherit;\n\twidth: 100%;\n\theight: 2em;\n\tfont-size: inherit;\n\tmargin: 0;\n\tcursor: pointer;\n\tbackground-color: black;\n\ttouch-action: pan-y;\n}\n.beepboxEditor input[type=range]:focus {\n\toutline: none;\n}\n.beepboxEditor input[type=range]::-webkit-slider-runnable-track {\n\twidth: 100%;\n\theight: 0.5em;\n\tcursor: pointer;\n\tbackground: #444;\n}\n.beepboxEditor input[type=range]::-webkit-slider-thumb {\n\theight: 2em;\n\twidth: 0.5em;\n\tborder-radius: 0.25em;\n\tbackground: currentColor;\n\tcursor: pointer;\n\t-webkit-appearance: none;\n\tmargin-top: -0.75em;\n}\n.beepboxEditor input[type=range]:focus::-webkit-slider-runnable-track {\n\tbackground: #777;\n}\n.beepboxEditor input[type=range]::-moz-range-track {\n\twidth: 100%;\n\theight: 0.5em;\n\tcursor: pointer;\n\tbackground: #444;\n}\n.beepboxEditor input[type=range]:focus::-moz-range-track {\n\tbackground: #777;\n}\n.beepboxEditor input[type=range]::-moz-range-thumb {\n\theight: 2em;\n\twidth: 0.5em;\n\tborder-radius: 0.25em;\n\tborder: none;\n\tbackground: currentColor;\n\tcursor: pointer;\n}\n.beepboxEditor input[type=range]::-ms-track {\n\twidth: 100%;\n\theight: 0.5em;\n\tcursor: pointer;\n\tbackground: #444;\n\tborder-color: transparent;\n}\n.beepboxEditor input[type=range]:focus::-ms-track {\n\tbackground: #777;\n}\n.beepboxEditor input[type=range]::-ms-thumb {\n\theight: 2em;\n\twidth: 0.5em;\n\tborder-radius: 0.25em;\n\tbackground: currentColor;\n\tcursor: pointer;\n}\n.beepboxEditor .hintButton {\n\tborder: 1px solid currentColor;\n\tborder-radius: 50%;\n\ttext-decoration: none;\n\twidth: 1em;\n\theight: 1em;\n\ttext-align: center;\n\tmargin-left: auto;\n\tmargin-right: .4em;\n\tcursor: pointer;\n}\n\n/* wide screen */\n@media (min-width: 501px) {\n\t#beepboxEditorContainer {\n\t\tdisplay: table;\n\t}\n\t.beepboxEditor {\n\t\tflex-direction: row;\n\t}\n\t.beepboxEditor:focus-within {\n\t\toutline: 3px solid #555;\n\t}\n\t.beepboxEditor .trackContainer {\n\t\twidth: 512px;\n\t}\n\t.beepboxEditor .trackSelectBox {\n\t\tdisplay: none;\n\t}\n\t.beepboxEditor .playback-controls {\n\t\tdisplay: flex;\n\t\tflex-direction: column;\n\t}\n\t.beepboxEditor .playback-bar-controls {\n\t\tdisplay: flex;\n\t\tflex-direction: row;\n\t\tmargin: .2em 0;\n\t}\n\t.beepboxEditor .playback-volume-controls {\n\t\tdisplay: flex;\n\t\tflex-direction: row;\n\t\tmargin: .2em 0;\n\t\talign-items: center;\n\t}\n\t.beepboxEditor .pauseButton, .beepboxEditor .playButton {\n\t\tflex-grow: 1;\n\t}\n\t.beepboxEditor .nextBarButton, .beepboxEditor .prevBarButton {\n\t\tflex-grow: 1;\n\t\tmargin-left: 10px;\n\t}\n\t.beepboxEditor .editor-widget-column {\n\t\tmargin-left: 6px;\n\t\twidth: 14em;\n\t\tflex-direction: column;\n\t}\n\t.beepboxEditor .editor-right-widget-column {\n\t\tmargin-left: 6px;\n\t\twidth: 14em;\n\t\tflex-direction: column;\n\t}\n\t.beepboxEditor .editor-widgets {\n\t\tflex-grow: 1;\n\t}\n\t.beepboxEditor .editor-right-widgets {\n\t\tflex-grow: 1;\n\t}\n\t.beepboxEditor .editor-settings input, .beepboxEditor .editor-settings select {\n\t\twidth: 8.6em;\n\t}\n\t.beepboxEditor .editor-right-settings input, .beepboxEditor .editor-right-settings select {\n\t\twidth: 8.6em;\n\t}\n\t.beepboxEditor .editor-menus > * {\n\t\tflex-grow: 1;\n\t\tmargin: .2em 0;\n\t}\n\t.beepboxEditor .editor-right-menus > * {\n\t\tflex-grow: 1;\n\t\tmargin: .2em 0;\n\t}\n\t.beepboxEditor .editor-menus > button {\n\t\tpadding: 0 2em;\n\t\twhite-space: nowrap;\n\t}\n\t.beepboxEditor .editor-right-menus > button {\n\t\tpadding: 0 2em;\n\t\twhite-space: nowrap;\n\t}\n}\n\n/* narrow screen */\n@media (max-width: 500px) {\n\t.beepboxEditor {\n\t\tflex-direction: column;\n\t}\n\t.beepboxEditor:focus-within {\n\t\toutline: none;\n\t}\n\t.beepboxEditor .editorBox {\n\t\tmax-height: 75vh;\n\t}\n\t.beepboxEditor .editor-menus {\n\t\tflex-direction: row;\n\t}\n\t.beepboxEditor .editor-right-menus {\n\t\tflex-direction: row;\n\t}\n\t.beepboxEditor .editor-menus > * {\n\t\tflex-grow: 1;\n\t\tmargin: .10em;\n\t}\n\t.beepboxEditor .editor-right-menus > * {\n\t\tflex-grow: 1;\n\t\tmargin: .2em;\n\t}\n\t.beepboxEditor .editor-menus > button {\n\t\tpadding-left: 2em;\n\t\twhite-space: nowrap;\n\t}\n\t.beepboxEditor .editor-right-menus > button {\n\t\tpadding-left: 2em;\n\t\twhite-space: nowrap;\n\t}\n\t.beepboxEditor .trackContainer {\n\t\toverflow-x: auto;\n\t}\n\t.beepboxEditor .barScrollBar {\n\t\tdisplay: none;\n\t}\n\t.beepboxEditor .playback-controls {\n\t\tdisplay: flex;\n\t\tflex-direction: row;\n\t\tmargin: .2em 0;\n\t}\n\t.beepboxEditor .playback-bar-controls {\n\t\tdisplay: flex;\n\t\tflex-direction: row;\n\t\tflex-grow: 1;\n\t}\n\t.beepboxEditor .playback-volume-controls {\n\t\tdisplay: flex;\n\t\tflex-direction: row;\n\t\talign-items: center;\n\t\tflex-grow: 1;\n\t\tmargin: 0 .2em;\n\t}\n\t.beepboxEditor .editor-widget-column {\n\t\tflex-direction: column-reverse;\n\t}\n\t.beepboxEditor .editor-settings {\n\t\tflex-direction: row;\n\t}\n\t.beepboxEditor .editor-right-widget-column {\n\t\tflex-direction: column-reverse;\n\t}\n\t.beepboxEditor .editor-right-settings {\n\t\tflex-direction: row;\n\t}\n\t.beepboxEditor .pauseButton, .beepboxEditor .playButton,\n\t.beepboxEditor .nextBarButton, .beepboxEditor .prevBarButton {\n\t\tflex-grow: 1;\n\t\tmargin: 0 .2em;\n\t}\n\t.beepboxEditor .editor-song-settings, .beepboxEditor .editor-instrument-settings {\n\t\tflex-grow: 1;\n\t\tmargin: 0 .2em;\n\t}\n\t.beepboxEditor .editor-right-song-settings, .beepboxEditor .editor-right-instrument-settings {\n\t\tflex-grow: 1;\n\t\tmargin: 0 .2em;\n\t}\n\t.beepboxEditor .editor-settings input, .beepboxEditor .editor-settings .selectContainer {\n\t\twidth: 60%;\n\t}\n\t.beepboxEditor .editor-right-settings input, .beepboxEditor .editor-right-settings .selectContainer {\n\t\twidth: 60%;\n\t}\n\t.beepboxEditor .editor-settings select {\n\t\twidth: 100%;\n\t}\n\t.beepboxEditor .editor-right-settings select {\n\t\twidth: 100%;\n\t}\n\t.fullWidthOnly {\n\t\tdisplay: none;\n\t}\n\tp {\n\t\tmargin: 1em 0.5em;\n\t}\n}\n\n"));
     document.head.appendChild(styleSheet);
 })(beepbox || (beepbox = {}));
 var beepbox;
@@ -3998,21 +3630,6 @@ var beepbox;
         return ChangeChannelBar;
     }(beepbox.Change));
     beepbox.ChangeChannelBar = ChangeChannelBar;
-    var ChangeVolBend = (function (_super) {
-        __extends(ChangeVolBend, _super);
-        function ChangeVolBend(doc, newValue) {
-            var _this = _super.call(this) || this;
-            var oldValue = doc.song.getVolBend;
-            if (oldValue != newValue) {
-                _this._didSomething();
-                doc.song.getVolBend = newValue;
-                doc.notifier.changed();
-            }
-            return _this;
-        }
-        return ChangeVolBend;
-    }(beepbox.Change));
-    beepbox.ChangeVolBend = ChangeVolBend;
     var ChangeChorus = (function (_super) {
         __extends(ChangeChorus, _super);
         function ChangeChorus(doc, newValue) {
@@ -4089,21 +3706,6 @@ var beepbox;
         return ChangeImute;
     }(beepbox.Change));
     beepbox.ChangeImute = ChangeImute;
-	
-    var ChangeIpan = (function (_super) {
-        __extends(ChangeIpan, _super);
-        function ChangeIpan(doc, oldValue, newValue) {
-            var _this = _super.call(this) || this;
-            doc.song.channels[doc.channel].instruments[doc.getCurrentInstrument()].ipan = newValue;
-            doc.notifier.changed();
-            if (oldValue != newValue)
-                _this._didSomething();
-            return _this;
-        }
-        return ChangeIpan;
-    }(beepbox.Change));
-    beepbox.ChangeIpan = ChangeIpan;
-	
     var ChangeFilter = (function (_super) {
         __extends(ChangeFilter, _super);
         function ChangeFilter(doc, newValue) {
@@ -4277,6 +3879,22 @@ var beepbox;
         return ChangeTheme;
     }(beepbox.Change));
     beepbox.ChangeTheme = ChangeTheme;
+	
+	var ChangeASettings = (function (_super) {
+        __extends(ChangeASettings, _super);
+        function ChangeASettings(doc, newValue) {
+            var _this = _super.call(this) || this;
+            if (doc.song.aSettings != newValue) {
+                doc.song.aSettings = newValue;
+                doc.notifier.changed();
+                _this._didSomething();
+            }
+            return _this;
+        }
+        return ChangeASettings;
+    }(beepbox.Change));
+    beepbox.ChangeASettings = ChangeASettings;
+	
     var ChangeLoop = (function (_super) {
         __extends(ChangeLoop, _super);
         function ChangeLoop(_doc, oldStart, oldLength, newStart, newLength) {
@@ -4372,24 +3990,6 @@ var beepbox;
         return ChangePaste;
     }(beepbox.ChangeGroup));
     beepbox.ChangePaste = ChangePaste;
-    var ChangeInsPaste = (function (_super) {
-        __extends(ChangeInsPaste, _super);
-        function ChangeInsPaste(doc, instrument) {
-            var _this = _super.call(this) || this;
-            pattern.notes = notes;
-            if (doc.song.partsPerBeat != newPartsPerBeat) {
-                _this.append(new ChangeRhythm(doc, pattern, newPartsPerBeat, doc.song.partsPerBeat));
-            }
-            if (doc.song.beatsPerBar != newBeatsPerBar) {
-                _this.append(new ChangeNoteTruncate(doc, pattern, doc.song.beatsPerBar * doc.song.partsPerBeat, newBeatsPerBar * doc.song.partsPerBeat));
-            }
-            doc.notifier.changed();
-            _this._didSomething();
-            return _this;
-        }
-        return ChangeInsPaste;
-    }(beepbox.ChangeGroup));
-    beepbox.ChangeInsPaste = ChangeInsPaste;
     var ChangePatternInstrument = (function (_super) {
         __extends(ChangePatternInstrument, _super);
         function ChangePatternInstrument(doc, newValue, pattern) {
@@ -4601,38 +4201,6 @@ var beepbox;
         return ChangeScale;
     }(beepbox.Change));
     beepbox.ChangeScale = ChangeScale;
-	
-	var ChangeMix = (function (_super) {
-        __extends(ChangeMix, _super);
-        function ChangeMix(doc, newValue) {
-            var _this = _super.call(this) || this;
-            if (doc.song.mix != newValue) {
-                doc.song.mix = newValue;
-                doc.notifier.changed();
-                _this._didSomething();
-            }
-            return _this;
-        }
-        return ChangeMix;
-    }(beepbox.Change));
-    beepbox.ChangeMix = ChangeMix;
-	
-	var ChangesampleRate = (function (_super) {
-        __extends(ChangesampleRate, _super);
-        function ChangesampleRate(doc, newValue) {
-            var _this = _super.call(this) || this;
-            if (doc.song.sampleRate != newValue) {
-                doc.song.sampleRate = newValue;
-                doc.notifier.changed();
-                _this._didSomething();
-            }
-            return _this;
-        }
-        return ChangesampleRate;
-    }(beepbox.Change));
-    beepbox.ChangesampleRate = ChangesampleRate;
-	
-	
     var ChangeSong = (function (_super) {
         __extends(ChangeSong, _super);
         function ChangeSong(doc, newHash) {
@@ -4701,6 +4269,32 @@ var beepbox;
         return ChangeRiff;
     }(beepbox.Change));
     beepbox.ChangeRiff = ChangeRiff;
+    var ChangeDrive = (function (_super) {
+        __extends(ChangeDrive, _super);
+        function ChangeDrive(doc, oldValue, newValue) {
+            var _this = _super.call(this) || this;
+            doc.song.drive = newValue;
+            doc.notifier.changed();
+            if (oldValue != newValue)
+                _this._didSomething();
+            return _this;
+        }
+        return ChangeDrive;
+    }(beepbox.Change));
+    beepbox.ChangeDrive = ChangeDrive;
+    var ChangeCsign = (function (_super) {
+        __extends(ChangeCsign, _super);
+        function ChangeCsign(doc, oldValue, newValue) {
+            var _this = _super.call(this) || this;
+            doc.song.csign = newValue;
+            doc.notifier.changed();
+            if (oldValue != newValue)
+                _this._didSomething();
+            return _this;
+        }
+        return ChangeCsign;
+    }(beepbox.Change));
+    beepbox.ChangeCsign = ChangeCsign;
     var ChangeDetune = (function (_super) {
         __extends(ChangeDetune, _super);
         function ChangeDetune(doc, oldValue, newValue) {
@@ -4714,19 +4308,6 @@ var beepbox;
         return ChangeDetune;
     }(beepbox.Change));
     beepbox.ChangeDetune = ChangeDetune;
-    var ChangeMuff = (function (_super) {
-        __extends(ChangeMuff, _super);
-        function ChangeMuff(doc, oldValue, newValue) {
-            var _this = _super.call(this) || this;
-            doc.song.muff = newValue;
-            doc.notifier.changed();
-            if (oldValue != newValue)
-                _this._didSomething();
-            return _this;
-        }
-        return ChangeMuff;
-    }(beepbox.Change));
-    beepbox.ChangeMuff = ChangeMuff;
     var ChangeNoteAdded = (function (_super) {
         __extends(ChangeNoteAdded, _super);
         function ChangeNoteAdded(doc, pattern, note, index, deletion) {
@@ -5380,8 +4961,9 @@ var beepbox;
                             notePath.setAttribute("pointer-events", "none");
                             _this._drawNote(notePath, pitch, note.start, note.pins, _this._pitchHeight / 2 + 1, true, _this._octaveOffset);
                             _this._svgNoteContainer.appendChild(notePath);
-                            if (note.pitches.length > 1) {
+                            if (note.pitches.length > 1 && !_this._doc.song.getChannelIsDrum(_this._doc.channel)) {
                                 var instrumentType = _this._doc.song.channels[_this._doc.channel].instruments[_this._doc.getCurrentInstrument()].type;
+                                if (instrumentType == 1) {
                                     var oscillatorLabel = beepbox.svgElement("text");
                                     oscillatorLabel.setAttribute("x", "" + prettyNumber(_this._partWidth * note.start + 2));
                                     oscillatorLabel.setAttribute("y", "" + prettyNumber(_this._pitchToPixelHeight(pitch - _this._octaveOffset)));
@@ -5392,6 +4974,7 @@ var beepbox;
                                     oscillatorLabel.setAttribute("pointer-events", "none");
                                     oscillatorLabel.textContent = "" + (i + 1);
                                     _this._svgNoteContainer.appendChild(oscillatorLabel);
+                                }
                             }
                         }
                     }
@@ -5407,7 +4990,12 @@ var beepbox;
                 rectangle.setAttribute("x", "1");
                 rectangle.setAttribute("y", "" + (y * this._defaultPitchHeight + 1));
                 rectangle.setAttribute("height", "" + (this._defaultPitchHeight - 2));
-                rectangle.setAttribute("fill", (i == 0) ? baseNoteColorPallet[_this._doc.song.theme] : "#444444");
+                if (_this._doc.song.theme != 19) {
+					rectangle.setAttribute("fill", (i == 0) ? baseNoteColorPallet[_this._doc.song.theme] : "#444444");
+				}
+				else {
+					rectangle.setAttribute("fill", (i == 0) ? noteOne[_this._doc.song.key] : "#444444");
+				}
                 this._svgNoteBackground.appendChild(rectangle);
                 this._backgroundPitchRows[i] = rectangle;
             }
@@ -5785,13 +5373,13 @@ var beepbox;
                             if (bendPart < prevPin.time)
                                 throw new Error();
                             var volumeRatio = (bendPart - prevPin.time) / (nextPin.time - prevPin.time);
-                            bendVolume = Math.round(prevPin.volume * (1.0 - volumeRatio) + nextPin.volume * volumeRatio + ((this._mouseYStart - this._mouseY) / 20.0));
-							if (bendVolume < 0)
+                            bendVolume = Math.round(prevPin.volume * (1.0 - volumeRatio) + nextPin.volume * volumeRatio + ((this._mouseYStart - this._mouseY) / 25.0));
+                            if (bendVolume < 0)
                                 bendVolume = 0;
-								if (bendVolume > 3) 
-								bendVolume = 3; 
-							bendInterval = this._snapToPitch(prevPin.interval * (1.0 - volumeRatio) + nextPin.interval * volumeRatio + this._cursor.curNote.pitches[0], 0, beepbox.Config.maxPitch) - this._cursor.curNote.pitches[0];
-							break;
+                            if (bendVolume > 3)
+                                bendVolume = 3;
+                            bendInterval = this._snapToPitch(prevPin.interval * (1.0 - volumeRatio) + nextPin.interval * volumeRatio + this._cursor.curNote.pitches[0], 0, beepbox.Config.maxPitch) - this._cursor.curNote.pitches[0];
+                            break;
                         }
                         this._dragTime = this._cursor.curNote.start + bendPart;
                         this._dragPitch = this._cursor.curNote.pitches[this._cursor.pitchIndex == -1 ? 0 : this._cursor.pitchIndex] + bendInterval;
@@ -5950,16 +5538,16 @@ var beepbox;
             this._label.setAttribute("fill", color);
         }
         Box.prototype.setSquashed = function (squashed, y) {
-			if (squashed) {
-				this.container.setAttribute("y", "" + (y * 27));
-				this._rect.setAttribute("height", "" + 25);
-				this._label.setAttribute("y", "" + 21);
-			}
-			else {
-				this.container.setAttribute("y", "" + (y * 32));
-				this._rect.setAttribute("height", "" + 30);
-				this._label.setAttribute("y", "" + 23);
-			}
+            if (squashed) {
+                this.container.setAttribute("y", "" + (y * 27));
+                this._rect.setAttribute("height", "" + 25);
+                this._label.setAttribute("y", "" + 21);
+            }
+            else {
+                this.container.setAttribute("y", "" + (y * 32));
+                this._rect.setAttribute("height", "" + 30);
+                this._label.setAttribute("y", "" + 23);
+            }
         };
         Box.prototype.setIndex = function (index, dim, selected, y, color) {
             if (this._renderedIndex != index) {
@@ -6231,7 +5819,7 @@ var beepbox;
         TrackEditor.prototype.render = function () {
             this._pattern = this._doc.getCurrentPattern();
             var wideScreen = window.innerWidth > 700;
-            var squashed = !wideScreen || this._doc.song.getChannelCount() > 5 || (this._doc.song.barCount > this._doc.trackVisibleBars && this._doc.song.getChannelCount() > 3);
+            var squashed = !wideScreen || this._doc.song.getChannelCount() > 4 || (this._doc.song.barCount > this._doc.trackVisibleBars && this._doc.song.getChannelCount() > 3);
             this._channelHeight = squashed ? 27 : 32;
             if (this._renderedChannelCount != this._doc.song.getChannelCount()) {
                 for (var y = this._renderedChannelCount; y < this._doc.song.getChannelCount(); y++) {
@@ -7190,7 +6778,7 @@ var beepbox;
             this._preview.style.left = "0px";
             this._preview.style.top = this._pitchHeight * (this._pitchCount - this._cursorPitch - 1) + "px";
             this._previewGraphics.lineWidth = 2;
-            this._previewGraphics.strokeStyle = "#ff7200";
+            this._previewGraphics.strokeStyle = "#ffffff";
             this._previewGraphics.strokeRect(1, 1, this._editorWidth - 2, this._pitchHeight - 2);
         };
         return Piano;
@@ -7211,7 +6799,6 @@ var beepbox;
             this._instrumentsStepper = input({ style: "width: 3em; margin-left: 1em;", type: "number", step: "1" });
             this._pitchChannelStepper = input({ style: "width: 3em; margin-left: 1em;", type: "number", step: "1" });
             this._drumChannelStepper = input({ style: "width: 3em; margin-left: 1em;", type: "number", step: "1" });
-            this._volBendStepper = input({ style: "width: 3em; margin-left: 1em;", type: "number", step: "1" });
             this._okayButton = button({ style: "width:45%;" }, [text("Okay")]);
             this._cancelButton = button({ style: "width:45%;" }, [text("Cancel")]);
             this.container = div({ className: "prompt", style: "width: 250px;" }, [
@@ -7265,14 +6852,12 @@ var beepbox;
                 _this._instrumentsStepper.removeEventListener("keypress", SongDurationPrompt._validateKey);
                 _this._pitchChannelStepper.removeEventListener("keypress", SongDurationPrompt._validateKey);
                 _this._drumChannelStepper.removeEventListener("keypress", SongDurationPrompt._validateKey);
-                _this._volBendStepper.removeEventListener("keypress", SongDurationPrompt._validateKey);
                 _this._beatsStepper.removeEventListener("blur", SongDurationPrompt._validateNumber);
                 _this._barsStepper.removeEventListener("blur", SongDurationPrompt._validateNumber);
                 _this._patternsStepper.removeEventListener("blur", SongDurationPrompt._validateNumber);
                 _this._instrumentsStepper.removeEventListener("blur", SongDurationPrompt._validateNumber);
                 _this._pitchChannelStepper.removeEventListener("blur", SongDurationPrompt._validateNumber);
                 _this._drumChannelStepper.removeEventListener("blur", SongDurationPrompt._validateNumber);
-                _this._volBendStepper.removeEventListener("blur", SongDurationPrompt._validateNumber);
             };
             this._saveChanges = function () {
                 var group = new beepbox.ChangeGroup();
@@ -7281,7 +6866,6 @@ var beepbox;
                 group.append(new beepbox.ChangePatternsPerChannel(_this._doc, SongDurationPrompt._validate(_this._patternsStepper)));
                 group.append(new beepbox.ChangeInstrumentsPerChannel(_this._doc, SongDurationPrompt._validate(_this._instrumentsStepper)));
                 group.append(new beepbox.ChangeChannelCount(_this._doc, SongDurationPrompt._validate(_this._pitchChannelStepper), SongDurationPrompt._validate(_this._drumChannelStepper)));
-                group.append(new beepbox.ChangeVolBend(_this._doc, SongDurationPrompt._validate(_this._volBendStepper)));
                 _this._doc.prompt = null;
                 _this._doc.record(group, true);
             };
@@ -7303,9 +6887,6 @@ var beepbox;
             this._drumChannelStepper.value = this._doc.song.drumChannelCount + "";
             this._drumChannelStepper.min = beepbox.Config.drumChannelCountMin + "";
             this._drumChannelStepper.max = beepbox.Config.drumChannelCountMax + "";
-            this._volBendStepper.value = this._doc.song.volBendCount + "";
-            this._volBendStepper.min = beepbox.Config.volBendMin + "";
-            this._volBendStepper.max = beepbox.Config.volBendMax + "";
             this._okayButton.addEventListener("click", this._saveChanges);
             this._cancelButton.addEventListener("click", this._close);
             this._beatsStepper.addEventListener("keypress", SongDurationPrompt._validateKey);
@@ -7314,14 +6895,12 @@ var beepbox;
             this._instrumentsStepper.addEventListener("keypress", SongDurationPrompt._validateKey);
             this._pitchChannelStepper.addEventListener("keypress", SongDurationPrompt._validateKey);
             this._drumChannelStepper.addEventListener("keypress", SongDurationPrompt._validateKey);
-            this._volBendStepper.addEventListener("keypress", SongDurationPrompt._validateKey);
             this._beatsStepper.addEventListener("blur", SongDurationPrompt._validateNumber);
             this._barsStepper.addEventListener("blur", SongDurationPrompt._validateNumber);
             this._patternsStepper.addEventListener("blur", SongDurationPrompt._validateNumber);
             this._instrumentsStepper.addEventListener("blur", SongDurationPrompt._validateNumber);
             this._pitchChannelStepper.addEventListener("blur", SongDurationPrompt._validateNumber);
             this._drumChannelStepper.addEventListener("blur", SongDurationPrompt._validateNumber);
-            this._volBendStepper.addEventListener("blur", SongDurationPrompt._validateNumber);
         }
         SongDurationPrompt._validateKey = function (event) {
             var charCode = (event.which) ? event.which : event.keyCode;
@@ -7432,7 +7011,7 @@ var beepbox;
             var _this = this;
             this._doc = _doc;
             this._songEditor = _songEditor;
-            this._fileName = input({ type: "text", style: "width: 10em;", value: ("Modbox-Song"), maxlength: 250 });
+            this._fileName = input({ type: "text", style: "width: 10em;", value: "BeepBox-Song", maxlength: 250 });
             this._enableIntro = input({ type: "checkbox" });
             this._loopDropDown = input({ style: "width: 2em;", type: "number", min: "1", max: "4", step: "1" });
             this._enableOutro = input({ type: "checkbox" });
@@ -7485,13 +7064,11 @@ var beepbox;
                     }
                 }
                 var sampleFrames = synth.totalSamples;
-				var sampleFramesRight = synth.totalSamples;
-                var recordedSamplesLeft = new Float32Array(sampleFrames);
-				var recordedSamplesRight = new Float32Array(sampleFramesRight);
-                synth.synthesize(recordedSamplesLeft, recordedSamplesRight, sampleFrames);
-                var srcChannelCount = 2;
-                var wavChannelCount = 2;
-                var sampleRate = synth.samplesPerSecond;
+                var recordedSamples = new Float32Array(sampleFrames);
+                synth.synthesize(recordedSamples, sampleFrames);
+                var srcChannelCount = 1;
+                var wavChannelCount = 1;
+                var sampleRate = 44100;
                 var bytesPerSample = 2;
                 var bitsPerSample = 8 * bytesPerSample;
                 var sampleCount = wavChannelCount * sampleFrames;
@@ -7535,23 +7112,17 @@ var beepbox;
                     stride = srcChannelCount;
                     repeat = wavChannelCount;
                 }
-                var valLeft;
-				var valRight;
+                var val;
                 if (bytesPerSample > 1) {
                     for (var i = 0; i < sampleFrames; i++) {
-                        valLeft = Math.floor(recordedSamplesLeft[i * stride] * ((1 << (bitsPerSample - 1)) - 1));
-						valRight = Math.floor(recordedSamplesRight[i * stride] * ((1 << (bitsPerSample - 1)) - 1));
+                        val = Math.floor(recordedSamples[i * stride] * ((1 << (bitsPerSample - 1)) - 1));
                         for (var k = 0; k < repeat; k++) {
                             if (bytesPerSample == 2) {
-                                data.setInt16(index, valLeft, true);
-                                index += 2;
-								data.setInt16(index, valRight, true);
+                                data.setInt16(index, val, true);
                                 index += 2;
                             }
                             else if (bytesPerSample == 4) {
-                                data.setInt32(index, valLeft, true);
-                                index += 4;
-								data.setInt32(index, valRight, true);
+                                data.setInt32(index, val, true);
                                 index += 4;
                             }
                             else {
@@ -7562,12 +7133,9 @@ var beepbox;
                 }
                 else {
                     for (var i = 0; i < sampleFrames; i++) {
-                        valLeft = Math.floor(recordedSamplesLeft[i * stride] * 127 + 128);
-						valRight = Math.floor(recordedSamplesRight[i * stride] * 127 + 128);
+                        val = Math.floor(recordedSamples[i * stride] * 127 + 128);
                         for (var k = 0; k < repeat; k++) {
-                            data.setUint8(index, valLeft > 255 ? 255 : (valLeft < 0 ? 0 : valLeft));
-                            index++;
-							data.setUint8(index, valRight > 255 ? 255 : (valRight < 0 ? 0 : valRight));
+                            data.setUint8(index, val > 255 ? 255 : (val < 0 ? 0 : val));
                             index++;
                         }
                     }
@@ -7638,9 +7206,9 @@ var beepbox;
                     writeVariableLength(string.length);
                     for (var i = 0; i < string.length; i++) {
                         var charCode = string.charCodeAt(i);
-                        if (charCode > 0x7f)
-                            throw new Error("Trying to write unicode character as ascii.");
-                        writeUint8(charCode);
+                        //if (charCode > 0x7f)
+                            //throw new Error("Trying to write unicode character as ascii.");
+                        //writeUint8(charCode);
                     }
                 }
                 var song = _this._doc.song;
@@ -7773,7 +7341,7 @@ var beepbox;
                             if (pattern != null) {
                                 var nextInstrument = pattern.instrument;
                                 var instrument = song.channels[channel].instruments[nextInstrument];
-                                if (isDrums || instrument.type == 1 || instrument.chorus == 0) {
+                                if (isChorus && (isDrums || instrument.type == 1 || instrument.chorus == 0)) {
                                     barStartTime += ticksPerBar;
                                     continue;
                                 }
@@ -7786,8 +7354,6 @@ var beepbox;
                                         description += ", noise: " + beepbox.Config.drumNames[instrument.wave];
                                         description += ", volume: " + beepbox.Config.volumeNames[instrument.volume];
                                         description += ", transition: " + beepbox.Config.transitionNames[instrument.transition];
-										description += ", harm: " + beepbox.Config.harmNames[instrument.harm];
-										description += ", octoff: " + beepbox.Config.octoffNames[instrument.octoff];
                                         instrumentProgram = 0x7E;
                                     }
                                     else {
@@ -7801,7 +7367,6 @@ var beepbox;
                                             description += ", effect: " + beepbox.Config.effectNames[instrument.effect];
 											description += ", harm: " + beepbox.Config.harmNames[instrument.harm];
 											description += ", imute: " + beepbox.Config.imuteNames[instrument.imute];
-											description += ", ipan: " + beepbox.Config.ipanValues[instrument.ipan];
 											description += ", octoff: " + beepbox.Config.octoffNames[instrument.octoff];
                                             var filterInstruments = beepbox.Config.filterDecays[instrument.filter] == 0 ? beepbox.Config.midiSustainInstruments : beepbox.Config.midiDecayInstruments;
                                             instrumentProgram = filterInstruments[instrument.wave];
@@ -7814,7 +7379,6 @@ var beepbox;
                                             description += ", feedbackType: " + beepbox.Config.midiFeedbackNames[instrument.feedbackType];
                                             description += ", feedbackAmplitude: " + instrument.feedbackAmplitude;
                                             description += ", feedbackEnvelope: " + beepbox.Config.operatorEnvelopeNames[instrument.feedbackEnvelope];
-											description += ", volume: " + beepbox.Config.volumeNames[instrument.volume];
                                             for (var i = 0; i < beepbox.Config.operatorCount; i++) {
                                                 var operator = instrument.operators[i];
                                                 description += ", operator" + (i + 1) + ": {";
@@ -7852,9 +7416,8 @@ var beepbox;
                                 if (!isDrums) {
                                     if (instrument.type == 0) {
                                         chorusOffset = beepbox.Config.chorusIntervals[instrument.chorus];
-                                        if (!isChorus) {
+                                        if (!isChorus)
                                             chorusOffset *= -1;
-										}
                                         chorusOffset += beepbox.Config.chorusOffsets[instrument.chorus];
                                         chorusHarmonizes = beepbox.Config.chorusHarmonizes[instrument.chorus];
                                     }
@@ -7976,7 +7539,7 @@ var beepbox;
                     _loop_1(track);
                 }
                 arrayBuffer = ArrayBuffer.transfer(arrayBuffer, fileSize);
-                var blob = new Blob([arrayBuffer], { type: "audio/mid" });
+                var blob = new Blob([arrayBuffer], { type: "audio/midi" });
                 save(blob, _this._fileName.value.trim() + ".midi");
                 _this._close();
             };
@@ -8084,7 +7647,6 @@ var beepbox;
             this.container = div({ className: "prompt", style: "width: 200px;" }, [
                 div({ style: "font-size: 1em" }, [text("Refresh?")]),
                 div(undefined, [text("In order for the theme to change the song must refresh. If you refresh on your own after canceling your theme will not update.")]),
-				div(undefined, [text("If you use a browser that does not support automatic refreshing, like Microsoft Edge, you will have to refresh manually.")]),
 				div(undefined, [text("Would you like to refresh now?")]),
                 this._refreshButton,
 				this._cancelButton,
@@ -8137,47 +7699,6 @@ var beepbox;
 
 (function (beepbox) {
     var button = beepbox.html.button, div = beepbox.html.div, text = beepbox.html.text;
-    var mixPrompt = (function () {
-        function mixPrompt(_doc, _songEditor) {
-            var _this = this;
-            this._doc = _doc;
-            this._songEditor = _songEditor;
-            this._cancelButton = button({}, [text("Close")]);
-            this.container = div({ className: "prompt", style: "width: 300px;" }, [
-                div({ style: "font-size: 2em" }, [text("Mixing Styles")]),
-                div({ style: "text-align: left; margin: 0.5em 0;" }, [
-                    text('Mixing styles are a way how changing how loud or soft different sounds are and can change the way different sounds blend and mix together. Using different mixing styles can drastically change your song.'),
-				]),
-				div({ style: "text-align: left; margin: 0.5em 0;" }, [
-                    text('Type A Mixing is akin to mixing in vanilla Beepbox, Sandbox, and most other beepbox mods. In this mixing type, the drums are about twice as loud as in Type B mixing and the sound is generally a bit sharper and blends together differently.'),
-				]),
-				div({ style: "text-align: left; margin: 0.5em 0;" }, [
-                    text('Type B Mixing is regular Modbox mixing.'),
-				]),
-				div({ style: "text-align: left; margin: 0.5em 0;" }, [
-                    text('Type C Mixing is like Type B, save for a few upgrades. There are more volume options in Type C mixing, certain waves (acoustic bass, lyre, ramp pulse, and piccolo) are a bit quieter, the flatline wave is a bit louder, and blending works slightly differently.'),
-                ]),
-				div({ style: "text-align: left; margin: 0.5em 0;" }, [
-                    text('Type D Mixing includes slightly quieter drums from Type B, but also includes sharper sounds for regular notes in pitch channels.'),
-                ]),
-                this._cancelButton,
-            ]);
-            this._close = function () {
-                _this._doc.undo();
-            };
-            this.cleanUp = function () {
-                _this._cancelButton.removeEventListener("click", _this._close);
-            };
-            this._cancelButton.addEventListener("click", this._close);
-        }
-        return mixPrompt;
-    }());
-    beepbox.mixPrompt = mixPrompt;
-})(beepbox || (beepbox = {}));
-var beepbox;
-
-(function (beepbox) {
-    var button = beepbox.html.button, div = beepbox.html.div, text = beepbox.html.text;
     var InstrumentTypePrompt = (function () {
         function InstrumentTypePrompt(_doc, _songEditor) {
             var _this = this;
@@ -8187,18 +7708,16 @@ var beepbox;
             this.container = div({ className: "prompt", style: "width: 300px;" }, [
                 div({ style: "font-size: 2em" }, [text("FM Synthesis")]),
                 div({ style: "text-align: left; margin: 0.5em 0;" }, [
-                    text('Popularized by the Sega Genesis and Yamaha keyboards, FM Synthesis is a mysterious but powerful technique for crafting sounds. It may seem confusing, but just play around with the options until you get a feel for it, check out some examples in '),
+                    text('Popularized by the Sega Genesis and Yamaha keyboards, FM Synthesis is a mysterious but powerful technique for crafting sounds. It may seem confusing, but just play around with the options until you get a feel for it, or check out some examples in '),
                     beepbox.html.element("a", { target: "_blank", href: "#6n10s0kbl00e07t5m0a7g07j7i7r1o2T1d2c0A0F1B0V1Q0200Pff00E0411T1d1c0A0F0B0V1Q2800Pf700E0711T1d2c0A0F1B4VaQ0200Pfb00E0911T1d1c2A0F9B3V1Q1000Pfbc0E0191T1d2c0AcF8B5V1Q0259PffffE0000T1d3c1AcF4B5V4Q2600Pff00E0011T1d1c0AbF0B0V1Q2580PfffaE2226T1d1c0A1F0B0V1Q520dPff4dEd41eb4zhmu0p21h5dfxd7ij7XrjfiAjPudUTtUSRsTzudTudJvdUTztTzrpPudUTtUSSYTzudTudJTdUTztTzrvPudUTtUSQ" }, [text("this demo")]),
-                    text(", or find some instruments to use in the Beepbox Discord's FM sheet "),
-					 beepbox.html.element("a", { target: "_blank", href: "https://docs.google.com/spreadsheets/d/1ddbXnrP7yvv5X4oUur9boi3AxcI-Xxz1XIHIAo-wi0s/edit#gid=230623845" }, [text("right here")]),
-					 text(".")
+                    text('. '),
                 ]),
                 div({ style: "text-align: left; margin: 0.5em 0;" }, [text('This FM instrument uses up to four waves, numbered 1, 2, 3, and 4. ' +
                         'Each wave may have its own frequency, volume, and volume envelope to control its effect over time. ')]),
                 div({ style: "text-align: left; margin: 0.5em 0;" }, [text('There are two kinds of waves: "carrier" waves play a tone out loud, but "modulator" waves distort other waves instead. ' +
                         'Wave 1 is always a carrier and plays a tone, but other waves may distort it. ' +
                         'The "Algorithm" setting determines which waves are modulators, and which other waves those modulators distort. ')]),
-                div({ style: "text-align: left; margin: 0.5em 0;" }, [text('Modulators distort in one direction (like 1←2), but you can also use "Feedback" to make any wave distort in the opposite direction (1→2), in both directions (1🗘2), or even itself (1⟲). ')]),
+                div({ style: "text-align: left; margin: 0.5em 0;" }, [text('Modulators distort in one direction (like 1←2), but you can also use "Feedback" to make any wave distort in the opposite direction (1→2), or even itself (1⟲). ')]),
                 div({ style: "text-align: left; margin: 0.5em 0;" }, [text('You can set the pitch of each wave independently by adding simultaneous notes, one above another. This often sounds harsh or dissonant, but can make cool sound effects! ')]),
                 this._cancelButton,
             ]);
@@ -8228,7 +7747,7 @@ var beepbox;
                 div({ style: "text-align: left;" }, [text('BeepBox "chip" instruments play two waves at once, each with their own pitch. ')]),
 				div({ style: "text-align: left;" }, [text('By placing two notes one above another it will play two indivdual sounds. ' +
                         'This replaces the "arpeggio/trill" effect, and gives you greater control over your harmony. ')]),
-				div({ style: "text-align: left;" }, [text('In older versions of Modbox, union would not allow notes to harmonize properly and needed a special harmonic chorus in order to work. This has been patched in Modbox 3.1.0. ')]),
+				div({ style: "text-align: left;" }, [text('Due to an error union will not allow notes to harmonize properly. ')]),
                 this._cancelButton,
             ]);
             this._close = function () {
@@ -8243,114 +7762,6 @@ var beepbox;
     }());
     beepbox.ChorusPrompt = ChorusPrompt;
 })(beepbox || (beepbox = {}));
-var beepbox; 
-(function (beepbox) {
-    var button = beepbox.html.button, div = beepbox.html.div, text = beepbox.html.text;
-    var ArchivePrompt = (function () {
-        function ArchivePrompt(_doc, _songEditor) {
-            var _this = this;
-            this._doc = _doc;
-            this._songEditor = _songEditor;
-            this._cancelButton = button({}, [text("No thanks!")]);
-            this.container = div({ className: "prompt", style: "width: 250px;" }, [
-                div({ style: "font-size: 2em" }, [text("Archives")]),
-				div({ style: "text-align: center;" }, [text('These are the Archives. Below are previous versions of Modded Beepbox/Sandbox that you are able to play around with, changelog included. Go nuts!')]),
-                div({ style: "text-align: center;" }, [
-					beepbox.html.element("a", { target: "_blank", href: "mb-archives/1.3.0.htm" }, [text("MB 1.3.0")]), text(" | "),
-					beepbox.html.element("a", { target: "_blank", href: "mb-archives/1.6.0.htm" }, [text("MB 1.6.0")]), text(" | "),
-					beepbox.html.element("a", { target: "_blank", href: "mb-archives/1.9.1.htm" }, [text("MB 1.9.1")]), text(" | "),
-					beepbox.html.element("a", { target: "_blank", href: "mb-archives/2.0.0.htm" }, [text("MB v2.0.0")]), text(" | "),
-					beepbox.html.element("a", { target: "_blank", href: "mb-archives/2.3.0.htm" }, [text("MB v2.2.2")]), text(" | "),
-					beepbox.html.element("a", { target: "_blank", href: "mb-archives/2.3.html" }, [text("MB v2.3.0")]), text(" | "),
-					beepbox.html.element("a", { target: "_blank", href: "mb-archives/3.0.html" }, [text("MB v3.0.3")]), text(" | "),
-					beepbox.html.element("a", { target: "_blank", href: "sb-archives/1.2.1.htm" }, [text("SB v1.2.1")]), text(" | "),
-					beepbox.html.element("a", { target: "_blank", href: "sb-archives/1.3.0.htm" }, [text("SB v1.3.0")]), text(" | "),
-					beepbox.html.element("a", { target: "_blank", href: "sb-archives/1.4.0.htm" }, [text("SB v1.4.0")]), text(" | "),
-					beepbox.html.element("a", { target: "_blank", href: "sb-archives/2.0.6.1.htm" }, [text("SB v2.0.6.1")]), text(" | "),
-					beepbox.html.element("a", { target: "_blank", href: "sb-archives/2.1.3.htm" }, [text("SB v2.1.3")]), text(" | "),
-					beepbox.html.element("a", { target: "_blank", href: "sb-archives/3.0.0.htm" }, [text("SB v3.0.0")]), text(" | "),
-					beepbox.html.element("a", { target: "_blank", href: "changelogs/mbchangelog.html" }, [text("Changelog")]),
-				]),
-                this._cancelButton,
-            ]);
-            this._close = function () {
-                _this._doc.undo();
-            };
-            this.cleanUp = function () {
-                _this._cancelButton.removeEventListener("click", _this._close);
-            };
-            this._cancelButton.addEventListener("click", this._close);
-        }
-        return ArchivePrompt;
-    }());
-    beepbox.ArchivePrompt = ArchivePrompt;
-})(beepbox || (beepbox = {}));
-var beepbox;
-(function (beepbox) {
-    var button = beepbox.html.button, div = beepbox.html.div, text = beepbox.html.text;
-    var ChipPrompt = (function () {
-        function ChipPrompt(_doc, _songEditor) {
-            var _this = this;
-            this._doc = _doc;
-            this._songEditor = _songEditor;
-            this._cancelButton = button({}, [text("Cancel")]);
-            this.container = div({ className: "prompt", style: "width: 250px;" }, [
-                div({ style: "font-size: 2em" }, [text("Chip and Noise")]),
-                div({ style: "text-align: left;" }, [text('Mostly popularized by early Retro video games, such as Super Mario Bros. or Pokemon, Chip and Noise sound effects are used in the chiptune music of the past and the modern electronic music of today.')]),
-                div({ style: "text-align: left;" }, [text('Chip is normally used for the main track, bassline, and melody. Many people who use the original beepbox will be familiar with the Waveforms it uses; Triangle, Square, Pulse Wide, Etc.. ' +
-				'Sandbox expands that list way more than needed, each waveform having a unique sound.')]),
-                div({ style: "text-align: left;" }, [text('Noise, otherwise called Drums, go hand in hand with Chip, being used for background noise, having a distinct different from chip.')]),
-                div({ style: "text-align: left;" }, [text('A rather overcomplecated example of the two in use can be found in '),
-				beepbox.html.element("a", { target: "_blank", href: "#6n73z0sbu1kbl1de00tcm0x0y0Hea7g1djvi9r1o3321343000T0w1f0d1c0q0G0M0B0h0v0T0w1f1d1c0q0G0M0B0h0v1T0w1f0d1c0q0G0M0B0h0v0T0w1f0d1c0q0G0M0B0h0v0T0w1f0d1c0q0G0M0B0h0v0T0w1f0d1c0q0G0M0B0h0v0T0w1f0d1c0q0G0M0B0h0v0T0w1f0d1c0q0G0M0B0h0v0T0w1f0d1c0q0G0M0B0h0v0T0w1f0d1c0q0G0M0B0h0v0T1d1c0B0M0AaF6_bV1v0Q0000Pfff9E0001T1d1c0B0M0A5F4_eV4v0Q0002Pff55E0011T1d1c0B0M0AcF8_8V1v0Q0000PffffE1111T1d1c0B0M0AcF8_8V1v0Q0000PffffE1111T1d1c0B0M0AcF8_8V1v0Q0000PffffE1111T1d1c0B0M0AcF8_8V1v0Q0000PffffE1111T1d1c0B0M0AcF8_8V1v0Q0000PffffE1111T1d1c0B0M0AcF8_8V1v0Q0000PffffE1111T1d1c0B0M0AcF8_8V1v0Q0000PffffE1111T1d1c0B0M0AcF8_8V1v0Q0000PffffE1111T0wgf1d1c0q1G0M0B0h0v3T0w1f1d1c0q0G0M0B0h0v0T0w1f1d1c0q0G0M0B0h0v0T0w1f1d1c0q0G0M0B0h0v0T0w1f1d1c0q0G0M0B0h0v0T0w1f1d1c0q0G0M0B0h0v0T0w1f1d1c0q0G0M0B0h0v0T0w1f1d1c0q0G0M0B0h0v0T0w1f1d1c0q0G0M0B0h0v0T0w1f1d1c0q0G0M0B0h0v0T0whf1d1c0q0G0M0B0h0v0T0whfcd1c0q0G0M0B0h0v0T0w1f0d1c0q0G0M0B0h0v0T0w1f1d1c0q0G0M0B0h0v0T0w1f1d1c0q0G0M0B0h0v0T0w1f1d1c0q0G0M0B0h0v0T0w1f1d1c0q0G0M0B0h0v0T0w1f1d1c0q0G0M0B0h0v0T0w1f1d1c0q0G0M0B0h0v0T0w1f1d1c0q0G0M0B0h0v0T0wdf1d1c0q0G0M0B0h0v0T0w1f1d1c0q0G0M0B0h0v0T0w1f1d1c0q0G0M0B0h0v0T0w1f1d1c0q0G0M0B0h0v0T0w1f1d1c0q0G0M0B0h0v0T0w1f1d1c0q0G0M0B0h0v0T0w1f1d1c0q0G0M0B0h0v0T0w1f1d1c0q0G0M0B0h0v0T0w1f1d1c0q0G0M0B0h0v0T0w1f1d1c0q0G0M0B0h0v0T0wef1d1c0q0G0M0B6hev0T0w0f0d1c0q0G0M0B3h0v0T0w1f1d1c0q0G0M0B0h0v0T0w1f1d1c0q0G0M0B0h0v0T0w1f1d1c0q0G0M0B0h0v0T0w1f1d1c0q0G0M0B0h0v0T0w1f1d1c0q0G0M0B0h0v0T0w1f1d1c0q0G0M0B0h0v0T0w1f1d1c0q0G0M0B0h0v0T0w1f1d1c0q0G0M0B0h0v0T1d6c0B0M0A0F0_cV1v0Q0000Pf000E0111T0w1f1d1c0q0G0M0B0h0v0T0w1f1d1c0q0G0M0B0h0v0T0w1f1d1c0q0G0M0B0h0v0T0w1f1d1c0q0G0M0B0h0v0T0w1f1d1c0q0G0M0B0h0v0T0w1f1d1c0q0G0M0B0h0v0T0w1f1d1c0q0G0M0B0h0v0T0w1f1d1c0q0G0M0B0h0v0T0w1f1d1c0q0G0M0B0h0v0T0w5d1v1G0q0B0M0T0w0d1v3G0q0B0M0T0w5d1v1G0q0B0M0T0w5d1v1G0q0B0M0T0w5d1v1G0q0B0M0T0w5d1v1G0q0B0M0T0w5d1v1G0q0B0M0T0w5d1v1G0q0B0M0T0w5d1v1G0q0B0M0T0w5d1v1G0q0B0M0T0w6d1v1G0q0B0M0T0w4d1v0G0q0B0M0T0w6d1v1G0q0B0M0T0w6d1v1G0q0B0M0T0w6d1v1G0q0B0M0T0w6d1v1G0q0B0M0T0w6d1v1G0q0B0M0T0w6d1v1G0q0B0M0T0w6d1v1G0q0B0M0T0w6d1v1G0q0B0M0T0w1d1v0G0q0B0M0T0w0d1v1G0q0B0M0T0w1d1v0G0q0B0M0T0w1d1v0G0q0B0M0T0w1d1v0G0q0B0M0T0w1d1v0G0q0B0M0T0w1d1v0G0q0B0M0T0w1d1v0G0q0B0M0T0w1d1v0G0q0B0M0T0w1d1v0G0q0B0M0b121300000000000000000000000000000008454645461217121700000000000000000000000000000123242325000000062324232700000000000000000000000623242325898a898b898b898b0000001213121412151214121312161215121412151214000000001213121412131217121812180000001213121412131214121312151213121467686769abacabad121312141213121e0000000000000000000000123415670000000089ab8cdefghifjkl0000000000000000000000000000000000000000000000000000001213121512131214000000006abc6789121312141213121d00000000000000000000000000000004560123000000000000000000000000000000000456012704580129a000112222222222222222222222232222222311111114000000002222222222222222500000000011223333333333333333333333343333333611112222000000003333333333333333000250000000123435343634353436343534373435343gf0008889abacabad343534363435343ef000000000p2nn2Vcsy45m5EpcbE47wKID9UCXFx7wcwM70zL_E47xVKWogVlkoNCdMoU6gg00000000000000000000CJQIstrwMMKr7w0xnx0xAguwgu3rKKNzNNxXUa007cfK30VFZlgu4bJP70033u046_MwQY449zt1ejQggwKCPoy8nBxISf1CThSXs0eKP6dFIuNAO000000000000000000ISfh2G239xg80qXj3A5Eagl0F1g2w500V4INYId-xIYd08gVZFzO6wd5550syj65FJWvcxqr5Ixcw00000000000000000001jehy6CyGOCwdZJd43hhg6CGCyFcbgg04QW0XtBd2oS1I3o6127cJFEcoX8uCy-8aq1SmQQgd550WqGqaKd100UwuTpjhNwr0S1wgBOEuCy-8aq2TMRd433QQ5GHFEGKwbySmQQ6cd5dd2CD9A00000000000000019GsqmgmCDPm5cZ6CCgjoZ89fuGI319Jv8udFFHTsgAgUz1i5Mu4j64CFNBzws8kFzP9mQRkxParqugsSh3ppGdkBjCMm0QTkxV0cotyGSDwa231itky6ZnjY_cWwgAQA-l9b3gH2Auzjj8qBi6kwqHgMlaj7F1TWGrd_494e8Mkxs5ijIZ7360000000002CcTQkkkkkkgd5555550peyyyyyyy1EEEEEEE3jhhhhhhhg6wd5550qaaaaaaaagRxw0M8gSkkkkkkk6cqpVhg5cucy1E3Ap0U6yC2wq1MgY0Ap6C4HGFwV6GC2JGL71lRSTOkz8O9x7BkllMd0WNSk1Mfewq0U5A3GAxQk5MWTkkkkkkk9Ip0w000000000000000CdjziMw4Q-MFzxkOcxjjt8SnmmgJZJEkPNp6gFGbxcuTo6SiGH2HIvdMOa2Et-iAqqyUldzScQf4RlQxjscE0000000000000000002FwAsewt0W1zE7gewt0NQ3E7gn3gewa0Zp8W50ougGr7co200000000000000000000000F0siE9k4G2gkM81A0E1g381A0E1g381A0E1g381A0E1g0ug381g2w6g381g2w6g381g2w6g381g2w0sw6g2w50cw6g2w50cw6g1420k2S0k0E05idn8cosw740E1g381A0E1g381A0UwI0000000000000000000000juwv8kN88Q4q0QxkQkugVMmowep8qICwVgsGIAdmjmi6Eejmi6H9Eek7aH93lARA1G3BlAxGOq3B1OGOsyqpFCCgVgsGIAdmjgsEelmjAjjdcV0qwVlp8qICwQOjFCCqp2C041820k0E1A0O0k0E1A0O0k0E1A0O0k0E0781A0E1g381A0E1gw5Dc1jcD93AzPwRQ1FF3i6Cwddd0WgQQ1FF3i6Cwddc2eEdl0qqgQxFEEEEE7i6Cwdd8q2t550rwZtmi6H9EdcBv3gGr6Ip0ub3NtV8qICwQOog0000000000000"}, [text("this demo")]),
-                    text('.  (Warning: Includes FM)'),
-                ]),
-                this._cancelButton,
-            ]);
-            this._close = function () {
-                _this._doc.undo();
-            };
-            this.cleanUp = function () {
-                _this._cancelButton.removeEventListener("click", _this._close);
-            };
-            this._cancelButton.addEventListener("click", this._close);
-        }
-        return ChipPrompt;
-    }());
-    beepbox.ChipPrompt = ChipPrompt;
-})(beepbox || (beepbox = {}));
-var beepbox;
-(function (beepbox) {
-    var button = beepbox.html.button, div = beepbox.html.div, text = beepbox.html.text;
-    var SongDataPrompt = (function () {
-        function SongDataPrompt(_doc, _songEditor) {
-            var _this = this;
-            this._doc = _doc;
-            this._songEditor = _songEditor;
-            this._cancelButton = button({}, [text("Close")]);
-            this.container = div({ className: "prompt", style: "width: 250px;" }, [
-                div({ style: "font-size: 2em" }, [text("Song Data")]),
-				div({ style: "text-align: left;" }, [text('You are on update Modbox pre-3.2_3.')]),
-				div({ style: "text-align: left;" }, [text('Your song is ' + _this._doc.synth.totalSeconds + ' seconds long.')]),
-				div({ style: "text-align: left;" }, [text('Your song runs at ' + _this._doc.song.getBeatsPerMinute() + ' beats per minute.')]),
-				div({ style: "text-align: left;" }, [text('There are currently ' + _this._doc.song.getChannelUnusedCount() + ' unused channels in your song out of 16.')]),
-				div({ style: "text-align: left;" }, [text('Your are using the ' + _this._doc.song.getThemeName() + ' theme.')]),
-				div({ style: "text-align: left;" }, [text('Your time signuature is ' + _this._doc.song.getTimeSig())]),
-				div({ style: "text-align: left;" }, [text('Your scale is ' + _this._doc.song.getScaleNKey() + '.')]),
-                this._cancelButton,
-            ]);
-            this._close = function () {
-                _this._doc.undo();
-            };
-            this.cleanUp = function () {
-                _this._cancelButton.removeEventListener("click", _this._close);
-            };
-            this._cancelButton.addEventListener("click", this._close);
-        }
-        return SongDataPrompt;
-    }());
-    beepbox.SongDataPrompt = SongDataPrompt;
-})(beepbox || (beepbox = {}));
-
 var beepbox;
 (function (beepbox) {
     var button = beepbox.html.button, div = beepbox.html.div, span = beepbox.html.span, select = beepbox.html.select, option = beepbox.html.option, input = beepbox.html.input, text = beepbox.html.text;
@@ -8424,20 +7835,19 @@ var beepbox;
             this._nextBarButton = button({ className: "nextBarButton", style: "width:45%; margin: 0px; margin-top: -2px;", type: "button", title: "Next Bar (right bracket)" });
             this._volumeSlider = input({ title: "main volume", style: "width: 5em; flex-grow: 1; margin: 0px;", type: "range", min: "0", max: "100", value: "50", step: "1" });
             this._editMenu = select({ style: "width: 100%;" }, [
-                option("", ("Edit Menu"), true, true),
+                option("", "Edit Menu", true, true),
                 option("undo", "Undo (Z)", false, false),
                 option("redo", "Redo (Y)", false, false),
                 option("copy", "Copy Pattern (C)", false, false),
                 option("paste", "Paste Pattern (V)", false, false),
-				option("cut", "Cut Pattern (X)", false, false),
                 option("transposeUp", "Shift Notes Up (+)", false, false),
                 option("transposeDown", "Shift Notes Down (-)", false, false),
-                option("duration", "Custom Song Size (Q)", false, false),
-                option("import", "Import JSON", false, false),
-				option("cleanS", "Clean Slate", false, false),
+                option("duration", "Custom song size...", false, false),
+                option("import", "Import JSON...", false, false),
+		option("cleanS", "Clean Slate", false, false),
             ]);
             this._optionsMenu = select({ style: "width: 100%;" }, [
-                option("", ("Preferences Menu"), true, true),
+                option("", "Preferences Menu", true, true),
                 option("autoPlay", "Auto Play On Load", false, false),
                 option("autoFollow", "Auto Follow Track", false, false),
                 option("showLetters", "Show Piano", false, false),
@@ -8445,31 +7855,18 @@ var beepbox;
 				option("showMore", "Advanced Color Scheme", false, false),
                 option("showChannels", "Show All Channels", false, false),
                 option("showScrollBar", "Octave Scroll Bar", false, false),
-				option("advancedSettings", "Enable Advanced Settings", false, false),
             ]);
-			this._newSongButton = button({ type: "button" }, [
+            this._newSongButton = button({ type: "button" }, [
                 text("New"),
                 span({ className: "fullWidthOnly" }, [text(" Song")]),
                 beepbox.svgElement("svg", { style: "flex-shrink: 0; position: absolute; left: 0; top: 50%; margin-top: -1em; pointer-events: none;", width: "2em", height: "2em", viewBox: "-5 -21 26 26" }, [
-                beepbox.svgElement("path", { d: "M 2 0 L 2 -16 L 10 -16 L 14 -12 L 14 0 z M 3 -1 L 13 -1 L 13 -11 L 9 -11 L 9 -15 L 3 -15 z", fill: "currentColor"}),
-                ]),
-            ]);
-            this._songDataButton = button({ type: "button" }, [
-                text("Song Data"),
-                beepbox.svgElement("svg", { style: "flex-shrink: 0; position: absolute; left: 0; top: 50%; margin-top: -1em; pointer-events: none;", width: "2em", height: "2em", viewBox: "-5 -21 26 26" }, [
-                beepbox.svgElement("path", { d: "M 0 0 L 16 0 L 16 -13 L 10 -13 L 8 -16 L 0 -16 L 0 -13 z", fill: "currentColor"}),
+                beepbox.svgElement("path", { d: "M 2 0 L 2 -16 L 10 -16 L 14 -12 L 14 0 z M 3 -1 L 13 -1 L 13 -11 L 9 -11 L 9 -15 L 3 -15 z", fill: "currentColor" }),
                 ]),
             ]);
 			this._customizeButton = button({ type: "button" }, [
                 span({ className: "center" }, [text("Custom Song Size")]),
 				beepbox.svgElement("svg", { style: "flex-shrink: 0; position: absolute; left: 0; top: 50%; margin-top: -1em; pointer-events: none;", width: "2em", height: "2em", viewBox: "-13 -13 26 26" }, [
-                beepbox.svgElement("path", {d: "M -8 2 L -2 2 L -2 8 L 2 8 L 2 2 L 8 2 L 8 -2 L 2 -2 L 2 -8 L -2 -8 L -2 -2 L -8 -2 z M 0 2 L -4 -2 L -1 -2 L -1 -8 L 1 -8 L 1 -2 L 4 -2 z M -8 -8 L 8 -8 L 8 -9 L -8 -9 L -8 -8 z", fill: "currentColor"}),
-                ]),
-            ]);
-			this._archiveButton = button({ type: "button" }, [
-                span({ className: "center" }, [text("Load Mods...")]),
-				beepbox.svgElement("svg", { style: "flex-shrink: 0; position: absolute; left: 0; top: 50%; margin-top: -1em; pointer-events: none;", width: "2em", height: "2em", viewBox: "-13 -13 26 26" }, [
-				beepbox.svgElement("path", { d: "M 5.78 -1.6 L 7.93 -0.94 L 7.93 0.94 L 5.78 1.6 L 4.85 3.53 L 5.68 5.61 L 4.21 6.78 L 2.36 5.52 L 0.27 5.99 L -0.85 7.94 L -2.68 7.52 L -2.84 5.28 L -4.52 3.95 L -6.73 4.28 L -7.55 2.59 L -5.9 1.07 L -5.9 -1.07 L -7.55 -2.59 L -6.73 -4.28 L -4.52 -3.95 L -2.84 -5.28 L -2.68 -7.52 L -0.85 -7.94 L 0.27 -5.99 L 2.36 -5.52 L 4.21 -6.78 L 5.68 -5.61 L 4.85 -3.53 M 2.92 0.67 L 2.92 -0.67 L 2.35 -1.87 L 1.3 -2.7 L 0 -3 L -1.3 -2.7 L -2.35 -1.87 L -2.92 -0.67 L -2.92 0.67 L -2.35 1.87 L -1.3 2.7 L -0 3 L 1.3 2.7 L 2.35 1.87 z", fill: "currentColor"}),
+                beepbox.svgElement("path", {d: "M -8 2 L -2 2 L -2 8 L 2 8 L 2 2 L 8 2 L 8 -2 L 2 -2 L 2 -8 L -2 -8 L -2 -2 L -8 -2 z M 0 2 L -4 -2 L -1 -2 L -1 -8 L 1 -8 L 1 -2 L 4 -2 z M -8 -8 L 8 -8 L 8 -9 L -8 -9 L -8 -8 z", fill: "currentColor" }),
                 ]),
             ]);
 			this._undoButton = button({ style: "width:45%; margin: 0px; margin-top: -2px;", type: "button" }, [text("Undo")]);
@@ -8477,46 +7874,38 @@ var beepbox;
             this._exportButton = button({ type: "button" }, [
                 text("Export"),
                 beepbox.svgElement("svg", { style: "flex-shrink: 0; position: absolute; left: 0; top: 50%; margin-top: -1em; pointer-events: none;", width: "2em", height: "2em", viewBox: "-13 -13 26 26" }, [
-                beepbox.svgElement("path", { d: "M -8 3 L -8 8 L 8 8 L 8 3 L 6 3 L 6 6 L -6 6 L -6 3 z M 0 2 L -4 -2 L -1 -2 L -1 -8 L 1 -8 L 1 -2 L 4 -2 z", fill: "currentColor"}),
+                    beepbox.svgElement("path", { d: "M -8 3 L -8 8 L 8 8 L 8 3 L 6 3 L 6 6 L -6 6 L -6 3 z M 0 2 L -4 -2 L -1 -2 L -1 -8 L 1 -8 L 1 -2 L 4 -2 z", fill: "currentColor" }),
                 ]),
             ]);
             this._scaleSelect = buildOptions(select({}), beepbox.Config.scaleNames);
-			this._mixSelect = buildOptions(select({}), beepbox.Config.mixNames);
-			this._sampleRateSelect = buildOptions(select({}), beepbox.Config.sampleRateNames);
-			this._mixHint = beepbox.html.element("a", { className: "hintButton" }, [text("?")]);
-			this._archiveHint = beepbox.html.element("a", { className: "hintButton" }, [text("?")]);
-			this._mixSelectRow = div({ className: "selectRow" }, [this._mixHint, this._mixSelect]);
-            this._chipHint = beepbox.html.element("a", { className: "hintButton" }, [text("?")]);
-			this._instrumentTypeHint = beepbox.html.element("a", { className: "hintButton" }, [text("?")]);
             this._keySelect = buildOptions(select({}), beepbox.Config.keyNames);
+			this._aSettingsSelect = buildOptions(select({}), beepbox.Config.aSettingsNames);
 			this._themeSelect = buildOptions(select({}), beepbox.Config.themeNames);
             this._tempoSlider = new Slider(input({ style: "margin: 0px;", type: "range", min: "0", max: beepbox.Config.tempoSteps - 1, value: "7", step: "1" }), this._doc, function (oldValue, newValue) { return new beepbox.ChangeTempo(_this._doc, oldValue, newValue); });
             this._reverbSlider = new Slider(input({ style: "margin: 0px;", type: "range", min: "0", max: beepbox.Config.reverbRange - 1, value: "0", step: "1" }), this._doc, function (oldValue, newValue) { return new beepbox.ChangeReverb(_this._doc, oldValue, newValue); });
 
             this._blendSlider = new Slider(input({ style: "width: 9em; margin: 0px;", type: "range", min: "0", max: beepbox.Config.blendRange - 1, value: "0", step: "1" }), this._doc, function (oldValue, newValue) { return new beepbox.ChangeBlend(_this._doc, oldValue, newValue); });
             this._riffSlider = new Slider(input({ style: "width: 9em; margin: 0px;", type: "range", min: "0", max: beepbox.Config.riffRange - 1, value: "0", step: "1" }), this._doc, function (oldValue, newValue) { return new beepbox.ChangeRiff(_this._doc, oldValue, newValue); });			
+            this._driveSlider = new Slider(input({ style: "width: 9em; margin: 0px;", type: "range", min: "0", max: beepbox.Config.driveRange - 1, value: "0", step: "1" }), this._doc, function (oldValue, newValue) { return new beepbox.ChangeDrive(_this._doc, oldValue, newValue); });			
+            this._csignSlider = new Slider(input({ style: "width: 9em; margin: 0px;", type: "range", min: "0", max: beepbox.Config.csignRange - 1, value: "0", step: "1" }), this._doc, function (oldValue, newValue) { return new beepbox.ChangeCsign(_this._doc, oldValue, newValue); });			
             this._detuneSlider = new Slider(input({ style: "width: 9em; margin: 0px;", type: "range", min: "0", max: beepbox.Config.detuneRange - 1, value: "0", step: "1" }), this._doc, function (oldValue, newValue) { return new beepbox.ChangeDetune(_this._doc, oldValue, newValue); });		
-            this._muffSlider = new Slider(input({ style: "width: 9em; margin: 0px;", type: "range", min: "0", max: beepbox.Config.muffRange - 1, value: "0", step: "1" }), this._doc, function (oldValue, newValue) { return new beepbox.ChangeMuff(_this._doc, oldValue, newValue); });		
 			
-            this._imuteSelect = button({style: "width: 27px;", type: "button"});
-			this._iMmuteSelect = button({style: "width: 27px;", type: "button"});
+            this._imuteSelect = buildOptions(select({style: "width: 20px;"}), beepbox.Config.imuteNames);
 			this._partSelect = buildOptions(select({}), beepbox.Config.partNames);
-			this._instrumentTypeSelect = buildOptions(select({}), beepbox.Config.pitchChannelTypeNames);
+            this._instrumentTypeSelect = buildOptions(select({}), beepbox.Config.pitchChannelTypeNames);
             this._instrumentTypeHint = beepbox.html.element("a", { className: "hintButton" }, [text("?")]);
             this._instrumentTypeSelectRow = div({ className: "selectRow" }, [span({}, [text("Type: ")]), this._instrumentTypeHint, div({ className: "selectContainer" }, [this._instrumentTypeSelect])]);
             this._algorithmSelect = buildOptions(select({}), beepbox.Config.operatorAlgorithmNames);
             this._algorithmSelectRow = div({ className: "selectRow" }, [span({}, [text("Algorithm: ")]), div({ className: "selectContainer" }, [this._algorithmSelect])]);
             this._instrumentSelect = select({});
             this._instrumentSelectRow = div({ className: "selectRow", style: "display: none;" }, [span({}, [text("Instrument: ")]), div({ className: "selectContainer" }, [this._instrumentSelect])]);
-            this._instrumentVolumeSlider = new Slider(input({ style: "margin: 8px; width: 60px;", type: "range", min: "-9", max: "0", value: "0", step: "1" }), this._doc,  function (oldValue, newValue) { return new beepbox.ChangeVolume(_this._doc, oldValue, -newValue); });
-            this._instrumentMVolumeSlider = new Slider(input({ style: "margin: 8px; width: 60px;", type: "range", min: "-5", max: "0", value: "0", step: "1" }), this._doc, function (oldValue, newValue) { return new beepbox.ChangeVolume(_this._doc, oldValue, -newValue); });
+            this._instrumentVolumeSlider = new Slider(input({ style: "margin: 0px; width: 72px;", type: "range", min: "-5", max: "0", value: "0", step: "1" }), this._doc, function (oldValue, newValue) { return new beepbox.ChangeVolume(_this._doc, oldValue, -newValue); });
             this._instrumentVolumeSliderRow = div({ className: "selectRow" }, [span({}, [text("Volume: ")]), this._instrumentVolumeSlider.input, this._imuteSelect]);
-            this._instrumentMVolumeSliderRow = div({ className: "selectRow" }, [span({}, [text("Volume: ")]), this._instrumentMVolumeSlider.input, this._iMmuteSelect]);
             this._instrumentSettingsLabel = div({ style: "margin: 3px 0; text-align: center;" }, [text("Instrument Settings")]),
 			this._advancedInstrumentSettingsLabel = div({ style: "margin: 3px 0; text-align: center;" }, [text("Advanced Instrument Settings")]),
 			this._waveSelect = buildOptions(select({}), beepbox.Config.waveNames);
             this._drumSelect = buildOptions(select({}), beepbox.Config.drumNames);
-			this._waveSelectRow = div({ className: "selectRow" }, [span({}, [text("Wave: ")]), div({ className: "selectContainer" }, [this._waveSelect, this._drumSelect])]);
+            this._waveSelectRow = div({ className: "selectRow" }, [span({}, [text("Wave: ")]), div({ className: "selectContainer" }, [this._waveSelect, this._drumSelect])]);
             this._transitionSelect = buildOptions(select({}), beepbox.Config.transitionNames);
             this._filterSelect = buildOptions(select({}), beepbox.Config.filterNames);
             this._filterSelectRow = div({ className: "selectRow" }, [span({}, [text("Filter: ")]), div({ className: "selectContainer" }, [this._filterSelect])]);
@@ -8525,19 +7914,15 @@ var beepbox;
             this._chorusSelectRow = div({ className: "selectRow" }, [span({}, [text("Chorus: ")]), div({ className: "selectContainer" }, [this._chorusSelect])]);
             this._effectSelect = buildOptions(select({}), beepbox.Config.effectNames);
             this._effectSelectRow = div({ className: "selectRow" }, [span({}, [text("Effect: ")]), div({ className: "selectContainer" }, [this._effectSelect])]);
-			this._harmSelect = buildOptions(select({}), beepbox.Config.harmDisplay);
-            this._harmSelectRow = div({ className: "selectRow" }, [span({}, [text("Chord: ")]), this._chorusHint, div({ className: "selectContainer" }, [this._harmSelect])]);
+			this._harmSelect = buildOptions(select({}), beepbox.Config.harmNames);
+            this._harmSelectRow = div({ className: "selectRow" }, [span({}, [text("Harmony: ")]), this._chorusHint, div({ className: "selectContainer" }, [this._harmSelect])]);
 			this._octoffSelect = buildOptions(select({}), beepbox.Config.octoffNames);
             this._octoffSelectRow = div({ className: "selectRow" }, [span({}, [text("Octave Offset: ")]), div({ className: "selectContainer" }, [this._octoffSelect])]);
-            
-			this._ipanSlider = new Slider(input({ style: "margin: 8px; width: 100px;", type: "range", min: "-8", max: "0", value: "0", step: "1" }), this._doc, function (oldValue, newValue) { return new beepbox.ChangeIpan(_this._doc, oldValue, -newValue); });
-            this._ipanSliderRow = div({ className: "selectRow" }, [span({}, [text("Panning: ")]), span({}, [text("L")]), this._ipanSlider.input, span({}, [text("R")])]);
-            
-			this._phaseModGroup = div({ style: "display: flex; flex-direction: column; display: none;" }, []);
+            this._phaseModGroup = div({ style: "display: flex; flex-direction: column; display: none;" }, []);
             this._feedbackTypeSelect = buildOptions(select({}), beepbox.Config.operatorFeedbackNames);
-            this._feedbackRow1 = div({ className: "selectRow" }, [span({}, [text("Feedback: ")]), div({ className: "selectContainer" }, [this._feedbackTypeSelect])]);
-            this._feedbackAmplitudeSlider = new Slider(input({ style: "margin: 0px; width: 4em;", type: "range", min: "0", max: beepbox.Config.operatorAmplitudeMax, value: "0", step: "1", title: ("Feedback Amplitude ") }), this._doc, function (oldValue, newValue) { return new beepbox.ChangeFeedbackAmplitude(_this._doc, oldValue, newValue); });
-            this._feedbackEnvelopeSelect = buildOptions(select({ style: "width: 100%;", title: ("Feedback Envelope ") }), beepbox.Config.operatorEnvelopeNames);
+            this._feedbackRow1 = div({ className: "selectRow" }, [span({}, [text("Feedback:")]), div({ className: "selectContainer" }, [this._feedbackTypeSelect])]);
+            this._feedbackAmplitudeSlider = new Slider(input({ style: "margin: 0px; width: 4em;", type: "range", min: "0", max: beepbox.Config.operatorAmplitudeMax, value: "0", step: "1", title: "Feedback Amplitude" }), this._doc, function (oldValue, newValue) { return new beepbox.ChangeFeedbackAmplitude(_this._doc, oldValue, newValue); });
+            this._feedbackEnvelopeSelect = buildOptions(select({ style: "width: 100%;", title: "Feedback Envelope" }), beepbox.Config.operatorEnvelopeNames);
             this._feedbackRow2 = div({ className: "operatorRow" }, [
                 div({ style: "margin-right: .1em; visibility: hidden;" }, [text(1 + ".")]),
                 div({ style: "width: 3em; margin-right: .3em;" }),
@@ -8548,11 +7933,10 @@ var beepbox;
                 this._instrumentSettingsLabel,
 				this._instrumentSelectRow,
                 this._instrumentTypeSelectRow,
-				this._instrumentMVolumeSliderRow,
                 this._instrumentVolumeSliderRow,
                 this._waveSelectRow,
                 div({ className: "selectRow" }, [
-                    span({}, [text("Transitions: ")]),
+                    span({}, [text("Envelope: ")]),
                     div({ className: "selectContainer" }, [this._transitionSelect]),
                 ]),
                 this._filterSelectRow,
@@ -8565,7 +7949,6 @@ var beepbox;
             ]);
 			this._advancedInstrumentSettingsGroup = div({}, [
                 this._advancedInstrumentSettingsLabel,
-				this._ipanSliderRow,
 				this._harmSelectRow,
 				this._octoffSelectRow,
             ]);
@@ -8573,7 +7956,7 @@ var beepbox;
             this.mainLayer = div({ className: "beepboxEditor", tabIndex: "0" }, [
             this._editorBox,
             div({ className: "editor-widget-column" }, [
-				div({ style: "text-align: center; color: ; align-items: center;" }, [text("ModBox pre-3.2.2_1"), this._archiveHint]),
+				div({ style: "text-align: center; color: ;" }, [text("ModBox 3.0.3")]),
                 div({ style: "margin: 5px 0; display: flex; flex-direction: row; align-items: center;" }, [
                     this._playButton,
                     div({ style: "width: 1px; height: 10px;" }),
@@ -8590,26 +7973,27 @@ var beepbox;
                 div({ className: "selectContainer menu" }, [
 				this._editMenu,
 				beepbox.svgElement("svg", { style: "flex-shrink: 0; position: absolute; left: 0; top: 50%; margin-top: -1em; pointer-events: none;", width: "2em", height: "2em", viewBox: "-5 -21 26 26" }, [
-				beepbox.svgElement("path", { d: "M 0 0 L 1 -4 L 4 -1 z M 2 -5 L 10 -13 L 13 -10 L 5 -2 zM 11 -14 L 13 -16 L 14 -16 L 16 -14 L 16 -13 L 14 -11 z", fill: "currentColor"}),
+				beepbox.svgElement("path", { d: "M 0 0 L 1 -4 L 4 -1 z M 2 -5 L 10 -13 L 13 -10 L 5 -2 zM 11 -14 L 13 -16 L 14 -16 L 16 -14 L 16 -13 L 14 -11 z", fill: "currentColor" }),
 				]),
 				]),
 				div({ className: "selectContainer menu" }, [
 				this._optionsMenu,
 				beepbox.svgElement("svg", { style: "flex-shrink: 0; position: absolute; left: 0; top: 50%; margin-top: -1em; pointer-events: none;", width: "2em", height: "2em", viewBox: "-13 -13 26 26" }, [
-				beepbox.svgElement("path", { d: "M 5.78 -1.6 L 7.93 -0.94 L 7.93 0.94 L 5.78 1.6 L 4.85 3.53 L 5.68 5.61 L 4.21 6.78 L 2.36 5.52 L 0.27 5.99 L -0.85 7.94 L -2.68 7.52 L -2.84 5.28 L -4.52 3.95 L -6.73 4.28 L -7.55 2.59 L -5.9 1.07 L -5.9 -1.07 L -7.55 -2.59 L -6.73 -4.28 L -4.52 -3.95 L -2.84 -5.28 L -2.68 -7.52 L -0.85 -7.94 L 0.27 -5.99 L 2.36 -5.52 L 4.21 -6.78 L 5.68 -5.61 L 4.85 -3.53 M 2.92 0.67 L 2.92 -0.67 L 2.35 -1.87 L 1.3 -2.7 L 0 -3 L -1.3 -2.7 L -2.35 -1.87 L -2.92 -0.67 L -2.92 0.67 L -2.35 1.87 L -1.3 2.7 L -0 3 L 1.3 2.7 L 2.35 1.87 z", fill: "currentColor"}),
-                ]),
+				beepbox.svgElement("path", { d: "M 5.78 -1.6 L 7.93 -0.94 L 7.93 0.94 L 5.78 1.6 L 4.85 3.53 L 5.68 5.61 L 4.21 6.78 L 2.36 5.52 L 0.27 5.99 L -0.85 7.94 L -2.68 7.52 L -2.84 5.28 L -4.52 3.95 L -6.73 4.28 L -7.55 2.59 L -5.9 1.07 L -5.9 -1.07 L -7.55 -2.59 L -6.73 -4.28 L -4.52 -3.95 L -2.84 -5.28 L -2.68 -7.52 L -0.85 -7.94 L 0.27 -5.99 L 2.36 -5.52 L 4.21 -6.78 L 5.68 -5.61 L 4.85 -3.53 M 2.92 0.67 L 2.92 -0.67 L 2.35 -1.87 L 1.3 -2.7 L 0 -3 L -1.3 -2.7 L -2.35 -1.87 L -2.92 -0.67 L -2.92 0.67 L -2.35 1.87 L -1.3 2.7 L -0 3 L 1.3 2.7 L 2.35 1.87 z", fill: "currentColor" }),
+				]),
 				]),
 				this._exportButton,
 				]),
                 div({ className: "editor-settings" }, [
                     div({ className: "editor-song-settings" }, [
                     div({ style: "margin: 3px 0; text-align: center; color: #999;" }, [text("Song Settings")]),
-					div({ className: "selectRow" }, [span({}, [text("Theme: ")]),div({ className: "selectContainer", style: "margin: 3px 0; text-align: center; color: #ccc"  }, [this._themeSelect]),]),
-					div({ className: "selectRow" }, [span({}, [text("Scale: ")]),div({ className: "selectContainer", style: "margin: 3px 0; text-align: center; color: #ccc" }, [this._scaleSelect]),]),
-                    div({ className: "selectRow" }, [span({}, [text("Key: ")]),div({ className: "selectContainer", style: "margin: 3px 0; text-align: center; color: #ccc"  }, [this._keySelect]),]),
+					div({ className: "selectRow" }, [span({}, [text("Settings: ")]),	div({ className: "selectContainer" }, [this._aSettingsSelect]),]),
+					div({ className: "selectRow" }, [span({}, [text("Theme: ")]),div({ className: "selectContainer" }, [this._themeSelect]),]),
+                    div({ className: "selectRow" }, [span({}, [text("Scale: ")]),div({ className: "selectContainer" }, [this._scaleSelect]),]),
+                    div({ className: "selectRow" }, [span({}, [text("Key: ")]),div({ className: "selectContainer" }, [this._keySelect]),]),
                     div({ className: "selectRow" }, [span({}, [text("Tempo: ")]),this._tempoSlider.input,]),
                     div({ className: "selectRow" }, [span({}, [text("Reverb: ")]),this._reverbSlider.input,]),
-                    div({ className: "selectRow" }, [span({}, [text("Rhythm: ")]),div({ className: "selectContainer", style: "margin: 3px 0; text-align: center; color: #ccc"  }, [this._partSelect]),]),
+                    div({ className: "selectRow" }, [span({}, [text("Rhythm: ")]),div({ className: "selectContainer" }, [this._partSelect]),]),
                     ]),
                     div({ className: "editor-instrument-settings" }, [
                         this._instrumentSettingsGroup,
@@ -8624,25 +8008,24 @@ var beepbox;
                 div({ className: "editor-menus" }, [
 					this._newSongButton,    
 					this._customizeButton,
-					this._songDataButton,
 					div({ style: "margin: 5px 0; display: flex; flex-direction: row; justify-content: space-between;" }, [
                     this._prevBarButton,
 					this._undoButton,
 					this._redoButton,
 					this._nextBarButton,
-					]), 
+					]),
 				]),
-				div({ className: "editor-settings" }, [
+				div({ style: "width: 182px; height: 30px;" }),
+                div({ className: "editor-settings" }, [
                     this._advancedSongSettings = div({ className: "editor-song-settings", style: "margin: 0px 5px;"}, [
 					div({ style: "margin: 3px 0; text-align: center;" }, [text("Advanced Song Settings")]),
-					div({ className: "selectRow" }, [span({}, [text("Mix: ")]),div({ className: "selectContainer" }, [this._mixSelectRow]),]),
-					//div({ className: "selectRow" }, [span({}, [text("Sample Rate: ")]),div({ className: "selectContainer" }, [this._sampleRateSelect]),]), (unused)
-                    div({ className: "selectRow" }, [span({}, [text("Blending: ")]),this._blendSlider.input,]),
-                    div({ className: "selectRow" }, [span({}, [text("Riff: ")]),this._riffSlider.input,]),
-					div({ className: "selectRow" }, [span({}, [text("Detune: ")]),this._detuneSlider.input,]),
-					div({ className: "selectRow" }, [span({}, [text("Muff: ")]),this._muffSlider.input,]),
+                    div({ className: "selectRow" }, [span({}, [text("Blending:")]),this._blendSlider.input,]),
+                    div({ className: "selectRow" }, [span({}, [text("Riff:")]),this._riffSlider.input,]),
+                    div({ className: "selectRow" }, [span({}, [text("Noise:")]),this._driveSlider.input,]),
+					div({ className: "selectRow" }, [span({}, [text("Curve:")]),this._csignSlider.input,]),
+					div({ className: "selectRow" }, [span({}, [text("Detune:")]),this._detuneSlider.input,]),
                 ]),
-				div({ style: "width: 182px; height: 31px;" }),
+				div({ style: "width: 182px; height: 98px;" }),
                 div({ className: "editor-instrument-settings" }, [
                     this._advancedInstrumentSettingsGroup,
                 ]),
@@ -8672,7 +8055,6 @@ var beepbox;
 					(_this._doc.showMore ? "✓ " : "✗ ") + "Advanced Color Scheme",
                     (_this._doc.showChannels ? "✓ " : "✗ ") + "Show All Channels",
                     (_this._doc.showScrollBar ? "✓ " : "✗ ") + "Octave Scroll Bar",
-					(_this._doc.advancedSettings ? "✓ " : "✗ ") + "Enable Advanced Settings",
                 ];
                 for (var i = 0; i < optionCommands.length; i++) {
                     var option_1 = _this._optionsMenu.children[i + 1];
@@ -8685,33 +8067,25 @@ var beepbox;
                 var instrument = channel.instruments[instrumentIndex];
                 var wasActive = _this.mainLayer.contains(document.activeElement);
                 var activeElement = document.activeElement;
+				setSelectedIndex(_this._aSettingsSelect, _this._doc.song.aSettings);
 				setSelectedIndex(_this._themeSelect, _this._doc.song.theme);
                 setSelectedIndex(_this._scaleSelect, _this._doc.song.scale);
-				setSelectedIndex(_this._mixSelect, _this._doc.song.mix);
-				setSelectedIndex(_this._sampleRateSelect, _this._doc.song.sampleRate);
                 setSelectedIndex(_this._keySelect, _this._doc.song.key);
                 _this._tempoSlider.updateValue(_this._doc.song.tempo);
                 _this._tempoSlider.input.title = _this._doc.song.getBeatsPerMinute() + " beats per minute";
                 _this._reverbSlider.updateValue(_this._doc.song.reverb);
-				_this._advancedSettingsContainer.style.display = _this._doc.advancedSettings ? "" : "none";
+				_this._advancedSettingsContainer.style.visibility = aListHidden[_this._doc.song.aSettings];
                 _this._blendSlider.updateValue(_this._doc.song.blend);
                 _this._riffSlider.updateValue(_this._doc.song.riff);
+                _this._driveSlider.updateValue(_this._doc.song.drive);
+                _this._csignSlider.updateValue(_this._doc.song.csign);
 				_this._detuneSlider.updateValue(_this._doc.song.detune);
-				_this._muffSlider.updateValue(_this._doc.song.muff);
                 setSelectedIndex(_this._partSelect, beepbox.Config.partCounts.indexOf(_this._doc.song.partsPerBeat));
                 if (_this._doc.song.getChannelIsDrum(_this._doc.channel)) {
-					if (_this._doc.song.mix == 2) {
-						_this._instrumentVolumeSliderRow.style.display = "";
-						_this._instrumentMVolumeSliderRow.style.display = "none";
-					}
-					else {
-						_this._instrumentVolumeSliderRow.style.display = "none";
-						_this._instrumentMVolumeSliderRow.style.display = "";
-					}
+                    _this._instrumentVolumeSliderRow.style.display = "";
                     _this._drumSelect.style.display = "";
                     _this._waveSelectRow.style.display = "";
                     _this._instrumentTypeSelectRow.style.display = "none";
-                    _this._instrumentTypeSelect.style.display = "none";
                     _this._algorithmSelectRow.style.display = "none";
                     _this._phaseModGroup.style.display = "none";
                     _this._feedbackRow1.style.display = "none";
@@ -8720,24 +8094,16 @@ var beepbox;
                     _this._filterSelectRow.style.display = "none";
                     _this._chorusSelectRow.style.display = "none";
                     _this._effectSelectRow.style.display = "none";
-					_this._ipanSliderRow.style.display = "";
-					_this._harmSelectRow.style.display = "";
-					_this._octoffSelectRow.style.display = "";
+					_this._harmSelectRow.style.display = "none";
+					_this._octoffSelectRow.style.display = "none";
                 }
                 else {
                     _this._instrumentTypeSelectRow.style.display = "";
-					_this._instrumentTypeSelect.style.display = "";
-					if (_this._doc.song.mix == 2) {
-						_this._instrumentVolumeSliderRow.style.display = "";
-						_this._instrumentMVolumeSliderRow.style.display = "none";
-					}
-					else {
-						_this._instrumentVolumeSliderRow.style.display = "none";
-						_this._instrumentMVolumeSliderRow.style.display = "";
-					}
-					_this._drumSelect.style.display = "none";
+                    _this._drumSelect.style.display = "none";
 					_this._effectSelectRow.style.display = "";
+					_this._octoffSelectRow.style.display = "";
                     if (instrument.type == 0) {
+                        _this._instrumentVolumeSliderRow.style.display = "";
                         _this._waveSelect.style.display = "";
                         _this._waveSelectRow.style.display = "";
                         _this._filterSelectRow.style.display = "";
@@ -8747,8 +8113,6 @@ var beepbox;
                         _this._phaseModGroup.style.display = "none";
                         _this._feedbackRow1.style.display = "none";
                         _this._feedbackRow2.style.display = "none";
-						_this._ipanSliderRow.style.display = "";
-						_this._octoffSelectRow.style.display = "";
                     }
                     else {
                         _this._algorithmSelectRow.style.display = "";
@@ -8756,15 +8120,14 @@ var beepbox;
                         _this._feedbackRow1.style.display = "";
                         _this._feedbackRow2.style.display = "";
 						_this._harmSelectRow.style.display = "none";
+                        _this._instrumentVolumeSliderRow.style.display = "none";
                         _this._waveSelectRow.style.display = "none";
                         _this._filterSelectRow.style.display = "none";
                         _this._chorusSelectRow.style.display = "none";
-						_this._ipanSliderRow.style.display = "";
-						_this._octoffSelectRow.style.display = "";
                     }
                 }
                 setSelectedIndex(_this._instrumentTypeSelect, instrument.type);
-				setSelectedIndex(_this._algorithmSelect, instrument.algorithm);
+                setSelectedIndex(_this._algorithmSelect, instrument.algorithm);
                 _this._instrumentSelectRow.style.display = (_this._doc.song.instrumentsPerChannel > 1) ? "" : "none";
                 _this._instrumentSelectRow.style.visibility = (pattern == null) ? "hidden" : "";
                 if (_this._instrumentSelect.children.length != _this._doc.song.instrumentsPerChannel) {
@@ -8786,8 +8149,6 @@ var beepbox;
 				_this._advancedInstrumentSettingsGroup.style.color = "#cccccc";
 				_this._advancedSongSettings.style.color = "#aaaaaa";
 				}
-				_this._imuteSelect.innerText = "◉";
-				_this._iMmuteSelect.innerText = "◉";
                 setSelectedIndex(_this._waveSelect, instrument.wave);
                 setSelectedIndex(_this._drumSelect, instrument.wave);
                 setSelectedIndex(_this._filterSelect, instrument.filter);
@@ -8797,22 +8158,12 @@ var beepbox;
 				setSelectedIndex(_this._harmSelect, instrument.harm);
 				setSelectedIndex(_this._octoffSelect, instrument.octoff);
 				setSelectedIndex(_this._imuteSelect, instrument.imute);
-				setSelectedIndex(_this._iMmuteSelect, instrument.imute);
-				setSelectedIndex(_this._ipanSlider, instrument.ipan);
-				setSelectedIndex(_this._instrumentVolumeSlider, instrument.volume);
-				setSelectedIndex(_this._instrumentMVolumeSlider, instrument.volume);
-				
-				this._saveMuteInstrument = function () {
-					setSelectedIndex(_this._imuteSelect, instrument.imute);
-					setSelectedIndex(_this._iMmuteSelect, instrument.imute);
-				};
+				this._saveMuteInstrument = function () {setSelectedIndex(_this._imuteSelect, instrument.imute);};
                 setSelectedIndex(_this._feedbackTypeSelect, instrument.feedbackType);
                 _this._feedbackAmplitudeSlider.updateValue(instrument.feedbackAmplitude);
                 setSelectedIndex(_this._feedbackEnvelopeSelect, instrument.feedbackEnvelope);
                 _this._feedbackEnvelopeSelect.parentElement.style.color = (instrument.feedbackAmplitude > 0) ? "" : "#999";
                 _this._instrumentVolumeSlider.updateValue(-instrument.volume);
-				_this._instrumentMVolumeSlider.updateValue(-instrument.volume);
-				_this._ipanSlider.updateValue(-instrument.ipan);
                 setSelectedIndex(_this._instrumentSelect, instrumentIndex);
 				for (var i = 0; i < beepbox.Config.operatorCount; i++) {
                     var isCarrier = (i < beepbox.Config.operatorCarrierCounts[instrument.algorithm]);
@@ -8820,18 +8171,16 @@ var beepbox;
                     setSelectedIndex(_this._operatorFrequencySelects[i], instrument.operators[i].frequency);
                     _this._operatorAmplitudeSliders[i].updateValue(instrument.operators[i].amplitude);
                     setSelectedIndex(_this._operatorEnvelopeSelects[i], instrument.operators[i].envelope);
-                    var operatorName = (isCarrier ? ("Voice ") : ("Modulator ")) + (i + 1);
-                    _this._operatorFrequencySelects[i].title = operatorName + (" Frequency");
-                    _this._operatorAmplitudeSliders[i].input.title = operatorName + (isCarrier ? " Volume" : (" Amplitude"));
-                    _this._operatorEnvelopeSelects[i].title = operatorName + (" Envelope");
+                    var operatorName = (isCarrier ? "Voice " : "Modulator ") + (i + 1);
+                    _this._operatorFrequencySelects[i].title = operatorName + " Frequency";
+                    _this._operatorAmplitudeSliders[i].input.title = operatorName + (isCarrier ? " Volume" : " Amplitude");
+                    _this._operatorEnvelopeSelects[i].title = operatorName + " Envelope";
                     _this._operatorEnvelopeSelects[i].parentElement.style.color = (instrument.operators[i].amplitude > 0) ? "" : "#999";
                 }
                 _this._piano.container.style.display = _this._doc.showLetters ? "" : "none";
                 _this._octaveScrollBar.container.style.display = _this._doc.showScrollBar ? "" : "none";
                 _this._barScrollBar.container.style.display = _this._doc.song.barCount > _this._doc.trackVisibleBars ? "" : "none";
-                _this._chipHint.style.display = (instrument.type == 1) ? "none" : "";
                 _this._instrumentTypeHint.style.display = (instrument.type == 1) ? "" : "none";
-				_this._mixHint.style.display = (_this._doc.song.mix != 1) ? "" : "none";
                 _this._chorusHint.style.display = (beepbox.Config.harmNames[instrument.harm]) ? "" : "none";
                 var patternWidth = 512;
                 if (_this._doc.showLetters)
@@ -8845,7 +8194,7 @@ var beepbox;
                 }
                 _this._setPrompt(_this._doc.prompt);
                 if (_this._doc.autoFollow && !_this._doc.synth.playing) {
-					_this._doc.synth.snapToBar(_this._doc.bar);
+                    _this._doc.synth.snapToBar(_this._doc.bar);
                 }	
             };
 			this._muteInstrument = function () {
@@ -8853,28 +8202,14 @@ var beepbox;
                 var pattern = _this._doc.getCurrentPattern();
                 var instrumentIndex = _this._doc.getCurrentInstrument();
                 var instrument = channel.instruments[instrumentIndex];
-				_this._doc.record(new beepbox.ChangeImute(_this._doc, _this._imuteSelect.selectedIndex));
-				_this._doc.record(new beepbox.ChangeImute(_this._doc, _this._iMmuteSelect.selectedIndex));
                 if (instrument.imute == 1) {
 					instrument.imute = 0;
 					setSelectedIndex(_this._imuteSelect, instrument.imute);
-					setSelectedIndex(_this._iMmuteSelect, instrument.imute);
-					_this._instrumentSettingsGroup.style.color = _this._doc.song.getNoteColorBright(_this._doc.channel);
-					_this._advancedInstrumentSettingsGroup.style.color = _this._doc.song.getNoteColorDim(_this._doc.channel);
-					_this._advancedSongSettings.style.color = "#aaaaaa";
-					_this._imuteSelect.innerText = "◉";
-					_this._iMmuteSelect.innerText = "◉";
 					this.whenUpdated();
                 }
                 else {
 					instrument.imute = 1;
 					setSelectedIndex(_this._imuteSelect, instrument.imute);
-					setSelectedIndex(_this._iMmuteSelect, instrument.imute);
-					_this._instrumentSettingsGroup.style.color = "#cccccc";
-					_this._advancedInstrumentSettingsGroup.style.color = "#cccccc";
-					_this._advancedSongSettings.style.color = "#aaaaaa";
-					_this._imuteSelect.innerText = "◎";
-					_this._iMmuteSelect.innerText = "◎";
 					this.whenUpdated();
                 }
 			};
@@ -8983,23 +8318,11 @@ var beepbox;
             this._openExportPrompt = function () {
                 _this._openPrompt("export");
             };
-            this._openSongDataPrompt = function () {
-                _this._openPrompt("songdata");
-            };
             this._openInstrumentTypePrompt = function () {
                 _this._openPrompt("instrumentType");
             };
-            this._openChipPrompt = function () {
-                _this._openPrompt("chipPrompt");
-            }; 
-            this._openMixPrompt = function () {
-                _this._openPrompt("mix");
-            };
             this._openChorusPrompt = function () {
                 _this._openPrompt("chorus");
-            };
-            this._openArchivePrompt = function () {
-                _this._openPrompt("archive");
             };
 			refreshNow = function () {
 			_this._doc.undo();
@@ -9010,14 +8333,11 @@ var beepbox;
                 _this._doc.record(new beepbox.ChangeTheme(_this._doc, _this._themeSelect.selectedIndex));
 				_this._openPrompt("refresh");
             };
+			this._whenSetASettings = function () {
+                _this._doc.record(new beepbox.ChangeASettings(_this._doc, _this._aSettingsSelect.selectedIndex));
+            };
             this._whenSetScale = function () {
                 _this._doc.record(new beepbox.ChangeScale(_this._doc, _this._scaleSelect.selectedIndex));
-            };
-            this._whenSetMix = function () {
-                _this._doc.record(new beepbox.ChangeMix(_this._doc, _this._mixSelect.selectedIndex));
-            };
-            this._whenSetSampleRate = function () {
-                _this._doc.record(new beepbox.ChangesampleRate(_this._doc, _this._sampleRateSelect.selectedIndex));
             };
             this._whenSetKey = function () {
                 _this._doc.record(new beepbox.ChangeKey(_this._doc, _this._keySelect.selectedIndex));
@@ -9069,9 +8389,8 @@ var beepbox;
             };
 			this._whenSetImute = function () {
                 _this._doc.record(new beepbox.ChangeImute(_this._doc, _this._imuteSelect.selectedIndex));
-				_this._doc.record(new beepbox.ChangeImute(_this._doc, _this._iMmuteSelect.selectedIndex));
             };
-			this._whenSetChorus = function () {
+            this._whenSetChorus = function () {
                 _this._doc.record(new beepbox.ChangeChorus(_this._doc, _this._chorusSelect.selectedIndex));
             };
             this._editMenuHandler = function (event) {
@@ -9106,9 +8425,6 @@ var beepbox;
                     case "duration":
                         _this._openPrompt("duration");
                         break;
-                    case "archive":
-                        _this._openPrompt("archive");
-                        break;
                 }
                 _this._editMenu.selectedIndex = 0;
             };
@@ -9135,9 +8451,6 @@ var beepbox;
                     case "showScrollBar":
                         _this._doc.showScrollBar = !_this._doc.showScrollBar;
                         break;
-                    case "advancedSettings":
-                        _this._doc.advancedSettings = !_this._doc.advancedSettings;
-                        break;
                 }
                 _this._optionsMenu.selectedIndex = 0;
                 _this._doc.notifier.changed();
@@ -9146,9 +8459,9 @@ var beepbox;
             this._doc.notifier.watch(this.whenUpdated);
             this._phaseModGroup.appendChild(div({ className: "operatorRow", style: "; height: 1em; margin-top: 0.5em;" }, [
                 div({ style: "margin-right: .1em; visibility: hidden;" }, [text(1 + ".")]),
-                div({ style: "width: 3em; margin-right: .3em;" }, [text("Freq: ")]),
+                div({ style: "width: 3em; margin-right: .3em;" }, [text("Freq:")]),
                 div({ style: "width: 4em; margin: 0;" }, [text("Volume:")]),
-                div({ style: "width: 5em; margin-left: .3em;" }, [text("Envelope: ")]),
+                div({ style: "width: 5em; margin-left: .3em;" }, [text("Envelope:")]),
             ]));
             var _loop_2 = function (i) {
                 var operatorIndex = i;
@@ -9180,14 +8493,13 @@ var beepbox;
             }
             this._editMenu.addEventListener("change", this._editMenuHandler);
             this._optionsMenu.addEventListener("change", this._optionsMenuHandler);
+			this._aSettingsSelect.addEventListener("change", this._whenSetASettings);
 			this._themeSelect.addEventListener("change", this._whenSetTheme);
             this._scaleSelect.addEventListener("change", this._whenSetScale);
-			this._mixSelect.addEventListener("change", this._whenSetMix);
-			this._sampleRateSelect.addEventListener("change", this._whenSetSampleRate);
             this._keySelect.addEventListener("change", this._whenSetKey);
             this._partSelect.addEventListener("change", this._whenSetPartsPerBeat);
             this._instrumentTypeSelect.addEventListener("change", this._whenSetInstrumentType);
-			this._algorithmSelect.addEventListener("change", this._whenSetAlgorithm);
+            this._algorithmSelect.addEventListener("change", this._whenSetAlgorithm);
             this._instrumentSelect.addEventListener("change", this._whenSetInstrument);
             this._feedbackTypeSelect.addEventListener("change", this._whenSetFeedbackType);
             this._feedbackEnvelopeSelect.addEventListener("change", this._whenSetFeedbackEnvelope);
@@ -9199,29 +8511,22 @@ var beepbox;
             this._effectSelect.addEventListener("change", this._whenSetEffect);
 			this._harmSelect.addEventListener("change", this._whenSetHarm);
 			this._octoffSelect.addEventListener("change", this._whenSetOctoff);
-			this._imuteSelect.addEventListener("click", this._muteInstrument);
-			this._iMmuteSelect.addEventListener("click", this._muteInstrument);
-			this._playButton.addEventListener("click", this._togglePlay);
+			this._imuteSelect.addEventListener("change", this._whenSetImute);
+            this._playButton.addEventListener("click", this._togglePlay);
             this._prevBarButton.addEventListener("click", this._whenPrevBarPressed);
             this._nextBarButton.addEventListener("click", this._whenNextBarPressed);
-			this._newSongButton.addEventListener("click", this._whenNewSongPressed);
-            this._songDataButton.addEventListener("click", this._openSongDataPrompt);
+            this._newSongButton.addEventListener("click", this._whenNewSongPressed);
 			this._customizeButton.addEventListener("click", this._whenCustomizePressed);
 			this._undoButton.addEventListener("click", this._advancedUndo);
 			this._redoButton.addEventListener("click", this._advancedRedo);
             this._exportButton.addEventListener("click", this._openExportPrompt);
-			this._archiveButton.addEventListener("click", this._openArchivePrompt);
             this._volumeSlider.addEventListener("input", this._setVolumeSlider);
-            this._chipHint.addEventListener("click", this._openChipPrompt);
             this._instrumentTypeHint.addEventListener("click", this._openInstrumentTypePrompt);
-			this._mixHint.addEventListener("click", this._openMixPrompt);
             this._chorusHint.addEventListener("click", this._openChorusPrompt);
-			this._archiveHint.addEventListener("click", this._openArchivePrompt);
             this._editorBox.addEventListener("mousedown", this._refocusStage);
             this.mainLayer.addEventListener("keydown", this._whenKeyPressed);
-            if (isMobile) {
+            if (isMobile)
                 this._optionsMenu.children[1].disabled = true;
-			}
         }
         SongEditor.prototype._openPrompt = function (promptName) {
             this._doc.openPrompt(promptName);
@@ -9249,32 +8554,17 @@ var beepbox;
                     case "duration":
                         this.prompt = new beepbox.SongDurationPrompt(this._doc, this);
                         break;
-                    case "archive":
-                        this.prompt = new beepbox.ArchivePrompt(this._doc, this);
-                        break;
                     case "instrumentType":
                         this.prompt = new beepbox.InstrumentTypePrompt(this._doc, this);
                         break;
-                    case "chipPrompt":
-                        this.prompt = new beepbox.ChipPrompt(this._doc, this);
-                        break;
-                    case "mix":
-                        this.prompt = new beepbox.mixPrompt(this._doc, this);
-                        break;
                     case "chorus":
                         this.prompt = new beepbox.ChorusPrompt(this._doc, this);
-                        break;
-                    case "songdata":
-                        this.prompt = new beepbox.SongDataPrompt(this._doc, this);
                         break;
 					case "refresh":
                         this.prompt = new beepbox.RefreshPrompt(this._doc, this);
                         break;
 					case "refresh key":
                         this.prompt = new beepbox.RefreshKeyPrompt(this._doc, this);
-                        break;
-                    case "archive":
-                        this.prompt = new beepbox.ArchivePrompt(this._doc, this);
                         break;
                     default:
                         throw new Error("Unrecognized prompt type.");
@@ -9301,7 +8591,7 @@ var beepbox;
                 this._playButton.innerText = "Play";
             }
         };
-        SongEditor.prototype._play = function (_) {
+        SongEditor.prototype._play = function () {
             this._doc.synth.play();
             this.updatePlayButton();
         };
@@ -9316,23 +8606,19 @@ var beepbox;
             this.updatePlayButton();
         };
         SongEditor.prototype._cut = function () {
-            var pattern = this._doc.getCurrentPattern();
-            var patternCut = {
-                notes: [],
-                beatsPerBar: this._doc.song.beatsPerBar,
-                partsPerBeat: this._doc.song.partsPerBeat,
-                drums: this._doc.song.getChannelIsDrum(this._doc.channel),
-            };
+            var pattern = this._doc.getCurrentPattern(); //this is the best part of modded beepbox
+            if (pattern == null)
+                return;
             var patternCopy = {
-                notes: pattern.notes,
+                notes: null,
                 beatsPerBar: this._doc.song.beatsPerBar,
                 partsPerBeat: this._doc.song.partsPerBeat,
                 drums: this._doc.song.getChannelIsDrum(this._doc.channel),
             };
-			window.localStorage.setItem("patternCopy", JSON.stringify(patternCopy));
-            if (patternCut != null && patternCut.drums == this._doc.song.getChannelIsDrum(this._doc.channel)) {
-                this._doc.record(new beepbox.ChangePaste(this._doc, pattern, patternCut.notes, patternCut.beatsPerBar, patternCut.partsPerBeat));
-            }
+			if (patternCopy != null && patternCopy.drums == this._doc.song.getChannelIsDrum(this._doc.channel)) {
+                this._doc.record(new beepbox.ChangePaste(null, null, null, null, null));
+			};
+            window.localStorage.setItem("patternCopy", JSON.stringify(patternCopy));
         };
         SongEditor.prototype._copy = function () {
             var pattern = this._doc.getCurrentPattern();
