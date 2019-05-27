@@ -2575,15 +2575,15 @@ Config.operatorCarrierChorus = [
         };
 		Synth.prototype.spsCalc = function () {
 			Synth.warmUpSynthesizer(this.song);
-			if (this.song.sampleRate == -1)
+			if (this.song.sampleRate == 0)
 				return 40200;
-			else if (this.song.sampleRate == -1)
+			else if (this.song.sampleRate == 1)
 				return 44100;
-			else if (this.song.sampleRate == -1)
+			else if (this.song.sampleRate == 2)
 				return 48000;
-			else if (this.song.sampleRate == -1)
+			else if (this.song.sampleRate == 3)
 				return 51900;
-			else if (this.song.sampleRate == -1)
+			else if (this.song.sampleRate == 4)
 				return 55800;
 			else
 				return this.audioCtx.sampleRate;
