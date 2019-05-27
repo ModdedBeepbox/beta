@@ -357,7 +357,7 @@ var beepbox;
     Config.keyNames =      ["B", "A♯", "A", "G♯", "G", "F♯", "F", "E", "D♯", "D", "C♯", "C"];
     Config.keyTransposes = [23,  22,   21,  20,   19,  18,   17,  16,  15,   14,  13,   12 ];
     Config.mixNames =      ["Type A (B & S)", "Type B (M)", "Type C"];
-    Config.sampleRateNames =     ["40200kHz", "44100kHz", "48000kHz", "51900kHz", "55800kHz"];
+    Config.sampleRateNames =     ["40200kHz", "44100kHz", "default", "51900kHz", "55800kHz"];
     Config.tempoSteps = 24;
     Config.reverbRange = 5;
     Config.blendRange = 4;
@@ -2580,7 +2580,7 @@ Config.operatorCarrierChorus = [
 			else if (this.song.sampleRate == 1)
 				return 44100;
 			else if (this.song.sampleRate == 2)
-				return 48000;
+				return this.audioCtx.sampleRate;
 			else if (this.song.sampleRate == 3)
 				return 51900;
 			else if (this.song.sampleRate == 4)
