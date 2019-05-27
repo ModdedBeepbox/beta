@@ -8694,7 +8694,7 @@ var beepbox;
                     this._advancedSongSettings = div({ className: "editor-song-settings", style: "margin: 0px 5px;"}, [
 					div({ style: "margin: 3px 0; text-align: center;" }, [text("Advanced Song Settings")]),
 					div({ className: "selectRow" }, [span({}, [text("Mix: ")]),div({ className: "selectContainer" }, [this._mixSelectRow]),]),
-					//div({ className: "selectRow" }, [span({}, [text("Sample Rate: ")]),div({ className: "selectContainer" }, [this._sampleRateSelect]),]), (unused)
+					div({ className: "selectRow" }, [span({}, [text("Sample Rate: ")]),div({ className: "selectContainer" }, [this._sampleRateSelect]),]),
                     div({ className: "selectRow" }, [span({}, [text("Blending: ")]),this._blendSlider.input,]),
                     div({ className: "selectRow" }, [span({}, [text("Riff: ")]),this._riffSlider.input,]),
 					div({ className: "selectRow" }, [span({}, [text("Detune: ")]),this._detuneSlider.input,]),
