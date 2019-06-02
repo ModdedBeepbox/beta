@@ -8832,7 +8832,6 @@ var beepbox;
 					div({ className: "selectRow" }, [span({}, [text("Detune: ")]),this._detuneSlider.input,]),
 					div({ className: "selectRow" }, [span({}, [text("Muff: ")]),this._muffSlider.input,]),
                 ]),
-				div({ style: "width: 182px; height: 31px;" }),
                 div({ className: "editor-instrument-settings" }, [
                     this._advancedInstrumentSettingsGroup,
                 ]),
