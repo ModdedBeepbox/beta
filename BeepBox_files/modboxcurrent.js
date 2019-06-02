@@ -566,7 +566,7 @@ Config.operatorCarrierChorus = [
         [[],  [4], [],  [2] ],
         [[],  [],  [4], [3] ],
     ];
-    Config.pitchChannelTypeNames =    ["chip", "FM (expert)", "PWM (beta)"];
+    Config.pitchChannelTypeNames =    ["chip", "FM (expert)", "test"];
 	Config.drumChannelTypeNames =     ["noise"]
     Config.instrumentTypeNames =      ["chip", "FM", "noise", "PWM"];
     Config.pitchChannelColorsDim =    [channelOneDimColorPallet, channelTwoDimColorPallet, channelThreeDimColorPallet, channelFourDimColorPallet, channelFiveDimColorPallet, channelSixDimColorPallet, channelSevenDimColorPallet, channelEightDimColorPallet, channelNineDimColorPallet, channelTenDimColorPallet, channelElevenDimColorPallet, channelTwelveDimColorPallet];
