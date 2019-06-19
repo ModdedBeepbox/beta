@@ -330,8 +330,8 @@ var beepbox;
 	channelThreeBrightColorPallet =       ["#ffff25"]
 	channelFourBrightColorPallet =        ["#ff9752"]
 	channelFiveBrightColorPallet =        ["#ff90ff"]
-	channelSixBrightColorPallet =         ["#7500c4"]
-	channelSevenBrightColorPallet =       ["#1000ff"]
+	channelSixBrightColorPallet =         ["#9f31ea"]
+	channelSevenBrightColorPallet =       ["#2b6aff"]
 	channelEightBrightColorPallet =       ["#00ff9f"]
 	channelNineBrightColorPallet =        ["#ffbf00"]
 	channelTenBrightColorPallet =         ["#d85d00"]
@@ -347,7 +347,7 @@ var beepbox;
 	channelThreeDimColorPallet =       ["#a1a100"]
 	channelFourDimColorPallet =        ["#c75000"]
 	channelFiveDimColorPallet =        ["#d020d0"]
-	channelSixDimColorPallet =         ["#492184"]
+	channelSixDimColorPallet =         ["#552377"]
 	channelSevenDimColorPallet =       ["#221b89"]
 	channelEightDimColorPallet =       ["#00995f"]
 	channelNineDimColorPallet =        ["#d6b03e"]
@@ -2453,6 +2453,22 @@ Config.operatorCarrierChorus = [
             var pattern = this.getPattern(channel, bar);
             return pattern == null ? 0 : pattern.instrument;
         };
+		Song.prototype.getPatternInstrumentMute = function (channel, bar) {
+            var pattern = this.getPattern(channel, bar);
+            var instrumentIndex = this.getPatternInstrument(channel, bar);
+			var instrument = this.channels[channel].instruments[instrumentIndex];
+			return pattern == null ? 0 : instrument.imute;
+			return instrument;
+			return instrumentIndex;
+        };
+		Song.prototype.getPatternInstrumentVolume = function (channel, bar) {
+            var pattern = this.getPattern(channel, bar);
+            var instrumentIndex = this.getPatternInstrument(channel, bar);
+			var instrument = this.channels[channel].instruments[instrumentIndex];
+			return pattern == null ? 0 : instrument.volume;
+			return instrument;
+			return instrumentIndex;
+        };
         Song.prototype.getBeatsPerMinute = function () {
             return Math.round(120.0 * Math.pow(2.0, (-4.0 + this.tempo) / 9.0));
         };
@@ -3622,6 +3638,7 @@ var beepbox;
             this.showLetters = localStorage.getItem("showLetters") == "true";
             this.showChannels = localStorage.getItem("showChannels") == "true";
             this.showScrollBar = localStorage.getItem("showScrollBar") == "true";
+			this.showVolumeBar = localStorage.getItem("showVolumeBar") == "true";
 			this.advancedSettings = localStorage.getItem("advancedSettings") == "true" || localStorage.getItem("advancedSettings") == null;
 			if (localStorage.getItem("volume") != null)
                 this.volume = Number(localStorage.getItem("volume"));
@@ -3695,6 +3712,7 @@ var beepbox;
             localStorage.setItem("showLetters", this.showLetters ? "true" : "false");
             localStorage.setItem("showChannels", this.showChannels ? "true" : "false");
             localStorage.setItem("showScrollBar", this.showScrollBar ? "true" : "false");
+			localStorage.setItem("showVolumeBar", this.showVolumeBar ? "true" : "false");
 			localStorage.setItem("advancedSettings", this.advancedSettings ? "true" : "false");
             localStorage.setItem("volume", String(this.volume));
         };
@@ -6106,36 +6124,55 @@ var beepbox;
 var beepbox;
 (function (beepbox) {
     var Box = (function () {
-        function Box(channel, x, y, color) {
-            this._text = beepbox.html.text("1");
-            this._label = beepbox.svgElement("text", { x: 16, y: 23, "font-family": "sans-serif", "font-size": 20, "text-anchor": "middle", "font-weight": "bold", fill: "red" }, [this._text]);
-            this._rect = beepbox.svgElement("rect", { width: 30, height: 30, x: 1, y: 1 });
-            this.container = beepbox.svgElement("svg", undefined, [this._rect, this._label]);
-            this._renderedIndex = 1;
-            this._renderedDim = true;
-            this._renderedSelected = false;
-            this._renderedColor = "";
-            this.container.setAttribute("x", "" + (x * 32));
-            this.container.setAttribute("y", "" + (y * 32));
-            this._rect.setAttribute("fill", "#444444");
-            this._label.setAttribute("fill", color);
-        }
+        function Box(channel, x, y, color, showVolume) {
+			this._text = beepbox.html.text("1");
+			this._label = beepbox.svgElement("text", { x: 16, y: 23, "font-family": "sans-serif", "font-size": 20, "text-anchor": "middle", "font-weight": "bold", fill: "red" }, [this._text]);
+			this._rect = beepbox.svgElement("rect", { width: 30, height: 27, x: 1, y: 1 });
+			this._vol1 = beepbox.svgElement("rect", { width: 6, height: 3, x: 24, y: 5 });
+			this._volb = beepbox.svgElement("rect", { width: 6, height: 18, x: 24, y: 5 });
+			this.container = beepbox.svgElement("svg", undefined, [this._rect, this._volb, this._vol1, this._label]);
+			this._renderedIndex = 1;
+			this._renderedDim = true;
+			this._renderedMute = true;
+			this._renderedSelected = false;
+			this._renderedColor = "";
+			this.container.setAttribute("x", "" + (x * 32));
+			this.container.setAttribute("y", "" + (y * 32));
+			this._rect.setAttribute("fill", "#444444");
+			this._vol1.setAttribute("fill", "#444444");
+			this._volb.setAttribute("fill", "#444444");
+			this._label.setAttribute("fill", color);
+		}
         Box.prototype.setSquashed = function (squashed, y) {
 			if (squashed) {
 				this.container.setAttribute("y", "" + (y * 27));
 				this._rect.setAttribute("height", "" + 25);
+				this._vol1.setAttribute("height", "" + 2.7);
+				this._volb.setAttribute("height", "" + 18);
 				this._label.setAttribute("y", "" + 21);
 			}
 			else {
 				this.container.setAttribute("y", "" + (y * 32));
 				this._rect.setAttribute("height", "" + 30);
+				this._vol1.setAttribute("height", "" + 3);
+				this._volb.setAttribute("height", "" + 18);
 				this._label.setAttribute("y", "" + 23);
 			}
         };
-        Box.prototype.setIndex = function (index, dim, selected, y, color) {
-            if (this._renderedIndex != index) {
+        Box.prototype.setIndex = function (index, dim, selected, y, color, volume, colorb, selectedchannel, showVolume, mix) {
+			if (mix == 2) {
+				this._vol1.setAttribute("height", 18 - (volume * 2));
+				this._vol1.setAttribute("y", 5 + (volume * 2));
+			}
+			else {
+				this._vol1.setAttribute("height", 18 - (volume * 3.6));
+				this._vol1.setAttribute("y", 5 + (volume * 3.6));
+			}
+			if (this._renderedIndex != index) {
                 if (!this._renderedSelected && ((index == 0) != (this._renderedIndex == 0))) {
                     this._rect.setAttribute("fill", (index == 0) ? "#000000" : "#444444");
+					this._vol1.setAttribute("fill", (index == 0) ? "#000000" : "#444444");
+					this._volb.setAttribute("fill", (index == 0) ? "#000000" : "#444444");
                 }
                 this._renderedIndex = index;
                 this._text.data = "" + index;
@@ -6153,19 +6190,35 @@ var beepbox;
                 this._renderedSelected = selected;
                 if (selected) {
                     this._rect.setAttribute("fill", color);
+					this._vol1.setAttribute("fill", color);
+					this._volb.setAttribute("fill", color);
                     this._label.setAttribute("fill", "#000000");
                 }
                 else {
 					if (true) {	
 						this._rect.setAttribute("fill", (this._renderedIndex == 0) ? "#000000" : "#444444");
+						this._vol1.setAttribute("fill", (this._renderedIndex == 0) ? "#000000" : color);
+						this._volb.setAttribute("fill", (this._renderedIndex == 0) ? "#000000" : colorb);
 						this._label.setAttribute("fill", color);
 					}
 					else {
 						this._rect.setAttribute("fill", (this._renderedIndex == 0) ? "#000000" : "#ffffff");
+						this._vol1.setAttribute("fill", (this._renderedIndex == 0) ? "#000000" : "#ffffff");
+						this._volb.setAttribute("fill", (this._renderedIndex == 0) ? "#000000" : "#ffffff");
 						this._label.setAttribute("fill", color);
 					};
                 }
             }
+			if(showVolume){
+				this._label.setAttribute("x", 12, "y", 23, "font-family", "sans-serif", "font-size", 18, "text-anchor", "middle", "font-weight", "bold", "fill", "red");
+				this._vol1.style.visibility = "visible";
+				this._volb.style.visibility = "visible";
+			}
+			else {
+				this._label.setAttribute("x", 16, "y", 23, "font-family", "sans-serif", "font-size", 20, "text-anchor", "middle", "font-weight", "bold", "fill", "red");
+				this._vol1.style.visibility = "hidden";
+				this._volb.style.visibility = "hidden";
+			}
             this._renderedColor = color;
         };
         return Box;
@@ -6408,7 +6461,7 @@ var beepbox;
                 for (var y = this._renderedChannelCount; y < this._doc.song.getChannelCount(); y++) {
                     this._grid[y] = [];
                     for (var x = 0; x < this._renderedBarCount; x++) {
-                        var box = new Box(y, x, y, this._doc.song.getChannelColorDim(y));
+                        var box = new Box(y, x, y, this._doc.song.getChannelColorDim(y), this._doc.showVolumeBar);
                         box.setSquashed(squashed, y);
                         this._boxContainer.appendChild(box.container);
                         this._grid[y][x] = box;
@@ -6424,7 +6477,7 @@ var beepbox;
             if (this._renderedBarCount != this._doc.song.barCount) {
                 for (var y = 0; y < this._doc.song.getChannelCount(); y++) {
                     for (var x = this._renderedBarCount; x < this._doc.song.barCount; x++) {
-                        var box = new Box(y, x, y, this._doc.song.getChannelColorDim(y));
+                        var box = new Box(y, x, y, this._doc.song.getChannelColorDim(y), this._doc.showVolumeBar);
                         box.setSquashed(squashed, y);
                         this._boxContainer.appendChild(box.container);
                         this._grid[y][x] = box;
@@ -6457,11 +6510,16 @@ var beepbox;
             for (var j = 0; j < this._doc.song.getChannelCount(); j++) {
                 for (var i = 0; i < this._renderedBarCount; i++) {
                     var pattern = this._doc.song.getPattern(j, i);
+					var patternmute = this._doc.song.getPatternInstrumentMute(j, i);
+					var patternvolume = this._doc.song.getPatternInstrumentVolume(j, i);
                     var selected = (i == this._doc.bar && j == this._doc.channel);
+					var selectedchannel = (j == this._doc.channel);
                     var dim = (pattern == null || pattern.notes.length == 0);
+					var mute = (patternmute == 1);
+					var volume = patternvolume;
                     var box = this._grid[j][i];
                     if (i < this._doc.song.barCount) {
-                        box.setIndex(this._doc.song.channels[j].bars[i], dim, selected, j, dim && !selected ? this._doc.song.getChannelColorDim(j) : this._doc.song.getChannelColorBright(j));
+                        box.setIndex(this._doc.song.channels[j].bars[i], dim, selected, j, dim && !selected && !mute ? this._doc.song.getChannelColorDim(j) : mute && !selected ? "#161616" : this._doc.song.getChannelColorBright(j), volume, dim && !selected && !mute ? this._doc.song.getChannelColorDim(j) : mute && !selected ? "#9b9b9b" : this._doc.song.getChannelColorDim(j), selectedchannel, this._doc.showVolumeBar, this._doc.song.mix);
                         box.container.style.visibility = "visible";
                     }
                     else {
@@ -8631,6 +8689,7 @@ var beepbox;
 				option("showMore", "Advanced Color Scheme", false, false),
                 option("showChannels", "Show All Channels", false, false),
                 option("showScrollBar", "Octave Scroll Bar", false, false),
+				option("showVolumeBar", "Show Channel Volume", false, false),
 				option("advancedSettings", "Enable Advanced Settings", false, false),
             ]);
 			this._newSongButton = button({ type: "button" }, [
@@ -8861,6 +8920,7 @@ var beepbox;
 					(_this._doc.showMore ? "✓ " : "✗ ") + "Advanced Color Scheme",
                     (_this._doc.showChannels ? "✓ " : "✗ ") + "Show All Channels",
                     (_this._doc.showScrollBar ? "✓ " : "✗ ") + "Octave Scroll Bar",
+					(_this._doc.showVolumeBar ? "✓ " : "✗ ") + "Show Channel Volume",
 					(_this._doc.advancedSettings ? "✓ " : "✗ ") + "Enable Advanced Settings",
                 ];
                 for (var i = 0; i < optionCommands.length; i++) {
@@ -9354,6 +9414,9 @@ var beepbox;
                         break;
                     case "showScrollBar":
                         _this._doc.showScrollBar = !_this._doc.showScrollBar;
+                        break;
+					case "showVolumeBar":
+                        _this._doc.showVolumeBar = !_this._doc.showVolumeBar;
                         break;
                     case "advancedSettings":
                         _this._doc.advancedSettings = !_this._doc.advancedSettings;
