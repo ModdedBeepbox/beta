@@ -372,7 +372,7 @@ var beepbox;
     Config.beatsPerBarMin = 1;
     Config.beatsPerBarMax = 24;
     Config.barCountMin = 1;
-    Config.barCountMax = 128;
+    Config.barCountMax = 256;
     Config.patternsPerChannelMin = 1;
     Config.patternsPerChannelMax = 64;
     Config.instrumentsPerChannelMin = 1;
